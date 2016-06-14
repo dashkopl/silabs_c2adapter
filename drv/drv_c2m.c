@@ -28,15 +28,15 @@
  #error "Only support 24MHz Core Clock for C2M yet!"
 #endif
 
-#define C2CK_PP()       drv_io_SetOutputPP(IO(IO_C2M_SCL))
-#define C2CK_OD()       drv_io_SetOutputOD(IO(IO_C2M_SCL))
-#define C2CK_SET(_v)    DRV_IO_Write(IO(IO_C2M_SCL), (_v))
-#define C2CK_GET()      DRV_IO_Read(IO(IO_C2M_SCL))
+#define C2CK_PP()       drv_io_SetOutputPP(IO(IO_DUT_C2M_SCL))
+#define C2CK_OD()       drv_io_SetOutputOD(IO(IO_DUT_C2M_SCL))
+#define C2CK_SET(_v)    DRV_IO_Write(IO(IO_DUT_C2M_SCL), (_v))
+#define C2CK_GET()      DRV_IO_Read(IO(IO_DUT_C2M_SCL))
 
-#define C2D_PP()        drv_io_SetOutputPP(IO(IO_C2M_SDA))
-#define C2D_OD()        drv_io_SetOutputOD(IO(IO_C2M_SDA))
-#define C2D_SET(_v)     DRV_IO_Write(IO(IO_C2M_SDA), (_v))
-#define C2D_GET()       DRV_IO_Read(IO(IO_C2M_SDA))
+#define C2D_PP()        drv_io_SetOutputPP(IO(IO_DUT_C2M_SDA))
+#define C2D_OD()        drv_io_SetOutputOD(IO(IO_DUT_C2M_SDA))
+#define C2D_SET(_v)     DRV_IO_Write(IO(IO_DUT_C2M_SDA), (_v))
+#define C2D_GET()       DRV_IO_Read(IO(IO_DUT_C2M_SDA))
 
 #define DELAY_US(_n)    DRV_CPU_DelayUs(_n)
 #define DELAY_MS(_n)    DRV_CPU_DelayMs(_n)

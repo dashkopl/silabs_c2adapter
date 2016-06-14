@@ -26,40 +26,41 @@
 /* porting part */
 #if 1
 
-#if (CORE_CLOCK != 48000000UL)
- #error "Only support 48MHz Core Clock for I2CM yet!"
+#if (CORE_CLOCK != 24000000UL)
+ #error "Only support 24MHz Core Clock for I2CM yet!"
 #endif
 
 /* note: these timing are fully tested, for the 4.7K ohm pull-up resisters */
-#if   (PKT_I2CM_RATE == 80)
- #define PKT_I2CM_FixRate()     do {                                        \
-                                    DRV_CPU_DelayUs(5);                     \
-                                    DRV_CPU_Delay100ns();                   \
-                                    DRV_CPU_Delay100ns();                   \
-                                    DRV_CPU_Delay100ns();                   \
-                                    DRV_CPU_Delay100ns();                   \
-                                    DRV_CPU_Delay100ns();                   \
-                                    DRV_CPU_Delay100ns();                   \
-                                } while (0)
-#elif (PKT_I2CM_RATE == 100)
+#if   (DRV_I2CM_RATE == 80)
  #define PKT_I2CM_FixRate()     do {                                        \
                                     DRV_CPU_DelayUs(4);                     \
-                                    DRV_CPU_Delay100ns();                   \
-                                    DRV_CPU_Delay100ns();                   \
-                                    DRV_CPU_Delay100ns();                   \
+                                    DRV_CPU_Delay125ns();                   \
+                                    DRV_CPU_Delay125ns();                   \
+                                    DRV_CPU_Delay125ns();                   \
+                                    DRV_CPU_Delay125ns();                   \
                                 } while (0)
-#elif (PKT_I2CM_RATE == 200)
+#elif (DRV_I2CM_RATE == 100)
  #define PKT_I2CM_FixRate()     do {                                        \
-                                    DRV_CPU_DelayUs(2);                     \
+                                    DRV_CPU_DelayUs(3);                     \
+                                    DRV_CPU_Delay125ns();                   \
                                 } while (0)
-#elif (PKT_I2CM_RATE == 400)
+#elif (DRV_I2CM_RATE == 200)
  #define PKT_I2CM_FixRate()     do {                                        \
-                                    DRV_CPU_Delay100ns();                   \
-                                    DRV_CPU_Delay100ns();                   \
-                                    DRV_CPU_Delay100ns();                   \
-                                    DRV_CPU_Delay100ns();                   \
-                                    DRV_CPU_Delay100ns();                   \
-                                    NOP();NOP();NOP();                      \
+                                    DRV_CPU_DelayUs(0);                     \
+                                    DRV_CPU_Delay125ns();                   \
+                                    DRV_CPU_Delay125ns();                   \
+                                    DRV_CPU_Delay125ns();                   \
+                                    DRV_CPU_Delay125ns();                   \
+                                    DRV_CPU_Delay125ns();                   \
+                                    DRV_CPU_Delay125ns();                   \
+                                } while (0)
+#elif (DRV_I2CM_RATE == 400)
+ #define PKT_I2CM_FixRate()     do {                                        \
+                                    DRV_CPU_Delay125ns();                   \
+                                    DRV_CPU_Delay125ns();                   \
+                                    DRV_CPU_Delay125ns();                   \
+                                    DRV_CPU_Delay125ns();                   \
+                                    NOP(); NOP();                           \
                                 } while (0)
 #else
  #error "Unsupported I2C Master Rate!"
