@@ -18,9 +18,6 @@
 #define __DRV_VECTOR_H
 
 
-/* extended interrupt ID definition */
-#define INTERRUPT_UserUSB       17  /* User USB ID (C8051F34x) */
-
 /* register group definition */
 #define REG_GROUP_0             0   /* register group 0 */
 #define REG_GROUP_1             1   /* register group 1 */

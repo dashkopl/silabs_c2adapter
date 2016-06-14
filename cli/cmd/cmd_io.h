@@ -18,7 +18,7 @@
 #define __CMD_IO_H
 
 
-#if CLI_SUPPORT
+#if (CLI_SUPPORT && DRV_IO_SUPPORT)
 
 /******************************************************************************
  * FUNCTION NAME:

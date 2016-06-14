@@ -21,26 +21,6 @@
 
 /******************************************************************************
  * FUNCTION NAME:
- *   DRV_Entry
- * DESCRIPTION:
- *   Driver entry.
- * PARAMETERS:
- *   N/A
- * RETURN:
- *   N/A
- * NOTES:
- *   N/A
- * HISTORY:
- *   2016.1.29        Panda.Xiong          Create
- *****************************************************************************/
-void DRV_Entry(void)
-{
-    /* do nothing */
-}
-
-
-/******************************************************************************
- * FUNCTION NAME:
  *   DRV_Init
  * DESCRIPTION:
  *   Driver init.
