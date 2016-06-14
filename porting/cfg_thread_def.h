@@ -17,7 +17,6 @@
 #include "thread_idle.h"
 #include "thread_led.h"
 #include "thread_pkt.h"
-#include "thread_cli.h"
 
 
 #ifdef DECLARE_THREAD
@@ -38,10 +37,6 @@ DECLARE_THREAD(thread_LED_Entry,  thread_LED_Init,  "LED Thread")
 
 #if PKT_SUPPORT
 DECLARE_THREAD(thread_PKT_Entry, thread_PKT_Init,   "USB Packet Thread")
-#endif
-
-#if CLI_SUPPORT
-DECLARE_THREAD(Thread_CLI_Entry, Thread_CLI_Init,   "CLI Thread")
 #endif
 
 #endif

@@ -529,46 +529,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>cli</GroupName>
-          <Files>
-            <File>
-              <FileName>thread_cli.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\cli\thread_cli.c</FilePath>
-            </File>
-            <File>
-              <FileName>vt.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\cli\vt.c</FilePath>
-            </File>
-            <File>
-              <FileName>cmd_i2cm.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\cli\cmd\cmd_i2cm.c</FilePath>
-            </File>
-            <File>
-              <FileName>cmd_io.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\cli\cmd\cmd_io.c</FilePath>
-            </File>
-            <File>
-              <FileName>cmd_mem.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\cli\cmd\cmd_mem.c</FilePath>
-            </File>
-            <File>
-              <FileName>cmd_system.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\cli\cmd\cmd_system.c</FilePath>
-            </File>
-            <File>
-              <FileName>cmd_c2m.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\cli\cmd\cmd_c2m.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>application</GroupName>
           <Files>
             <File>

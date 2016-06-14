@@ -65,12 +65,12 @@
 #define DEV_VCC_MAX                 36000   /* mV */
 
 /* frame related (currently, only support version 1) */
-#define PKT_SUPPORT                 0   /* USB packet global enable/disable */
+#define PKT_SUPPORT                 1   /* USB packet global enable/disable */
 #define PKT_MAX_LEN                 1084   /* frame maximum length */
 #define PKT_MAGIC                   0x434C /* frame magic number */
 #define PKT_VERSION                 0x0001 /* frame content version */
 #define PKT_DEBUG_SUPPORT           (0 && PKT_SUPPORT)      /* packet debugging */
-#define PKT_SYSTEM_SUPPORT          (0 && PKT_SUPPORT)      /* USB packet: System */
+#define PKT_SYSTEM_SUPPORT          (1 && PKT_SUPPORT)      /* USB packet: System */
 #define PKT_I2CM_SUPPORT            (0 && PKT_SUPPORT)      /* USB packet: I2C Master */
  #define PKT_I2CM_RATE              100 /* 80/100/200/400 KHz */
  #define PKT_I2CM_VS_SUPPORT        (0 && PKT_I2CM_SUPPORT) /* Virtual I2C Slave */
@@ -80,7 +80,6 @@
 #define PKT_C2M_SUPPORT             (0 && PKT_SUPPORT && DRV_C2M_SUPPORT)   /* USB packet: C2 Master */
 
 /* other function */
-#define CLI_SUPPORT                 (0 && DRV_UART_SUPPORT && DRV_UART_RX_ENABLE) /* Command Line Interface */
 #define CFG_SUPPORT                 0   /* Config Engine */
 
 

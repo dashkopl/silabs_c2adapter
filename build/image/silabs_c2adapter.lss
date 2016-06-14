@@ -1,4 +1,4 @@
-LX51 LINKER/LOCATER V4.66.41.0                                                          06/14/2016  11:49:58  PAGE 1
+LX51 LINKER/LOCATER V4.66.41.0                                                          06/14/2016  11:58:02  PAGE 1
 
 
 
@@ -7,52 +7,1077 @@ LX51 LINKER/LOCATER V4.66.41.0                                                  
 ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 
 
+----- FUNCTION _thread_pkt_Dump (BEGIN) -----
+ FILE: '..\pkt\thread_pkt.c'
+   87: static void _thread_pkt_Dump(IN BOOL bRx)
+   88: {
+   89:   #if PKT_DEBUG_SUPPORT
+   90: 
+   91:     UINT16 vLoop;
+   92: 
+   93:   #if DRV_WATCHDOG_SUPPORT
+   94:     DRV_WATCHDOG_Kick();
+   95:   #endif
+   96: 
+   97:     printf("USB-%s-PKT: (magic=%.4hX,rev=%.4hX,len=%04hX,CRC=%04hX)",
+   98:            (bRx?"RX":"TX"),
+   99:            vFrame.vMagicNo, vFrame.vVersion, vFrame.vLen, vFrame.vCRC);
+  100:     for (vLoop = 0; vLoop < vFrame.vLen; vLoop++)
+  101:     {
+  102:         if ((vLoop%16) == 0)
+  103:         {
+  104:             printf("\n");
+  105:         }
+  106:         else if ((vLoop%8) == 0)
+  107:         {
+  108:             printf(" -");
+  109:         }
+  110: 
+  111:         printf(" %02bX", vFrame.vContent.buf[vLoop]);
+  112:     }
+  113:     printf("\n");
+  114: 
+  115:   #if DRV_WATCHDOG_SUPPORT
+  116:     DRV_WATCHDOG_Kick();
+  117:   #endif
+  118: 
+  119:   #else
+  120:     NO_WARNING(bRx);
+  121:   #endif
+  122: }
+00002A 22                RET      
+----- FUNCTION _thread_pkt_Dump (END) -------
+
+
+00002B 0219C2            LJMP     019C2H
 ----- FUNCTION APL_Entry (BEGIN) -----
  FILE: '..\apl\apl.c'
    36: void APL_Entry(void)
    37: {
    38:     /* do nothing */
    39: }
-00002A 22                RET      
+000042 22                RET      
 ----- FUNCTION APL_Entry (END) -------
 
 
-00002B 020E17            LJMP     0E17H
------ FUNCTION DRV_VECTOR_UserUSB (BEGIN) -----
- FILE: '..\drv\drv_vector.c'
-   65: void DRV_VECTOR_UserUSB(void) __interrupt(INTERRUPT_UserUSB)
-   66: {
-   67:   #if PKT_SUPPORT
-   68: 	thread_Pkt_Notify(DRV_USB_GetInterruptSource());
-   69:   #endif
-   70: }
-000042 32                RETI     
------ FUNCTION DRV_VECTOR_UserUSB (END) -------
-
-
-000083 80BD              SJMP     01000042H
+000083 0219F9            LJMP     019F9H
 ----- FUNCTION APL_Init (BEGIN) -----
  FILE: '..\apl\apl.c'
    56: void APL_Init(void)
    57: {
    58:     /* perform entry once */
    59:     APL_Entry();
-0001D6 012A              AJMP     APL_Entry
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:58:02  PAGE 2
+
+
+0001DD 0142              AJMP     APL_Entry
 ----- FUNCTION APL_Init (END) -------
 
 
------ FUNCTION thread_LED_Init (BEGIN) -----
- FILE: '..\plf\thread_led.c'
-   77: void thread_LED_Init(void)
-   78: {
-   79:     PT_INIT(&vTCB_LED);
-   80: }
-0001D8 E4                CLR      A
-0001D9 F514              MOV      vTCB_LED,A
-0001DB F515              MOV      vTCB_LED+01H,A
-   81: 
-0001DD 22                RET      
------ FUNCTION thread_LED_Init (END) -------
+----- FUNCTION _thread_pkt_CalcCRC (BEGIN) -----
+ FILE: '..\pkt\thread_pkt.c'
+   37: static UINT16 _thread_pkt_CalcCRC(void)
+   38: {
+   39:     /* CRC16-CCITT: X16+X15+X2+1 */
+   40:     static SEG_CODE UINT16 aCRC16[256] =
+   41:     {
+   42:         0x0000, 0x1189, 0x2312, 0x329B, 0x4624, 0x57AD, 0x6536, 0x74BF,
+   43:         0x8C48, 0x9DC1, 0xAF5A, 0xBED3, 0xCA6C, 0xDBE5, 0xE97E, 0xF8F7,
+   44:         0x0919, 0x1890, 0x2A0B, 0x3B82, 0x4F3D, 0x5EB4, 0x6C2F, 0x7DA6,
+   45:         0x8551, 0x94D8, 0xA643, 0xB7CA, 0xC375, 0xD2FC, 0xE067, 0xF1EE,
+   46:         0x1232, 0x03BB, 0x3120, 0x20A9, 0x5416, 0x459F, 0x7704, 0x668D,
+   47:         0x9E7A, 0x8FF3, 0xBD68, 0xACE1, 0xD85E, 0xC9D7, 0xFB4C, 0xEAC5,
+   48:         0x1B2B, 0x0AA2, 0x3839, 0x29B0, 0x5D0F, 0x4C86, 0x7E1D, 0x6F94,
+   49:         0x9763, 0x86EA, 0xB471, 0xA5F8, 0xD147, 0xC0CE, 0xF255, 0xE3DC,
+   50:         0x2464, 0x35ED, 0x0776, 0x16FF, 0x6240, 0x73C9, 0x4152, 0x50DB,
+   51:         0xA82C, 0xB9A5, 0x8B3E, 0x9AB7, 0xEE08, 0xFF81, 0xCD1A, 0xDC93,
+   52:         0x2D7D, 0x3CF4, 0x0E6F, 0x1FE6, 0x6B59, 0x7AD0, 0x484B, 0x59C2,
+   53:         0xA135, 0xB0BC, 0x8227, 0x93AE, 0xE711, 0xF698, 0xC403, 0xD58A,
+   54:         0x3656, 0x27DF, 0x1544, 0x04CD, 0x7072, 0x61FB, 0x5360, 0x42E9,
+   55:         0xBA1E, 0xAB97, 0x990C, 0x8885, 0xFC3A, 0xEDB3, 0xDF28, 0xCEA1,
+   56:         0x3F4F, 0x2EC6, 0x1C5D, 0x0DD4, 0x796B, 0x68E2, 0x5A79, 0x4BF0,
+   57:         0xB307, 0xA28E, 0x9015, 0x819C, 0xF523, 0xE4AA, 0xD631, 0xC7B8,
+   58:         0x48C8, 0x5941, 0x6BDA, 0x7A53, 0x0EEC, 0x1F65, 0x2DFE, 0x3C77,
+   59:         0xC480, 0xD509, 0xE792, 0xF61B, 0x82A4, 0x932D, 0xA1B6, 0xB03F,
+   60:         0x41D1, 0x5058, 0x62C3, 0x734A, 0x07F5, 0x167C, 0x24E7, 0x356E,
+   61:         0xCD99, 0xDC10, 0xEE8B, 0xFF02, 0x8BBD, 0x9A34, 0xA8AF, 0xB926,
+   62:         0x5AFA, 0x4B73, 0x79E8, 0x6861, 0x1CDE, 0x0D57, 0x3FCC, 0x2E45,
+   63:         0xD6B2, 0xC73B, 0xF5A0, 0xE429, 0x9096, 0x811F, 0xB384, 0xA20D,
+   64:         0x53E3, 0x426A, 0x70F1, 0x6178, 0x15C7, 0x044E, 0x36D5, 0x275C,
+   65:         0xDFAB, 0xCE22, 0xFCB9, 0xED30, 0x998F, 0x8806, 0xBA9D, 0xAB14,
+   66:         0x6CAC, 0x7D25, 0x4FBE, 0x5E37, 0x2A88, 0x3B01, 0x099A, 0x1813,
+   67:         0xE0E4, 0xF16D, 0xC3F6, 0xD27F, 0xA6C0, 0xB749, 0x85D2, 0x945B,
+   68:         0x65B5, 0x743C, 0x46A7, 0x572E, 0x2391, 0x3218, 0x0083, 0x110A,
+   69:         0xE9FD, 0xF874, 0xCAEF, 0xDB66, 0xAFD9, 0xBE50, 0x8CCB, 0x9D42,
+   70:         0x7E9E, 0x6F17, 0x5D8C, 0x4C05, 0x38BA, 0x2933, 0x1BA8, 0x0A21,
+   71:         0xF2D6, 0xE35F, 0xD1C4, 0xC04D, 0xB4F2, 0xA57B, 0x97E0, 0x8669,
+   72:         0x7787, 0x660E, 0x5495, 0x451C, 0x31A3, 0x202A, 0x12B1, 0x0338,
+   73:         0xFBCF, 0xEA46, 0xD8DD, 0xC954, 0xBDEB, 0xAC62, 0x9EF9, 0x8F70,
+   74:     };
+   75: 
+   76:     UINT16  vCRC = 0xFFFF;
+0014A3 74FF              MOV      A,#0FFH
+0014A5 F529              MOV      vCRC,A
+0014A7 F52A              MOV      vCRC+01H,A
+   77:     UINT16  vLoop;
+   78: 
+   79:     for (vLoop = 0; vLoop < vFrame.vLen; vLoop++)
+;---- Variable 'vLoop' assigned to Register 'R4/R5' ----
+0014A9 E4                CLR      A
+0014AA FD                MOV      R5,A
+0014AB FC                MOV      R4,A
+0014AC         ?C0001?THREAD_PKT:
+0014AC D3                SETB     C
+0014AD 900005            MOV      DPTR,#vFrame+05H
+0014B0 E0                MOVX     A,@DPTR
+0014B1 9D                SUBB     A,R5
+0014B2 900004            MOV      DPTR,#vFrame+04H
+0014B5 E0                MOVX     A,@DPTR
+0014B6 9C                SUBB     A,R4
+0014B7 4031              JC       ?C0002?THREAD_PKT
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:58:02  PAGE 3
+
+
+   80:     {
+   81:         vCRC = (vCRC<<8) ^ aCRC16[(UINT8)(vCRC>>8)^(vFrame.vContent.buf[vLoop])];
+0014B9 E529              MOV      A,vCRC
+0014BB FF                MOV      R7,A
+0014BC 7408              MOV      A,#LOW vFrame+08H
+0014BE 2D                ADD      A,R5
+0014BF F582              MOV      DPL,A
+0014C1 7400              MOV      A,#HIGH vFrame+08H
+0014C3 3C                ADDC     A,R4
+0014C4 F583              MOV      DPH,A
+0014C6 E0                MOVX     A,@DPTR
+0014C7 6F                XRL      A,R7
+0014C8 75F002            MOV      B,#02H
+0014CB A4                MUL      AB
+0014CC 24F3              ADD      A,#LOW aCRC16
+0014CE F582              MOV      DPL,A
+0014D0 E5F0              MOV      A,B
+0014D2 3405              ADDC     A,#HIGH aCRC16
+0014D4 F583              MOV      DPH,A
+0014D6 E52A              MOV      A,vCRC+01H
+0014D8 FE                MOV      R6,A
+0014D9 E4                CLR      A
+0014DA 93                MOVC     A,@A+DPTR
+0014DB 6E                XRL      A,R6
+0014DC F529              MOV      vCRC,A
+0014DE 7401              MOV      A,#01H
+0014E0 93                MOVC     A,@A+DPTR
+0014E1 F52A              MOV      vCRC+01H,A
+   82:     }
+0014E3 0D                INC      R5
+0014E4 BD0001            CJNE     R5,#00H,?C0066?THREAD_PKT
+0014E7 0C                INC      R4
+0014E8         ?C0066?THREAD_PKT:
+0014E8 80C2              SJMP     ?C0001?THREAD_PKT
+0014EA         ?C0002?THREAD_PKT:
+   83: 
+   84:     return vCRC;
+0014EA AE29              MOV      R6,vCRC
+0014EC AF2A              MOV      R7,vCRC+01H
+   85: }
+0014EE 22                RET      
+----- FUNCTION _thread_pkt_CalcCRC (END) -------
+
+
+----- FUNCTION _thread_pkt_Transmit (BEGIN) -----
+ FILE: '..\pkt\thread_pkt.c'
+  235: static void _thread_pkt_Transmit(void)
+  236: {
+  237:     if (bFlushFIFO)
+  238:     {
+0014EF 300909            JNB      bFlushFIFO,?C0042?THREAD_PKT
+  239:         /* flush FIFO */
+  240:         memset(&vFrame, 0x00, sizeof(vFrame));
+0014F2 121A5F            LCALL    ?L?COM0003
+0014F5 12099E            LCALL    ?C?MEMSET
+  241:         bFlushFIFO = FALSE;
+0014F8 C209              CLR      bFlushFIFO
+  242:     }
+0014FA 22                RET      
+0014FB         ?C0042?THREAD_PKT:
+  243:     else
+  244:     {
+  245:         /* update content length, and re-calculate CRC value */
+  246:         vFrame.vLen = 4+PKT_GetPayloadSize();
+0014FB 90000B            MOV      DPTR,#vFrame+0BH
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:58:02  PAGE 4
+
+
+0014FE E0                MOVX     A,@DPTR
+0014FF 2404              ADD      A,#04H
+001501 FE                MOV      R6,A
+001502 90000A            MOV      DPTR,#vFrame+0AH
+001505 E0                MOVX     A,@DPTR
+001506 3400              ADDC     A,#00H
+001508 900004            MOV      DPTR,#vFrame+04H
+00150B F0                MOVX     @DPTR,A
+00150C A3                INC      DPTR
+00150D CE                XCH      A,R6
+00150E F0                MOVX     @DPTR,A
+  247:         vFrame.vCRC = _thread_pkt_CalcCRC();
+00150F 91A3              ACALL    _thread_pkt_CalcCRC
+001511 900006            MOV      DPTR,#vFrame+06H
+001514 EE                MOV      A,R6
+001515 F0                MOVX     @DPTR,A
+001516 A3                INC      DPTR
+001517 EF                MOV      A,R7
+001518 F0                MOVX     @DPTR,A
+  248: 
+  249:         /* dump tx frame */
+  250:         _thread_pkt_Dump(FALSE);
+001519 C200              CLR      ?_thread_pkt_Dump?BIT
+00151B 12002A            LCALL    _thread_pkt_Dump
+  251: 
+  252:         /* emit frame */
+  253:     	DRV_USB_WriteBlock((UINT8 *)&vFrame, PKT_HEADER_LEN+vFrame.vLen);
+00151E 121A65            LCALL    ?L?COM0004
+001521 900005            MOV      DPTR,#vFrame+05H
+001524 E0                MOVX     A,@DPTR
+001525 2408              ADD      A,#08H
+001527 FD                MOV      R5,A
+001528 900004            MOV      DPTR,#vFrame+04H
+00152B E0                MOVX     A,@DPTR
+00152C 3400              ADDC     A,#00H
+00152E FC                MOV      R4,A
+00152F 020086            LJMP     _Block_Write
+  254:     }
+----- FUNCTION _thread_pkt_Transmit (END) -------
+
+
+----- FUNCTION _thread_pkt_Receive (BEGIN) -----
+ FILE: '..\pkt\thread_pkt.c'
+  124: static BOOL _thread_pkt_Receive(void)
+  125: {
+  126:     UINT16  vRxTotalLen;
+  127:     UINT8   vBlockLen;
+  128:     UINT16  vElaspedTime;
+  129: 
+  130:   #if 1
+  131:     /* receive frame:
+  132:      *  -> 1st block: pkt_header + pkt_content
+  133:      *  -> 2nd block: pkt_content
+  134:      *  -> 3rd block: pkt_content
+  135:      *  -> ...
+  136:      */
+  137: 
+  138:     /* receive 1st block */
+  139:     memset(&vFrame, 0x00, sizeof(vFrame));
+001532 121A5F            LCALL    ?L?COM0003
+001535 12099E            LCALL    ?C?MEMSET
+  140:     vBlockLen = DRV_USB_ReadBlock((UINT8 *)&vFrame, DRV_USB_BLOCK_MAX_LEN);
+001538 121A65            LCALL    ?L?COM0004
+00153B 121A77            LCALL    ?L?COM0009
+  141:     if (bFlushFIFO)
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:58:02  PAGE 5
+
+
+00153E 30090B            JNB      bFlushFIFO,?C0010?THREAD_PKT
+  142:     {
+  143:         /* flush FIFO */
+  144:         printf("flush FIFO!\n");
+001541 7BFF              MOV      R3,#0FFH
+001543 7A05              MOV      R2,#HIGH 0100055CH
+001545 795C              MOV      R1,#LOW 0100055CH
+001547 120262            LCALL    _printf
+  145:         return FALSE;
+00154A C3                CLR      C
+00154B 22                RET      
+  146:     }
+00154C         ?C0010?THREAD_PKT:
+  147:     if ((vBlockLen < PKT_HEADER_LEN) || (vFrame.vMagicNo != PKT_MAGIC))
+00154C C3                CLR      C
+00154D E526              MOV      A,vBlockLen
+00154F 9408              SUBB     A,#08H
+001551 E4                CLR      A
+001552 9400              SUBB     A,#00H
+001554 400E              JC       ?C0013?THREAD_PKT
+001556 900000            MOV      DPTR,#vFrame
+001559 E0                MOVX     A,@DPTR
+00155A 6443              XRL      A,#043H
+00155C 7004              JNZ      ?C0067?THREAD_PKT
+00155E A3                INC      DPTR
+00155F E0                MOVX     A,@DPTR
+001560 644C              XRL      A,#04CH
+001562         ?C0067?THREAD_PKT:
+001562 601A              JZ       ?C0012?THREAD_PKT
+001564         ?C0013?THREAD_PKT:
+  148:     {
+  149:         /* invalid frame, force flush FIFO, w/o responding */
+  150:         printf("invalid frame! (blockLen=%.2bX, magicNo=%.4hX)\n", vBlockLen, vFrame.vMagicNo);
+001564 7BFF              MOV      R3,#0FFH
+001566 7A05              MOV      R2,#HIGH 01000569H
+001568 7969              MOV      R1,#LOW 01000569H
+00156A 85262C            MOV      ?_printf?BYTE+03H,vBlockLen
+00156D 900000            MOV      DPTR,#vFrame
+001570 E0                MOVX     A,@DPTR
+001571 F52D              MOV      ?_printf?BYTE+04H,A
+001573 A3                INC      DPTR
+001574 E0                MOVX     A,@DPTR
+001575 F52E              MOV      ?_printf?BYTE+05H,A
+001577 120262            LCALL    _printf
+  151:         bFlushFIFO = TRUE;
+00157A D209              SETB     bFlushFIFO
+  152:         return FALSE;
+00157C C3                CLR      C
+00157D 22                RET      
+  153:     }
+00157E         ?C0012?THREAD_PKT:
+  154:     if (vFrame.vVersion != PKT_VERSION)
+00157E 900002            MOV      DPTR,#vFrame+02H
+001581 E0                MOVX     A,@DPTR
+001582 7004              JNZ      ?C0068?THREAD_PKT
+001584 A3                INC      DPTR
+001585 E0                MOVX     A,@DPTR
+001586 6401              XRL      A,#01H
+001588         ?C0068?THREAD_PKT:
+001588 6013              JZ       ?C0014?THREAD_PKT
+  155:     {
+  156:         /* invalid frame version, return supported version to host */
+  157:         printf("invalid frame version!\n");
+00158A 7BFF              MOV      R3,#0FFH
+00158C 7A05              MOV      R2,#HIGH 01000599H
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:58:02  PAGE 6
+
+
+00158E 7999              MOV      R1,#LOW 01000599H
+001590 120262            LCALL    _printf
+  158:         vFrame.vVersion = PKT_VERSION;
+001593 900002            MOV      DPTR,#vFrame+02H
+001596 E4                CLR      A
+001597 F0                MOVX     @DPTR,A
+001598 A3                INC      DPTR
+001599 04                INC      A
+00159A F0                MOVX     @DPTR,A
+  159:         return FALSE;
+00159B C3                CLR      C
+00159C 22                RET      
+  160:     }
+00159D         ?C0014?THREAD_PKT:
+  161:     vRxTotalLen = vBlockLen-PKT_HEADER_LEN;
+00159D E526              MOV      A,vBlockLen
+00159F 24F8              ADD      A,#0F8H
+0015A1 F525              MOV      vRxTotalLen+01H,A
+0015A3 E4                CLR      A
+0015A4 34FF              ADDC     A,#0FFH
+0015A6 F524              MOV      vRxTotalLen,A
+  162: 
+  163:     /* receive remaining blocks */
+  164:     vElaspedTime = 0;
+0015A8 E4                CLR      A
+0015A9 F527              MOV      vElaspedTime,A
+0015AB F528              MOV      vElaspedTime+01H,A
+0015AD         ?C0015?THREAD_PKT:
+  165:     while (vRxTotalLen < vFrame.vLen)
+0015AD D3                SETB     C
+0015AE 900005            MOV      DPTR,#vFrame+05H
+0015B1 E0                MOVX     A,@DPTR
+0015B2 9525              SUBB     A,vRxTotalLen+01H
+0015B4 900004            MOV      DPTR,#vFrame+04H
+0015B7 E0                MOVX     A,@DPTR
+0015B8 9524              SUBB     A,vRxTotalLen
+0015BA 4047              JC       ?C0016?THREAD_PKT
+  166:     {
+  167:         vBlockLen = DRV_USB_ReadBlock(vFrame.vContent.buf+vRxTotalLen,
+0015BC 7408              MOV      A,#LOW vFrame+08H
+0015BE 2525              ADD      A,vRxTotalLen+01H
+0015C0 F9                MOV      R1,A
+0015C1 7400              MOV      A,#HIGH vFrame+08H
+0015C3 3524              ADDC     A,vRxTotalLen
+0015C5 FA                MOV      R2,A
+0015C6 7B01              MOV      R3,#01H
+0015C8 121A77            LCALL    ?L?COM0009
+  168:                                       DRV_USB_BLOCK_MAX_LEN);
+  169: 
+  170:         if (vBlockLen == 0)
+0015CB E526              MOV      A,vBlockLen
+0015CD 7027              JNZ      ?C0017?THREAD_PKT
+  171:         {
+  172:             /* next block is still not ready */
+  173: 
+  174:             DRV_CPU_DelayUs(1);
+0015CF 7F01              MOV      R7,#01H
+0015D1 FE                MOV      R6,A
+0015D2 D1F8              ACALL    _DRV_CPU_DelayUs
+  175:             if (++vElaspedTime >= 50000)
+0015D4 0528              INC      vElaspedTime+01H
+0015D6 E528              MOV      A,vElaspedTime+01H
+0015D8 7002              JNZ      ?C0069?THREAD_PKT
+0015DA 0527              INC      vElaspedTime
+0015DC         ?C0069?THREAD_PKT:
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:58:02  PAGE 7
+
+
+0015DC FF                MOV      R7,A
+0015DD AE27              MOV      R6,vElaspedTime
+0015DF E4                CLR      A
+0015E0 FC                MOV      R4,A
+0015E1 FD                MOV      R5,A
+0015E2 7B50              MOV      R3,#050H
+0015E4 7AC3              MOV      R2,#0C3H
+0015E6 F9                MOV      R1,A
+0015E7 F8                MOV      R0,A
+0015E8 D3                SETB     C
+0015E9 12084F            LCALL    ?C?SLCMP
+0015EC 50BF              JNC      ?C0015?THREAD_PKT
+  176:             {
+  177:                 /* timeout: 50ms */
+  178:                 printf("rx packet timeout!\n");
+0015EE 7BFF              MOV      R3,#0FFH
+0015F0 7A05              MOV      R2,#HIGH 010005B1H
+0015F2 79B1              MOV      R1,#LOW 010005B1H
+  179:                 PKT_SetReply(PKT_REPLY_Fail_InvalidContent);
+  180:                 return FALSE;
+0015F4 8021              SJMP     ?C0076?THREAD_PKT
+  181:             }
+  182: 
+  183:             continue;
+  184:         }
+0015F6         ?C0017?THREAD_PKT:
+  185: 
+  186:         vRxTotalLen += vBlockLen;
+0015F6 E526              MOV      A,vBlockLen
+0015F8 2525              ADD      A,vRxTotalLen+01H
+0015FA F525              MOV      vRxTotalLen+01H,A
+0015FC E4                CLR      A
+0015FD 3524              ADDC     A,vRxTotalLen
+0015FF F524              MOV      vRxTotalLen,A
+  187:     }
+001601 80AA              SJMP     ?C0015?THREAD_PKT
+001603         ?C0016?THREAD_PKT:
+  188: 
+  189:     if (vRxTotalLen != vFrame.vLen)
+001603 900004            MOV      DPTR,#vFrame+04H
+001606 E0                MOVX     A,@DPTR
+001607 6524              XRL      A,vRxTotalLen
+001609 7004              JNZ      ?C0070?THREAD_PKT
+00160B A3                INC      DPTR
+00160C E0                MOVX     A,@DPTR
+00160D 6525              XRL      A,vRxTotalLen+01H
+00160F         ?C0070?THREAD_PKT:
+00160F 600E              JZ       ?C0022?THREAD_PKT
+  190:     {
+  191:         printf("invalid packet length!\n");
+001611 7BFF              MOV      R3,#0FFH
+001613 7A05              MOV      R2,#HIGH 010005C5H
+001615 79C5              MOV      R1,#LOW 010005C5H
+001617         
+001617 121A6C            LCALL    ?L?COM0006
+00161A 7401              MOV      A,#01H
+00161C F0                MOVX     @DPTR,A
+  192:         PKT_SetReply(PKT_REPLY_Fail_InvalidContent);
+  193:         return FALSE;
+00161D C3                CLR      C
+00161E 22                RET      
+  194:     }
+00161F         ?C0022?THREAD_PKT:
+  195:   #endif
+  196: 
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:58:02  PAGE 8
+
+
+  197: 	/* dump rx frame */
+  198:     _thread_pkt_Dump(TRUE);
+00161F D200              SETB     ?_thread_pkt_Dump?BIT
+001621 12002A            LCALL    _thread_pkt_Dump
+  199: 
+  200:     /* frame verify: CRC */
+  201:     if (vFrame.vCRC != _thread_pkt_CalcCRC())
+001624 91A3              ACALL    _thread_pkt_CalcCRC
+001626 900006            MOV      DPTR,#vFrame+06H
+001629 E0                MOVX     A,@DPTR
+00162A 6E                XRL      A,R6
+00162B 7003              JNZ      ?C0071?THREAD_PKT
+00162D A3                INC      DPTR
+00162E E0                MOVX     A,@DPTR
+00162F 6F                XRL      A,R7
+001630         ?C0071?THREAD_PKT:
+001630 600D              JZ       ?C0026?THREAD_PKT
+  202:     {
+  203:         printf("invalid CRC!\n");
+001632 7BFF              MOV      R3,#0FFH
+001634 7A05              MOV      R2,#HIGH 010005DDH
+001636 79DD              MOV      R1,#LOW 010005DDH
+001638 121A6C            LCALL    ?L?COM0006
+00163B 14                DEC      A
+00163C F0                MOVX     @DPTR,A
+  204:         PKT_SetReply(PKT_REPLY_Fail_InvalidCRC);
+  205:         return FALSE;
+00163D C3                CLR      C
+00163E 22                RET      
+  206:     }
+00163F         ?C0026?THREAD_PKT:
+  207: 
+  208:     return TRUE;
+00163F D3                SETB     C
+  209: }
+001640 22                RET      
+----- FUNCTION _thread_pkt_Receive (END) -------
+
+
+----- FUNCTION _thread_pkt_Handle (BEGIN) -----
+ FILE: '..\pkt\thread_pkt.c'
+  211: static void _thread_pkt_Handle(void)
+  212: {
+  213: 	UINT16  vCmd;
+  214: 	UINT16  vReply;
+  215: 	UINT8   vLoop;
+  216: 
+  217:     vCmd = PKT_GetCmd();
+001641 900008            MOV      DPTR,#vFrame+08H
+001644 E0                MOVX     A,@DPTR
+001645 F524              MOV      vCmd,A
+001647 A3                INC      DPTR
+001648 E0                MOVX     A,@DPTR
+001649 F525              MOV      vCmd+01H,A
+  218: 	vReply = PKT_REPLY_Fail_InvalidCmd;
+;---- Variable 'vReply' assigned to Register 'R6/R7' ----
+00164B 7403              MOV      A,#03H
+00164D FF                MOV      R7,A
+00164E FE                MOV      R6,A
+  219: 	for (vLoop = 0; vLoop < COUNT_OF(aCmdTable); vLoop++)
+00164F E4                CLR      A
+001650 F526              MOV      vLoop,A
+001652         ?C0030?THREAD_PKT:
+  220: 	{
+  221: 		if (aCmdTable[vLoop].vCmd == vCmd)
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:58:02  PAGE 9
+
+
+001652 E526              MOV      A,vLoop
+001654 25E0              ADD      A,ACC
+001656 25E0              ADD      A,ACC
+001658 24EB              ADD      A,#LOW aCmdTable
+00165A F582              MOV      DPL,A
+00165C E4                CLR      A
+00165D 3405              ADDC     A,#HIGH aCmdTable
+00165F F583              MOV      DPH,A
+001661 7401              MOV      A,#01H
+001663 93                MOVC     A,@A+DPTR
+001664 B52522            CJNE     A,vCmd+01H,?C0032?THREAD_PKT
+001667 E4                CLR      A
+001668 93                MOVC     A,@A+DPTR
+001669 B5241D            CJNE     A,vCmd,?C0032?THREAD_PKT
+  222: 		{
+  223: 			vReply = aCmdTable[vLoop].pExec();
+00166C E526              MOV      A,vLoop
+00166E 25E0              ADD      A,ACC
+001670 25E0              ADD      A,ACC
+001672 24ED              ADD      A,#LOW aCmdTable+02H
+001674 F582              MOV      DPL,A
+001676 E4                CLR      A
+001677 3405              ADDC     A,#HIGH aCmdTable+02H
+001679 F583              MOV      DPH,A
+00167B E4                CLR      A
+00167C 93                MOVC     A,@A+DPTR
+00167D FE                MOV      R6,A
+00167E 7401              MOV      A,#01H
+001680 93                MOVC     A,@A+DPTR
+001681 AA06              MOV      R2,AR6
+001683 F9                MOV      R1,A
+001684 1208AF            LCALL    ?C?ICALL
+  224: 			break;
+001687 8009              SJMP     ?C0036?THREAD_PKT
+  225: 		}
+  226: 	}
+001689         ?C0032?THREAD_PKT:
+001689 0526              INC      vLoop
+00168B E526              MOV      A,vLoop
+00168D C3                CLR      C
+00168E 9402              SUBB     A,#02H
+001690 40C0              JC       ?C0030?THREAD_PKT
+001692         ?C0036?THREAD_PKT:
+  227: 
+  228: 	PKT_SetReply(vReply);
+001692 900008            MOV      DPTR,#vFrame+08H
+001695 EE                MOV      A,R6
+001696 F0                MOVX     @DPTR,A
+001697 A3                INC      DPTR
+001698 EF                MOV      A,R7
+001699 F0                MOVX     @DPTR,A
+  229:     if (PKT_GetReplyState(vReply) == PKT_ReplyState_Fail)
+00169A EE                MOV      A,R6
+00169B 6403              XRL      A,#03H
+00169D 7004              JNZ      ?C0041?THREAD_PKT
+  230:     {
+  231:         PKT_SetPayloadSize(0x00);
+00169F A3                INC      DPTR
+0016A0 F0                MOVX     @DPTR,A
+0016A1 A3                INC      DPTR
+0016A2 F0                MOVX     @DPTR,A
+  232:     }
+  233: }
+0016A3         ?C0041?THREAD_PKT:
+0016A3 22                RET      
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:58:02  PAGE 10
+
+
+----- FUNCTION _thread_pkt_Handle (END) -------
+
+
+----- FUNCTION thread_PKT_Entry (BEGIN) -----
+ FILE: '..\pkt\thread_pkt.c'
+  309: OS_HANDLE thread_PKT_Entry(void)
+  310: {
+  311:     PT_BEGIN(&vTCB_Pkt);
+  312: 
+0016A4 752301            MOV      PT_YIELD_FLAG,#01H
+0016A7         ?C0048?THREAD_PKT:
+0016A7 E50B              MOV      A,vTCB_Pkt+01H
+0016A9 850AF0            MOV      B,vTCB_Pkt
+0016AC 120882            LCALL    ?C?ICASE
+0016AF 16BB              DW       ?C0058?THREAD_PKT
+0016B1 0000              DW       00H
+0016B3 16C1              DW       ?C0059?THREAD_PKT
+0016B5 013C              DW       013CH
+0016B7 0000              DW       00H
+0016B9 16EE              DW       ?C0049?THREAD_PKT
+  313:     for (;;)
+  314:     {
+  315:         /* wait for packet */
+  316:         PT_SEM_WAIT(&vTCB_Pkt, &vSCB_RxPkt);
+0016BB         ?C0058?THREAD_PKT:
+0016BB 750A01            MOV      vTCB_Pkt,#01H
+0016BE 750B3C            MOV      vTCB_Pkt+01H,#03CH
+0016C1         ?C0059?THREAD_PKT:
+0016C1 AE08              MOV      R6,vSCB_RxPkt
+0016C3 AF09              MOV      R7,vSCB_RxPkt+01H
+0016C5 D3                SETB     C
+0016C6 EF                MOV      A,R7
+0016C7 9400              SUBB     A,#00H
+0016C9 EE                MOV      A,R6
+0016CA 9400              SUBB     A,#00H
+0016CC 4003              JC       ?C0061?THREAD_PKT
+0016CE D3                SETB     C
+0016CF 8001              SJMP     ?C0062?THREAD_PKT
+0016D1         ?C0061?THREAD_PKT:
+0016D1 C3                CLR      C
+0016D2         ?C0062?THREAD_PKT:
+0016D2 4003              JC       ?C0057?THREAD_PKT
+0016D4 7F00              MOV      R7,#00H
+0016D6 22                RET      
+0016D7         ?C0057?THREAD_PKT:
+0016D7 E509              MOV      A,vSCB_RxPkt+01H
+0016D9 1509              DEC      vSCB_RxPkt+01H
+0016DB 7002              JNZ      ?C0075?THREAD_PKT
+0016DD 1508              DEC      vSCB_RxPkt
+0016DF         ?C0075?THREAD_PKT:
+  317: 
+  318:         if (_thread_pkt_Receive())
+0016DF B132              ACALL    _thread_pkt_Receive
+0016E1 5002              JNC      ?C0064?THREAD_PKT
+  319:         {
+  320:             _thread_pkt_Handle();
+0016E3 D141              ACALL    _thread_pkt_Handle
+  321:         }
+0016E5         ?C0064?THREAD_PKT:
+  322:         _thread_pkt_Transmit();
+0016E5 91EF              ACALL    _thread_pkt_Transmit
+  323: 
+  324:         /* reset packet counter */
+  325:         PT_SEM_INIT(&vSCB_RxPkt, 0);
+0016E7 E4                CLR      A
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:58:02  PAGE 11
+
+
+0016E8 F508              MOV      vSCB_RxPkt,A
+0016EA F509              MOV      vSCB_RxPkt+01H,A
+  326:     }
+0016EC 80CD              SJMP     ?C0058?THREAD_PKT
+  327: 
+  328:     PT_END(&vTCB_Pkt);
+0016EE         ?C0049?THREAD_PKT:
+0016EE E4                CLR      A
+0016EF F523              MOV      PT_YIELD_FLAG,A
+0016F1 F50A              MOV      vTCB_Pkt,A
+0016F3 F50B              MOV      vTCB_Pkt+01H,A
+0016F5 7F03              MOV      R7,#03H
+  329: }
+0016F7 22                RET      
+----- FUNCTION thread_PKT_Entry (END) -------
+
+
+----- FUNCTION _DRV_CPU_DelayUs (BEGIN) -----
+ FILE: '..\drv\drv_cpu.c'
+   35: void DRV_CPU_DelayUs(UINT16 vUsec)
+   36: {
+;---- Variable 'vUsec' assigned to Register 'R6/R7' ----
+   37:     NOP(); NOP(); NOP();
+   38: 
+0016F8 8018              SJMP     ?C0013?DRV_CPU
+0016FA         ?C0001?DRV_CPU:
+   39:     while (--vUsec)
+0016FA EF                MOV      A,R7
+0016FB 1F                DEC      R7
+0016FC 7001              JNZ      ?C0011?DRV_CPU
+0016FE 1E                DEC      R6
+0016FF         ?C0011?DRV_CPU:
+0016FF 14                DEC      A
+001700 4E                ORL      A,R6
+001701 6014              JZ       ?C0003?DRV_CPU
+   40:     {
+   41:       #if (CORE_CLOCK == 24000000UL)
+   42: 		NOP(); NOP(); NOP(); NOP(); NOP();
+001703 00                NOP      
+001704 00                NOP      
+001705 00                NOP      
+001706 00                NOP      
+001707 00                NOP      
+   43: 		NOP(); NOP(); NOP(); NOP(); NOP();
+001708 00                NOP      
+001709 00                NOP      
+00170A 00                NOP      
+00170B 00                NOP      
+00170C 00                NOP      
+   44: 		NOP(); NOP(); NOP(); NOP(); NOP();
+00170D 00                NOP      
+00170E 00                NOP      
+00170F 00                NOP      
+001710 00                NOP      
+001711 00                NOP      
+   45: 		NOP(); NOP(); NOP();
+001712         
+001712 00                NOP      
+001713 00                NOP      
+001714 00                NOP      
+   46:       #else
+   47:         #error "Unsupported Core Clock!"
+   48:       #endif
+   49:     }
+001715 80E3              SJMP     ?C0001?DRV_CPU
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:58:02  PAGE 12
+
+
+   50: }
+001717         ?C0003?DRV_CPU:
+001717 22                RET      
+----- FUNCTION _DRV_CPU_DelayUs (END) -------
+
+
+----- FUNCTION DRV_PreInit (BEGIN) -----
+ FILE: '..\drv\drv.c'
+   88: void DRV_PreInit(void)
+   89: {
+   90:     /* disable all interrupt */
+   91:     DRV_INT_DisableAllInterrupt();
+001718 E4                CLR      A
+001719 F5A8              MOV      IE,A
+00171B F5E6              MOV      EIE1,A
+   92: 
+   93:   #if DRV_CLOCK_SUPPORT
+   94:     DRV_CLOCK_Init();
+00171D 75B283            MOV      OSCICN,#083H
+001720         ?C0023?DRV:
+001720 E5B2              MOV      A,OSCICN
+001722 C4                SWAP     A
+001723 13                RRC      A
+001724 13                RRC      A
+001725 5403              ANL      A,#03H
+001727 13                RRC      A
+001728 50F6              JNC      ?C0023?DRV
+00172A         ?C0024?DRV:
+00172A 75B980            MOV      CLKMUL,#080H
+00172D 7F05              MOV      R7,#05H
+00172F 7E00              MOV      R6,#00H
+001731 D1F8              ACALL    _DRV_CPU_DelayUs
+001733 43B9C0            ORL      CLKMUL,#0C0H
+001736         ?C0025?DRV:
+001736 E5B9              MOV      A,CLKMUL
+001738 C4                SWAP     A
+001739 13                RRC      A
+00173A 5407              ANL      A,#07H
+00173C 13                RRC      A
+00173D 50F7              JNC      ?C0025?DRV
+00173F         ?C0026?DRV:
+00173F 75A902            MOV      CLKSEL,#02H
+001742 75B680            MOV      FLSCL,#080H
+   95:   #endif
+   96: 
+   97:   #if DRV_IO_SUPPORT
+   98: 	DRV_IO_Init();
+001745 F1A5              ACALL    DRV_IO_Init
+   99:   #endif
+  100: 
+  101:   #if DRV_UART_SUPPORT
+  102:     DRV_UART_Init();
+001747 438E08            ORL      CKCON,#08H
+00174A E589              MOV      A,TMOD
+00174C 540F              ANL      A,#0FH
+00174E 4420              ORL      A,#020H
+001750 F589              MOV      TMOD,A
+001752 758D98            MOV      TH1,#098H
+001755 D28E              SETB     TR1
+001757 AFD4              MOV      R7,P0SKIP
+001759 EF                MOV      A,R7
+00175A 54EF              ANL      A,#0EFH
+00175C FF                MOV      R7,A
+00175D 8FD4              MOV      P0SKIP,R7
+00175F AFD4              MOV      R7,P0SKIP
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:58:02  PAGE 13
+
+
+001761 EF                MOV      A,R7
+001762 54DF              ANL      A,#0DFH
+001764 FF                MOV      R7,A
+001765 8FD4              MOV      P0SKIP,R7
+001767 43E101            ORL      XBR0,#01H
+00176A 759802            MOV      SCON0,#02H
+  103:   #endif
+  104: 
+  105:   #if DRV_PCA_SUPPORT
+  106:     DRV_PCA_Init();
+  107:   #endif
+  108: 
+  109:   #if DRV_WATCHDOG_SUPPORT
+  110: 	DRV_WATCHDOG_Enable();
+  111:   #endif
+  112: }
+00176D 22                RET      
+----- FUNCTION DRV_PreInit (END) -------
+
+
+----- FUNCTION main (BEGIN) -----
+ FILE: '..\plf\main.c'
+   61: void main(void)
+   62: {
+   63: 	/* previous init */
+   64: 	DRV_PreInit();
+00176E F118              ACALL    DRV_PreInit
+   65: 
+   66:     /* init protothread */
+   67:     OS_Init();
+001770 F18B              ACALL    OS_Init
+   68: 
+   69:     /* fixup init */
+   70:     _fixupInit();
+001772 F1A1              ACALL    _fixupInit
+;----                  JMP      OS_Start
+   71: 
+   72:     /* start protothread (never return) */
+----- FUNCTION main (END) -------
+
+
+----- FUNCTION OS_Start (BEGIN) -----
+ FILE: '..\os\os.c'
+   48: void OS_Start(void)
+   49: {
+   50:     for (;;)
+   51:     {
+001774         ?C0001?OS:
+   52:         UINT8   i;
+   53: 
+   54:         for (i = 0; i < COUNT_OF(aThreadList); i++)
+001774 E4                CLR      A
+001775 F522              MOV      i,A
+001777         ?C0003?OS:
+   55:         {
+   56:             aThreadList[i].pEntry();
+001777 E522              MOV      A,i
+001779 75F006            MOV      B,#06H
+00177C A4                MUL      AB
+00177D 2491              ADD      A,#LOW aThreadList
+00177F F582              MOV      DPL,A
+001781 E4                CLR      A
+001782 3414              ADDC     A,#HIGH aThreadList
+001784 121A4A            LCALL    ?L?COM0002
+001787 40EE              JC       ?C0003?OS
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:58:02  PAGE 14
+
+
+001789 80E9              SJMP     ?C0001?OS
+   57:         }
+----- FUNCTION OS_Start (END) -------
+
+
+----- FUNCTION OS_Init (BEGIN) -----
+ FILE: '..\os\os.c'
+   76: void OS_Init(void)
+   77: {
+   78:     UINT8   i;
+   79: 
+   80:     for (i = 0; i < COUNT_OF(aThreadList); i++)
+00178B E4                CLR      A
+00178C F522              MOV      i,A
+00178E         ?C0007?OS:
+   81:     {
+   82:         aThreadList[i].pInit();
+00178E E522              MOV      A,i
+001790 75F006            MOV      B,#06H
+001793 A4                MUL      AB
+001794 2494              ADD      A,#LOW aThreadList+03H
+001796 F582              MOV      DPL,A
+001798 E4                CLR      A
+001799 3414              ADDC     A,#HIGH aThreadList+03H
+00179B 121A4A            LCALL    ?L?COM0002
+00179E 40EE              JC       ?C0007?OS
+   83:     }
+   84: }
+0017A0 22                RET      
+----- FUNCTION OS_Init (END) -------
+
+
+----- FUNCTION _fixupInit (BEGIN) -----
+ FILE: '..\plf\main.c'
+   35: static void _fixupInit(void)
+   36: {
+   37:     /* Globally enable Interrupt */
+   38:     DRV_INT_GlobalEnableInterrupt();
+0017A1 D2AF              SETB     EA
+   39: 
+   40:   #if DRV_USB_SUPPORT
+   41: 	/* enable USB interface */
+   42: 	DRV_USB_Enable();
+0017A3 812E              AJMP     USB_Int_Enable
+----- FUNCTION _fixupInit (END) -------
+
+
+----- FUNCTION DRV_IO_Init (BEGIN) -----
+ FILE: '..\drv\drv_io.c'
+   37: void DRV_IO_Init(void)
+   38: {
+   39:     /* io internal init */
+   40:     P0      = _PORT_INIT(P0);
+0017A5 7580BF            MOV      P0,#0BFH
+   41:     P1      = _PORT_INIT(P1);
+0017A8 7590F6            MOV      P1,#0F6H
+   42:     P2      = _PORT_INIT(P2);
+0017AB 75A0FF            MOV      P2,#0FFH
+   43:     P3      = _PORT_INIT(P3);
+0017AE 75B0FF            MOV      P3,#0FFH
+   44:     P0MDIN  = _PORT_MDIN(P0);
+0017B1 75F17F            MOV      P0MDIN,#07FH
+   45:     P1MDIN  = _PORT_MDIN(P1);
+0017B4 75F2FF            MOV      P1MDIN,#0FFH
+   46:     P2MDIN  = _PORT_MDIN(P2);
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:58:02  PAGE 15
+
+
+0017B7 75F3FB            MOV      P2MDIN,#0FBH
+   47:     P3MDIN  = _PORT_MDIN(P3);
+0017BA 75F4FE            MOV      P3MDIN,#0FEH
+   48:     P0MDOUT = _PORT_MDOUT(P0);
+0017BD 75A44A            MOV      P0MDOUT,#04AH
+   49:     P1MDOUT = _PORT_MDOUT(P1);
+0017C0 75A558            MOV      P1MDOUT,#058H
+   50:     P2MDOUT = _PORT_MDOUT(P2);
+0017C3 75A60A            MOV      P2MDOUT,#0AH
+   51:     P3MDOUT = _PORT_MDOUT(P3);
+0017C6 E4                CLR      A
+0017C7 F5A7              MOV      P3MDOUT,A
+   52: 
+   53:     /* default, all pins are skipped for cross-bar */
+   54:     P0SKIP = 0xFF;
+0017C9 75D4FF            MOV      P0SKIP,#0FFH
+   55:     P1SKIP = 0xFF;
+0017CC 75D5FF            MOV      P1SKIP,#0FFH
+   56:     P2SKIP = 0xFF;
+0017CF 75D6FF            MOV      P2SKIP,#0FFH
+   57: 
+   58:     /* enable cross-bar */
+   59:     XBR0 = 0x00;
+0017D2 F5E1              MOV      XBR0,A
+   60:     XBR1 = 0x40;
+0017D4 75E240            MOV      XBR1,#040H
+   61: }
+0017D7 22                RET      
+----- FUNCTION DRV_IO_Init (END) -------
+
+
+----- FUNCTION _thread_Pkt_Notify (BEGIN) -----
+ FILE: '..\pkt\thread_pkt.c'
+  278: void thread_Pkt_Notify(IN UINT8 vEvent)
+  279: {
+;---- Variable 'vEvent' assigned to Register 'R7' ----
+  280: 	if (vEvent & RX_COMPLETE)
+  281: 	{
+0017D8 EF                MOV      A,R7
+0017D9 30E208            JNB      ACC.2,?C0045?THREAD_PKT
+  282: 		/* notify packet has been received */
+  283: 		PT_SEM_SIGNAL(NULL, &vSCB_RxPkt);
+0017DC 0509              INC      vSCB_RxPkt+01H
+0017DE E509              MOV      A,vSCB_RxPkt+01H
+0017E0 7002              JNZ      ?C0073?THREAD_PKT
+0017E2 0508              INC      vSCB_RxPkt
+0017E4         ?C0073?THREAD_PKT:
+  284: 	}
+0017E4         ?C0045?THREAD_PKT:
+  285: 
+  286: 	if (vEvent & FIFO_PURGE)
+0017E4 EF                MOV      A,R7
+0017E5 30E30A            JNB      ACC.3,?C0047?THREAD_PKT
+  287: 	{
+  288:         /* notify the FIFO needs to be flushed */
+  289: 		PT_SEM_SIGNAL(NULL, &vSCB_RxPkt);
+0017E8 0509              INC      vSCB_RxPkt+01H
+0017EA E509              MOV      A,vSCB_RxPkt+01H
+0017EC 7002              JNZ      ?C0074?THREAD_PKT
+0017EE 0508              INC      vSCB_RxPkt
+0017F0         ?C0074?THREAD_PKT:
+  290:         bFlushFIFO = TRUE;
+0017F0 D209              SETB     bFlushFIFO
+  291: 	}
+  292: }
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:58:02  PAGE 16
+
+
+0017F2         ?C0047?THREAD_PKT:
+0017F2 22                RET      
+----- FUNCTION _thread_Pkt_Notify (END) -------
+
+
+----- FUNCTION thread_PKT_Init (BEGIN) -----
+ FILE: '..\pkt\thread_pkt.c'
+  346: void thread_PKT_Init(void)
+  347: {
+  348:     PT_INIT(&vTCB_Pkt);
+  349:     PT_SEM_INIT(&vSCB_RxPkt, 0);
+0017F3 E4                CLR      A
+0017F4 F50A              MOV      vTCB_Pkt,A
+0017F6 F50B              MOV      vTCB_Pkt+01H,A
+  350: }
+0017F8 F508              MOV      vSCB_RxPkt,A
+0017FA F509              MOV      vSCB_RxPkt+01H,A
+  351: 
+0017FC 22                RET      
+----- FUNCTION thread_PKT_Init (END) -------
+
+
+----- FUNCTION PKT_System_Inspect (BEGIN) -----
+ FILE: '..\pkt\pkt_system.c'
+   27: UINT16 PKT_System_Inspect(void)
+   28: {
+   29:     PKT_SetPayloadSize(0x00);
+   30:     return PKT_REPLY_Done_ExecNoError;
+001800 E4                CLR      A
+001801 90000A            MOV      DPTR,#vFrame+0AH
+001804 F0                MOVX     @DPTR,A
+001805 A3                INC      DPTR
+001806 F0                MOVX     @DPTR,A
+   31: }
+001807 7E01              MOV      R6,#01H
+001809 7F40              MOV      R7,#040H
+   32: 
+00180B 22                RET      
+----- FUNCTION PKT_System_Inspect (END) -------
+
+
+----- FUNCTION PKT_System_Loopback (BEGIN) -----
+ FILE: '..\pkt\pkt_system.c'
+   33: UINT16 PKT_System_Loopback(void)
+   34: {
+   35:     return PKT_GetCmd();
+   36: }
+00180C 900008            MOV      DPTR,#vFrame+08H
+00180F E0                MOVX     A,@DPTR
+001810 FE                MOV      R6,A
+001811 A3                INC      DPTR
+001812 E0                MOVX     A,@DPTR
+001813 FF                MOV      R7,A
+   37: 
+001814 22                RET      
+----- FUNCTION PKT_System_Loopback (END) -------
 
 
 ----- FUNCTION thread_IDLE_Entry (BEGIN) -----
@@ -61,59 +1086,59 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
    39: {
    40:     PT_BEGIN(&vTCB_Idle);
    41: 
-000B92 750901            MOV      PT_YIELD_FLAG,#01H
-000B95         ?C0001?THREAD_IDLE:
-000B95 E512              MOV      A,vTCB_Idle
-000B97 7031              JNZ      ?C0002?THREAD_IDLE
-000B99 E513              MOV      A,vTCB_Idle+01H
-000B9B 24CF              ADD      A,#0CFH
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:49:58  PAGE 2
+001815 752301            MOV      PT_YIELD_FLAG,#01H
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:58:02  PAGE 17
 
 
-000B9D 6019              JZ       ?C0012?THREAD_IDLE
-000B9F 2431              ADD      A,#031H
-000BA1 7027              JNZ      ?C0002?THREAD_IDLE
+001818         ?C0001?THREAD_IDLE:
+001818 E510              MOV      A,vTCB_Idle
+00181A 7031              JNZ      ?C0002?THREAD_IDLE
+00181C E511              MOV      A,vTCB_Idle+01H
+00181E 24CF              ADD      A,#0CFH
+001820 6019              JZ       ?C0012?THREAD_IDLE
+001822 2431              ADD      A,#031H
+001824 7027              JNZ      ?C0002?THREAD_IDLE
    42:     for (;;)
-000BA3         ?C0004?THREAD_IDLE:
+001826         ?C0004?THREAD_IDLE:
    43:     {
    44:     	/* system entry */
    45:         CFG_Entry();
    46:         DRV_Entry();
    47:         APL_Entry();
-000BA3 12002A            LCALL    APL_Entry
+001826 120042            LCALL    APL_Entry
    48: 
    49:         OS_SLEEP_MS(&vTCB_Idle, 50);
-000BA6 E511              MOV      A,vTickCount+03H
-000BA8 2432              ADD      A,#032H
-000BAA D173              ACALL    ?L?COM0003
-000BAC 900078            MOV      DPTR,#vEndTick
-000BAF 120482            LCALL    ?C?LSTXDATA
-000BB2 751200            MOV      vTCB_Idle,#00H
-000BB5 751331            MOV      vTCB_Idle+01H,#031H
-000BB8         ?C0012?THREAD_IDLE:
-000BB8 00                NOP      
-000BB9 900078            MOV      DPTR,#vEndTick
-000BBC D14E              ACALL    ?L?COM0001
-000BBE 7F00              MOV      R7,#00H
-000BC0 5002              JNC      ?C0014?THREAD_IDLE
-000BC2 7F01              MOV      R7,#01H
-000BC4         ?C0014?THREAD_IDLE:
-000BC4         ?C0015?THREAD_IDLE:
-000BC4 EF                MOV      A,R7
-000BC5 60DC              JZ       ?C0004?THREAD_IDLE
-000BC7 7F00              MOV      R7,#00H
-000BC9 22                RET      
+001829 E50F              MOV      A,vTickCount+03H
+00182B 2432              ADD      A,#032H
+00182D 513C              ACALL    ?L?COM0005
+00182F 9004BC            MOV      DPTR,#vEndTick
+001832 120876            LCALL    ?C?LSTXDATA
+001835 751000            MOV      vTCB_Idle,#00H
+001838 751131            MOV      vTCB_Idle+01H,#031H
+00183B         ?C0012?THREAD_IDLE:
+00183B 00                NOP      
+00183C 9004BC            MOV      DPTR,#vEndTick
+00183F 5117              ACALL    ?L?COM0001
+001841 7F00              MOV      R7,#00H
+001843 5002              JNC      ?C0014?THREAD_IDLE
+001845 7F01              MOV      R7,#01H
+001847         ?C0014?THREAD_IDLE:
+001847         ?C0015?THREAD_IDLE:
+001847 EF                MOV      A,R7
+001848 60DC              JZ       ?C0004?THREAD_IDLE
+00184A 7F00              MOV      R7,#00H
+00184C 22                RET      
    50:     }
    51: 
    52:     PT_END(&vTCB_Idle);
-000BCA         ?C0002?THREAD_IDLE:
-000BCA E4                CLR      A
-000BCB F509              MOV      PT_YIELD_FLAG,A
-000BCD F512              MOV      vTCB_Idle,A
-000BCF F513              MOV      vTCB_Idle+01H,A
-000BD1 7F03              MOV      R7,#03H
+00184D         ?C0002?THREAD_IDLE:
+00184D E4                CLR      A
+00184E F523              MOV      PT_YIELD_FLAG,A
+001850 F510              MOV      vTCB_Idle,A
+001852 F511              MOV      vTCB_Idle+01H,A
+001854 7F03              MOV      R7,#03H
    53: }
-000BD3 22                RET      
+001856 22                RET      
 ----- FUNCTION thread_IDLE_Entry (END) -------
 
 
@@ -123,19 +1148,19 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
    71: {
    72:     PT_INIT(&vTCB_Idle);
    73: 
-000BD4 E4                CLR      A
-000BD5 F512              MOV      vTCB_Idle,A
-000BD7 F513              MOV      vTCB_Idle+01H,A
+001857 E4                CLR      A
+001858 F510              MOV      vTCB_Idle,A
+00185A F511              MOV      vTCB_Idle+01H,A
    74: 	/* system init */
    75:     CFG_Init();
    76:     DRV_Init();
-000BD9 9120              ACALL    DRV_Init
+00185C 11A3              ACALL    DRV_Init
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:58:02  PAGE 18
+
+
    77:     APL_Init();
-000BDB 0201D6            LJMP     APL_Init
+00185E 0201DD            LJMP     APL_Init
 ----- FUNCTION thread_IDLE_Init (END) -------
-
-
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:49:58  PAGE 3
 
 
 ----- FUNCTION thread_LED_Entry (BEGIN) -----
@@ -144,15 +1169,15 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
    38: {
    39:     PT_BEGIN(&vTCB_LED);
    40: 
-000BDE 750901            MOV      PT_YIELD_FLAG,#01H
-000BE1         ?C0001?THREAD_LED:
-000BE1 E514              MOV      A,vTCB_LED
-000BE3 7031              JNZ      ?C0002?THREAD_LED
-000BE5 E515              MOV      A,vTCB_LED+01H
-000BE7 24C8              ADD      A,#0C8H
-000BE9 6019              JZ       ?C0015?THREAD_LED
-000BEB 2438              ADD      A,#038H
-000BED 7027              JNZ      ?C0002?THREAD_LED
+001861 752301            MOV      PT_YIELD_FLAG,#01H
+001864         ?C0001?THREAD_LED:
+001864 E512              MOV      A,vTCB_LED
+001866 7031              JNZ      ?C0002?THREAD_LED
+001868 E513              MOV      A,vTCB_LED+01H
+00186A 24C8              ADD      A,#0C8H
+00186C 6019              JZ       ?C0015?THREAD_LED
+00186E 2438              ADD      A,#038H
+001870 7027              JNZ      ?C0002?THREAD_LED
    41:     for (;;)
    42:     {
    43:       #if CFG_SUPPORT
@@ -164,48 +1189,48 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
    49:         else
    50:       #endif
    51:         {
-000BEF         ?C0008?THREAD_LED:
+001872         ?C0008?THREAD_LED:
    52:             /* system running abnormally */
    53:             DRV_IO_Toggle(IO(IO_LED_STATUS_OUT));
-000BEF 63A008            XRL      P2,#08H
+001872 63A008            XRL      P2,#08H
    54:         }
    55: 
    56:         OS_SLEEP_MS(&vTCB_LED, 100);
-000BF2 E511              MOV      A,vTickCount+03H
-000BF4 2464              ADD      A,#064H
-000BF6 D173              ACALL    ?L?COM0003
-000BF8 90007C            MOV      DPTR,#vEndTick
-000BFB 120482            LCALL    ?C?LSTXDATA
-000BFE 751400            MOV      vTCB_LED,#00H
-000C01 751538            MOV      vTCB_LED+01H,#038H
-000C04         ?C0015?THREAD_LED:
-000C04 00                NOP      
-000C05 90007C            MOV      DPTR,#vEndTick
-000C08 D14E              ACALL    ?L?COM0001
-000C0A 7F00              MOV      R7,#00H
-000C0C 5002              JNC      ?C0017?THREAD_LED
-000C0E 7F01              MOV      R7,#01H
-000C10         ?C0017?THREAD_LED:
-000C10         ?C0018?THREAD_LED:
-000C10 EF                MOV      A,R7
-000C11 60DC              JZ       ?C0008?THREAD_LED
-000C13 7F00              MOV      R7,#00H
-000C15 22                RET      
+001875 E50F              MOV      A,vTickCount+03H
+001877 2464              ADD      A,#064H
+001879 513C              ACALL    ?L?COM0005
+00187B 9004C0            MOV      DPTR,#vEndTick
+00187E 120876            LCALL    ?C?LSTXDATA
+001881 751200            MOV      vTCB_LED,#00H
+001884 751338            MOV      vTCB_LED+01H,#038H
+001887         ?C0015?THREAD_LED:
+001887 00                NOP      
+001888 9004C0            MOV      DPTR,#vEndTick
+00188B 5117              ACALL    ?L?COM0001
+00188D 7F00              MOV      R7,#00H
+00188F 5002              JNC      ?C0017?THREAD_LED
+001891 7F01              MOV      R7,#01H
+001893         ?C0017?THREAD_LED:
+001893         ?C0018?THREAD_LED:
+001893 EF                MOV      A,R7
+001894 60DC              JZ       ?C0008?THREAD_LED
+001896 7F00              MOV      R7,#00H
+001898 22                RET      
    57:     }
    58: 
    59:     PT_END(&vTCB_LED);
-000C16         ?C0002?THREAD_LED:
-000C16 E4                CLR      A
-000C17 F509              MOV      PT_YIELD_FLAG,A
-000C19 F514              MOV      vTCB_LED,A
-000C1B F515              MOV      vTCB_LED+01H,A
-000C1D 7F03              MOV      R7,#03H
+001899         ?C0002?THREAD_LED:
+001899 E4                CLR      A
+00189A F523              MOV      PT_YIELD_FLAG,A
+00189C F512              MOV      vTCB_LED,A
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:58:02  PAGE 19
+
+
+00189E F513              MOV      vTCB_LED+01H,A
+0018A0 7F03              MOV      R7,#03H
    60: }
-000C1F 22                RET      
+0018A2 22                RET      
 ----- FUNCTION thread_LED_Entry (END) -------
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:49:58  PAGE 4
-
-
 
 
 ----- FUNCTION DRV_Init (BEGIN) -----
@@ -224,21 +1249,21 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
    47: 
    48:   #if DRV_TIMER_SUPPORT
    49: 	DRV_TIMER_Init();
-000C20 438E10            ORL      CKCON,#010H
-000C23 E4                CLR      A
-000C24 F5C8              MOV      TMR2CN,A
-000C26 75CA40            MOV      TMR2RLL,#040H
-000C29 75CC40            MOV      TMR2L,#040H
-000C2C 75CBA2            MOV      TMR2RLH,#0A2H
-000C2F 75CDA2            MOV      TMR2H,#0A2H
-000C32 C2CF              CLR      TF2H
-000C34 D2CA              SETB     TR2
-000C36 C2BD              CLR      PT2
-000C38 D2AD              SETB     ET2
-000C3A F511              MOV      vTickCount+03H,A
-000C3C F510              MOV      vTickCount+02H,A
-000C3E F50F              MOV      vTickCount+01H,A
-000C40 F50E              MOV      vTickCount,A
+0018A3 438E10            ORL      CKCON,#010H
+0018A6 E4                CLR      A
+0018A7 F5C8              MOV      TMR2CN,A
+0018A9 75CA40            MOV      TMR2RLL,#040H
+0018AC 75CC40            MOV      TMR2L,#040H
+0018AF 75CBA2            MOV      TMR2RLH,#0A2H
+0018B2 75CDA2            MOV      TMR2H,#0A2H
+0018B5 C2CF              CLR      TF2H
+0018B7 D2CA              SETB     TR2
+0018B9 C2BD              CLR      PT2
+0018BB D2AD              SETB     ET2
+0018BD F50F              MOV      vTickCount+03H,A
+0018BF F50E              MOV      vTickCount+02H,A
+0018C1 F50D              MOV      vTickCount+01H,A
+0018C3 F50C              MOV      vTickCount,A
 ;----                  JMP      DRV_USB_Init
    50:   #endif
    51: 
@@ -258,226 +1283,226 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
    51: 
    52:     /* init USB manufacture string */
    53:     aManufacturerStr[1] = 0x03;
-000C42 900001            MOV      DPTR,#aManufacturerStr+01H
-000C45 7403              MOV      A,#03H
-000C47 F0                MOVX     @DPTR,A
+0018C5 900445            MOV      DPTR,#aManufacturerStr+01H
+0018C8 7403              MOV      A,#03H
+0018CA F0                MOVX     @DPTR,A
    54:     for (vLoop=2; vLoop<sizeof(aManufacturerStr); vLoop+=2)
 ;---- Variable 'vLoop' assigned to Register 'R7' ----
-000C48 7F02              MOV      R7,#02H
-000C4A         ?C0001?DRV_USB:
-000C4A EF                MOV      A,R7
-000C4B C3                CLR      C
-000C4C 9422              SUBB     A,#022H
-000C4E 5029              JNC      ?C0002?DRV_USB
+0018CB 7F02              MOV      R7,#02H
+0018CD         ?C0001?DRV_USB:
+0018CD EF                MOV      A,R7
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:58:02  PAGE 20
+
+
+0018CE C3                CLR      C
+0018CF 9422              SUBB     A,#022H
+0018D1 5029              JNC      ?C0002?DRV_USB
    55:     {
    56:         vData = aVN[(vLoop>>1)-1];
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:49:58  PAGE 5
-
-
-000C50 EF                MOV      A,R7
-000C51 C3                CLR      C
-000C52 13                RRC      A
-000C53 900B52            MOV      DPTR,#aVN-01H
-000C56 D16C              ACALL    ?L?COM0005
-000C58 401F              JC       ?C0002?DRV_USB
-000C5A E509              MOV      A,vData
-000C5C 947F              SUBB     A,#07FH
-000C5E 5019              JNC      ?C0002?DRV_USB
+0018D3 EF                MOV      A,R7
+0018D4 C3                CLR      C
+0018D5 13                RRC      A
+0018D6 90145D            MOV      DPTR,#aVN-01H
+0018D9 5135              ACALL    ?L?COM0008
+0018DB 401F              JC       ?C0002?DRV_USB
+0018DD E523              MOV      A,vData
+0018DF 947F              SUBB     A,#07FH
+0018E1 5019              JNC      ?C0002?DRV_USB
    57: 
    58:         if ((vData < 0x20) || (vData >= 0x7F))
    59:         {
    60:             break;
    61:         }
-000C60         ?C0004?DRV_USB:
+0018E3         ?C0004?DRV_USB:
    62: 
    63:         aManufacturerStr[vLoop+0] = vData;
-000C60 7400              MOV      A,#LOW aManufacturerStr
-000C62 2F                ADD      A,R7
-000C63 F582              MOV      DPL,A
-000C65 E4                CLR      A
-000C66 3400              ADDC     A,#HIGH aManufacturerStr
-000C68 F583              MOV      DPH,A
-000C6A E509              MOV      A,vData
-000C6C F0                MOVX     @DPTR,A
+0018E3 7444              MOV      A,#LOW aManufacturerStr
+0018E5 2F                ADD      A,R7
+0018E6 F582              MOV      DPL,A
+0018E8 E4                CLR      A
+0018E9 3404              ADDC     A,#HIGH aManufacturerStr
+0018EB F583              MOV      DPH,A
+0018ED E523              MOV      A,vData
+0018EF F0                MOVX     @DPTR,A
    64:         aManufacturerStr[vLoop+1] = 0;
-000C6D 7401              MOV      A,#LOW aManufacturerStr+01H
-000C6F 2F                ADD      A,R7
-000C70 F582              MOV      DPL,A
-000C72 E4                CLR      A
-000C73 3400              ADDC     A,#HIGH aManufacturerStr+01H
-000C75 D165              ACALL    ?L?COM0004
-000C77 80D1              SJMP     ?C0001?DRV_USB
-000C79         ?C0002?DRV_USB:
+0018F0 7445              MOV      A,#LOW aManufacturerStr+01H
+0018F2 2F                ADD      A,R7
+0018F3 F582              MOV      DPL,A
+0018F5 E4                CLR      A
+0018F6 3404              ADDC     A,#HIGH aManufacturerStr+01H
+0018F8 512E              ACALL    ?L?COM0007
+0018FA 80D1              SJMP     ?C0001?DRV_USB
+0018FC         ?C0002?DRV_USB:
    65:     }
    66:     aManufacturerStr[0] = vLoop;
-000C79 900000            MOV      DPTR,#aManufacturerStr
-000C7C EF                MOV      A,R7
-000C7D F0                MOVX     @DPTR,A
+0018FC 900444            MOV      DPTR,#aManufacturerStr
+0018FF EF                MOV      A,R7
+001900 F0                MOVX     @DPTR,A
    67: 
    68:     /* init USB product string */
    69:     aProductStr[1] = 0x03;
-000C7E 900023            MOV      DPTR,#aProductStr+01H
-000C81 7403              MOV      A,#03H
-000C83 F0                MOVX     @DPTR,A
+001901 900467            MOV      DPTR,#aProductStr+01H
+001904 7403              MOV      A,#03H
+001906 F0                MOVX     @DPTR,A
    70:     for (vLoop=2; vLoop<sizeof(aProductStr); vLoop+=2)
-000C84 7F02              MOV      R7,#02H
-000C86         ?C0006?DRV_USB:
-000C86 EF                MOV      A,R7
-000C87 C3                CLR      C
-000C88 9422              SUBB     A,#022H
-000C8A 5029              JNC      ?C0007?DRV_USB
+001907 7F02              MOV      R7,#02H
+001909         ?C0006?DRV_USB:
+001909 EF                MOV      A,R7
+00190A C3                CLR      C
+00190B 9422              SUBB     A,#022H
+00190D 5029              JNC      ?C0007?DRV_USB
    71:     {
    72:         vData = aPN[(vLoop>>1)-1];
-000C8C EF                MOV      A,R7
-000C8D C3                CLR      C
-000C8E 13                RRC      A
-000C8F 900B63            MOV      DPTR,#aPN-01H
-000C92 D16C              ACALL    ?L?COM0005
-000C94 401F              JC       ?C0007?DRV_USB
-000C96 E509              MOV      A,vData
-000C98 947F              SUBB     A,#07FH
-000C9A 5019              JNC      ?C0007?DRV_USB
+00190F EF                MOV      A,R7
+001910 C3                CLR      C
+001911 13                RRC      A
+001912 90146E            MOV      DPTR,#aPN-01H
+001915 5135              ACALL    ?L?COM0008
+001917 401F              JC       ?C0007?DRV_USB
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:58:02  PAGE 21
+
+
+001919 E523              MOV      A,vData
+00191B 947F              SUBB     A,#07FH
+00191D 5019              JNC      ?C0007?DRV_USB
    73: 
    74:         if ((vData < 0x20) || (vData >= 0x7F))
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:49:58  PAGE 6
-
-
    75:         {
    76:             break;
    77:         }
-000C9C         ?C0009?DRV_USB:
+00191F         ?C0009?DRV_USB:
    78: 
    79:         aProductStr[vLoop+0] = vData;
-000C9C 7422              MOV      A,#LOW aProductStr
-000C9E 2F                ADD      A,R7
-000C9F F582              MOV      DPL,A
-000CA1 E4                CLR      A
-000CA2 3400              ADDC     A,#HIGH aProductStr
-000CA4 F583              MOV      DPH,A
-000CA6 E509              MOV      A,vData
-000CA8 F0                MOVX     @DPTR,A
+00191F 7466              MOV      A,#LOW aProductStr
+001921 2F                ADD      A,R7
+001922 F582              MOV      DPL,A
+001924 E4                CLR      A
+001925 3404              ADDC     A,#HIGH aProductStr
+001927 F583              MOV      DPH,A
+001929 E523              MOV      A,vData
+00192B F0                MOVX     @DPTR,A
    80:         aProductStr[vLoop+1] = 0;
-000CA9 7423              MOV      A,#LOW aProductStr+01H
-000CAB 2F                ADD      A,R7
-000CAC F582              MOV      DPL,A
-000CAE E4                CLR      A
-000CAF 3400              ADDC     A,#HIGH aProductStr+01H
-000CB1 D165              ACALL    ?L?COM0004
-000CB3 80D1              SJMP     ?C0006?DRV_USB
-000CB5         ?C0007?DRV_USB:
+00192C 7467              MOV      A,#LOW aProductStr+01H
+00192E 2F                ADD      A,R7
+00192F F582              MOV      DPL,A
+001931 E4                CLR      A
+001932 3404              ADDC     A,#HIGH aProductStr+01H
+001934 512E              ACALL    ?L?COM0007
+001936 80D1              SJMP     ?C0006?DRV_USB
+001938         ?C0007?DRV_USB:
    81:     }
    82:     aProductStr[0] = vLoop;
-000CB5 900022            MOV      DPTR,#aProductStr
-000CB8 EF                MOV      A,R7
-000CB9 F0                MOVX     @DPTR,A
+001938 900466            MOV      DPTR,#aProductStr
+00193B EF                MOV      A,R7
+00193C F0                MOVX     @DPTR,A
    83: 
    84:     /* init USB serial number string */
    85:     aSerialNumberStr[1] = 0x03;
-000CBA 900045            MOV      DPTR,#aSerialNumberStr+01H
-000CBD 7403              MOV      A,#03H
-000CBF F0                MOVX     @DPTR,A
+00193D 900489            MOV      DPTR,#aSerialNumberStr+01H
+001940 7403              MOV      A,#03H
+001942 F0                MOVX     @DPTR,A
    86:     for (vLoop=2; vLoop<sizeof(aSerialNumberStr); vLoop+=2)
-000CC0 7F02              MOV      R7,#02H
-000CC2         ?C0011?DRV_USB:
-000CC2 EF                MOV      A,R7
-000CC3 C3                CLR      C
-000CC4 9422              SUBB     A,#022H
-000CC6 5029              JNC      ?C0012?DRV_USB
+001943 7F02              MOV      R7,#02H
+001945         ?C0011?DRV_USB:
+001945 EF                MOV      A,R7
+001946 C3                CLR      C
+001947 9422              SUBB     A,#022H
+001949 5029              JNC      ?C0012?DRV_USB
    87:     {
    88:         vData = aSN[(vLoop>>1)-1];
-000CC8 EF                MOV      A,R7
-000CC9 C3                CLR      C
-000CCA 13                RRC      A
-000CCB 900B74            MOV      DPTR,#aSN-01H
-000CCE D16C              ACALL    ?L?COM0005
-000CD0 401F              JC       ?C0012?DRV_USB
-000CD2 E509              MOV      A,vData
-000CD4 947F              SUBB     A,#07FH
-000CD6 5019              JNC      ?C0012?DRV_USB
+00194B EF                MOV      A,R7
+00194C C3                CLR      C
+00194D 13                RRC      A
+00194E 90147F            MOV      DPTR,#aSN-01H
+001951 5135              ACALL    ?L?COM0008
+001953 401F              JC       ?C0012?DRV_USB
+001955 E523              MOV      A,vData
+001957 947F              SUBB     A,#07FH
+001959 5019              JNC      ?C0012?DRV_USB
    89: 
    90:         if ((vData < 0x20) || (vData >= 0x7F))
    91:         {
    92:             break;
    93:         }
-000CD8         ?C0014?DRV_USB:
+00195B         ?C0014?DRV_USB:
    94: 
    95:         aSerialNumberStr[vLoop+0] = vData;
-000CD8 7444              MOV      A,#LOW aSerialNumberStr
-000CDA 2F                ADD      A,R7
-000CDB F582              MOV      DPL,A
-000CDD E4                CLR      A
-000CDE 3400              ADDC     A,#HIGH aSerialNumberStr
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:49:58  PAGE 7
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:58:02  PAGE 22
 
 
-000CE0 F583              MOV      DPH,A
-000CE2 E509              MOV      A,vData
-000CE4 F0                MOVX     @DPTR,A
+00195B 7488              MOV      A,#LOW aSerialNumberStr
+00195D 2F                ADD      A,R7
+00195E F582              MOV      DPL,A
+001960 E4                CLR      A
+001961 3404              ADDC     A,#HIGH aSerialNumberStr
+001963 F583              MOV      DPH,A
+001965 E523              MOV      A,vData
+001967 F0                MOVX     @DPTR,A
    96:         aSerialNumberStr[vLoop+1] = 0;
-000CE5 7445              MOV      A,#LOW aSerialNumberStr+01H
-000CE7 2F                ADD      A,R7
-000CE8 F582              MOV      DPL,A
-000CEA E4                CLR      A
-000CEB 3400              ADDC     A,#HIGH aSerialNumberStr+01H
-000CED D165              ACALL    ?L?COM0004
-000CEF 80D1              SJMP     ?C0011?DRV_USB
-000CF1         ?C0012?DRV_USB:
+001968 7489              MOV      A,#LOW aSerialNumberStr+01H
+00196A 2F                ADD      A,R7
+00196B F582              MOV      DPL,A
+00196D E4                CLR      A
+00196E 3404              ADDC     A,#HIGH aSerialNumberStr+01H
+001970 512E              ACALL    ?L?COM0007
+001972 80D1              SJMP     ?C0011?DRV_USB
+001974         ?C0012?DRV_USB:
    97:     }
    98:     aSerialNumberStr[0] = vLoop;
-000CF1 900044            MOV      DPTR,#aSerialNumberStr
-000CF4 EF                MOV      A,R7
-000CF5 F0                MOVX     @DPTR,A
+001974 900488            MOV      DPTR,#aSerialNumberStr
+001977 EF                MOV      A,R7
+001978 F0                MOVX     @DPTR,A
    99: 
   100:     /* set USB0 to the high priority level interrupt */
   101:     EIP1 |= (1<<1);
-000CF6 43F602            ORL      EIP1,#02H
+001979 43F602            ORL      EIP1,#02H
   102: 
   103:     /* init USB device */
   104:     USB_Clock_Start();
-000CF9 120046            LCALL    USB_Clock_Start
+00197C 120046            LCALL    USB_Clock_Start
   105:     USB_Init(DRV_USB_VID,
-000CFC 90006D            MOV      DPTR,#?_USB_Init?BYTE+07H
-000CFF 7401              MOV      A,#01H
-000D01 F0                MOVX     @DPTR,A
-000D02 A3                INC      DPTR
-000D03 7400              MOV      A,#HIGH aProductStr
-000D05 F0                MOVX     @DPTR,A
-000D06 A3                INC      DPTR
-000D07 7422              MOV      A,#LOW aProductStr
-000D09 F0                MOVX     @DPTR,A
-000D0A A3                INC      DPTR
-000D0B 7401              MOV      A,#01H
-000D0D F0                MOVX     @DPTR,A
-000D0E A3                INC      DPTR
-000D0F 7400              MOV      A,#HIGH aSerialNumberStr
-000D11 F0                MOVX     @DPTR,A
-000D12 A3                INC      DPTR
-000D13 7444              MOV      A,#LOW aSerialNumberStr
-000D15 F0                MOVX     @DPTR,A
-000D16 A3                INC      DPTR
-000D17 74FA              MOV      A,#0FAH
-000D19 F0                MOVX     @DPTR,A
-000D1A A3                INC      DPTR
-000D1B 7480              MOV      A,#080H
-000D1D F0                MOVX     @DPTR,A
-000D1E A3                INC      DPTR
-000D1F 7401              MOV      A,#01H
-000D21 F0                MOVX     @DPTR,A
-000D22 A3                INC      DPTR
-000D23 E4                CLR      A
-000D24 F0                MOVX     @DPTR,A
-000D25 7B01              MOV      R3,#01H
-000D27 7A00              MOV      R2,#HIGH aManufacturerStr
-000D29 7900              MOV      R1,#LOW aManufacturerStr
-000D2B 7D61              MOV      R5,#061H
-000D2D 7CEA              MOV      R4,#0EAH
-000D2F 7FC4              MOV      R7,#0C4H
-000D31 7E10              MOV      R6,#010H
-000D33 12057D            LCALL    _USB_Init
+00197F 9004B1            MOV      DPTR,#?_USB_Init?BYTE+07H
+001982 7401              MOV      A,#01H
+001984 F0                MOVX     @DPTR,A
+001985 A3                INC      DPTR
+001986 7404              MOV      A,#HIGH aProductStr
+001988 F0                MOVX     @DPTR,A
+001989 A3                INC      DPTR
+00198A 7466              MOV      A,#LOW aProductStr
+00198C F0                MOVX     @DPTR,A
+00198D A3                INC      DPTR
+00198E 7401              MOV      A,#01H
+001990 F0                MOVX     @DPTR,A
+001991 A3                INC      DPTR
+001992 7404              MOV      A,#HIGH aSerialNumberStr
+001994 F0                MOVX     @DPTR,A
+001995 A3                INC      DPTR
+001996 7488              MOV      A,#LOW aSerialNumberStr
+001998 F0                MOVX     @DPTR,A
+001999 A3                INC      DPTR
+00199A 74FA              MOV      A,#0FAH
+00199C F0                MOVX     @DPTR,A
+00199D A3                INC      DPTR
+00199E 7480              MOV      A,#080H
+0019A0 F0                MOVX     @DPTR,A
+0019A1 A3                INC      DPTR
+0019A2 7401              MOV      A,#01H
+0019A4 F0                MOVX     @DPTR,A
+0019A5 A3                INC      DPTR
+0019A6 E4                CLR      A
+0019A7 F0                MOVX     @DPTR,A
+0019A8 7B01              MOV      R3,#01H
+0019AA 7A04              MOV      R2,#HIGH aManufacturerStr
+0019AC 7944              MOV      R1,#LOW aManufacturerStr
+0019AE 7D61              MOV      R5,#061H
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:58:02  PAGE 23
+
+
+0019B0 7CEA              MOV      R4,#0EAH
+0019B2 7FC4              MOV      R7,#0C4H
+0019B4 7E10              MOV      R6,#010H
+0019B6 120D78            LCALL    _USB_Init
   106:              DRV_USB_PID,
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:49:58  PAGE 8
-
-
   107:              aManufacturerStr,
   108:              aProductStr,
   109:              aSerialNumberStr,
@@ -489,417 +1514,203 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
   115:      * disable it here, and will be enabled later.
   116:      */
   117:     DRV_INT_GlobalDisableInterrupt();
-000D36 C2AF              CLR      EA
+0019B9 C2AF              CLR      EA
   118: }
-000D38 22                RET      
+0019BB 22                RET      
 ----- FUNCTION DRV_USB_Init (END) -------
 
 
------ FUNCTION _fixupInit (BEGIN) -----
- FILE: '..\plf\main.c'
-   35: static void _fixupInit(void)
-   36: {
-   37:     /* Globally enable Interrupt */
-   38:     DRV_INT_GlobalEnableInterrupt();
-000D39 D2AF              SETB     EA
-   39: 
-   40:   #if DRV_USB_SUPPORT
-   41: 	/* enable USB interface */
-   42: 	DRV_USB_Enable();
-000D3B 612E              AJMP     USB_Int_Enable
------ FUNCTION _fixupInit (END) -------
-
-
------ FUNCTION main (BEGIN) -----
- FILE: '..\plf\main.c'
-   61: void main(void)
-   62: {
-   63: 	/* previous init */
-   64: 	DRV_PreInit();
-000D3D B16E              ACALL    DRV_PreInit
-   65: 
-   66:     /* init protothread */
-   67:     OS_Init();
-000D3F B159              ACALL    OS_Init
-   68: 
-   69:     /* fixup init */
-   70:     _fixupInit();
-000D41 B139              ACALL    _fixupInit
-;----                  JMP      OS_Start
-   71: 
-   72:     /* start protothread (never return) */
------ FUNCTION main (END) -------
-
-
------ FUNCTION OS_Start (BEGIN) -----
- FILE: '..\os\os.c'
-   48: void OS_Start(void)
-   49: {
-   50:     for (;;)
-   51:     {
-000D43         ?C0001?OS:
-   52:         UINT8   i;
-   53: 
-   54:         for (i = 0; i < COUNT_OF(aThreadList); i++)
-000D43 E4                CLR      A
-000D44 F508              MOV      i,A
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:49:58  PAGE 9
-
-
-000D46         ?C0003?OS:
-   55:         {
-   56:             aThreadList[i].pEntry();
-000D46 E508              MOV      A,i
-000D48 75F006            MOV      B,#06H
-000D4B A4                MUL      AB
-000D4C 2486              ADD      A,#LOW aThreadList
-000D4E F582              MOV      DPL,A
-000D50 E4                CLR      A
-000D51 340B              ADDC     A,#HIGH aThreadList
-000D53 D181              ACALL    ?L?COM0002
-000D55 40EF              JC       ?C0003?OS
-000D57 80EA              SJMP     ?C0001?OS
-   57:         }
------ FUNCTION OS_Start (END) -------
-
-
------ FUNCTION OS_Init (BEGIN) -----
- FILE: '..\os\os.c'
-   76: void OS_Init(void)
-   77: {
-   78:     UINT8   i;
-   79: 
-   80:     for (i = 0; i < COUNT_OF(aThreadList); i++)
-000D59 E4                CLR      A
-000D5A F508              MOV      i,A
-000D5C         ?C0007?OS:
-   81:     {
-   82:         aThreadList[i].pInit();
-000D5C E508              MOV      A,i
-000D5E 75F006            MOV      B,#06H
-000D61 A4                MUL      AB
-000D62 2489              ADD      A,#LOW aThreadList+03H
-000D64 F582              MOV      DPL,A
-000D66 E4                CLR      A
-000D67 340B              ADDC     A,#HIGH aThreadList+03H
-000D69 D181              ACALL    ?L?COM0002
-000D6B 40EF              JC       ?C0007?OS
-   83:     }
-   84: }
-000D6D 22                RET      
------ FUNCTION OS_Init (END) -------
-
-
------ FUNCTION DRV_PreInit (BEGIN) -----
- FILE: '..\drv\drv.c'
-   88: void DRV_PreInit(void)
-   89: {
-   90:     /* disable all interrupt */
-   91:     DRV_INT_DisableAllInterrupt();
-000D6E E4                CLR      A
-000D6F F5A8              MOV      IE,A
-000D71 F5E6              MOV      EIE1,A
-   92: 
-   93:   #if DRV_CLOCK_SUPPORT
-   94:     DRV_CLOCK_Init();
-000D73 75B283            MOV      OSCICN,#083H
-000D76         ?C0023?DRV:
-000D76 E5B2              MOV      A,OSCICN
-000D78 C4                SWAP     A
-000D79 13                RRC      A
-000D7A 13                RRC      A
-000D7B 5403              ANL      A,#03H
-000D7D 13                RRC      A
-000D7E 50F6              JNC      ?C0023?DRV
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:49:58  PAGE 10
-
-
-000D80         ?C0024?DRV:
-000D80 75B980            MOV      CLKMUL,#080H
-000D83 7F05              MOV      R7,#05H
-000D85 7E00              MOV      R6,#00H
-000D87 B1C4              ACALL    _DRV_CPU_DelayUs
-000D89 43B9C0            ORL      CLKMUL,#0C0H
-000D8C         ?C0025?DRV:
-000D8C E5B9              MOV      A,CLKMUL
-000D8E C4                SWAP     A
-000D8F 13                RRC      A
-000D90 5407              ANL      A,#07H
-000D92 13                RRC      A
-000D93 50F7              JNC      ?C0025?DRV
-000D95         ?C0026?DRV:
-000D95 75A902            MOV      CLKSEL,#02H
-000D98 75B680            MOV      FLSCL,#080H
-   95:   #endif
-   96: 
-   97:   #if DRV_IO_SUPPORT
-   98: 	DRV_IO_Init();
-000D9B B1E4              ACALL    DRV_IO_Init
-   99:   #endif
-  100: 
-  101:   #if DRV_UART_SUPPORT
-  102:     DRV_UART_Init();
-000D9D 438E08            ORL      CKCON,#08H
-000DA0 E589              MOV      A,TMOD
-000DA2 540F              ANL      A,#0FH
-000DA4 4420              ORL      A,#020H
-000DA6 F589              MOV      TMOD,A
-000DA8 758D98            MOV      TH1,#098H
-000DAB D28E              SETB     TR1
-000DAD AFD4              MOV      R7,P0SKIP
-000DAF EF                MOV      A,R7
-000DB0 54EF              ANL      A,#0EFH
-000DB2 FF                MOV      R7,A
-000DB3 8FD4              MOV      P0SKIP,R7
-000DB5 AFD4              MOV      R7,P0SKIP
-000DB7 EF                MOV      A,R7
-000DB8 54DF              ANL      A,#0DFH
-000DBA FF                MOV      R7,A
-000DBB 8FD4              MOV      P0SKIP,R7
-000DBD 43E101            ORL      XBR0,#01H
-000DC0 759802            MOV      SCON0,#02H
-  103:   #endif
-  104: 
-  105:   #if DRV_PCA_SUPPORT
-  106:     DRV_PCA_Init();
-  107:   #endif
-  108: 
-  109:   #if DRV_WATCHDOG_SUPPORT
-  110: 	DRV_WATCHDOG_Enable();
-  111:   #endif
-  112: }
-000DC3 22                RET      
------ FUNCTION DRV_PreInit (END) -------
-
-
------ FUNCTION _DRV_CPU_DelayUs (BEGIN) -----
- FILE: '..\drv\drv_cpu.c'
-   35: void DRV_CPU_DelayUs(UINT16 vUsec)
-   36: {
-;---- Variable 'vUsec' assigned to Register 'R6/R7' ----
-   37:     NOP(); NOP(); NOP();
-   38: 
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:49:58  PAGE 11
-
-
-000DC4 8018              SJMP     ?C0013?DRV_CPU
-000DC6         ?C0001?DRV_CPU:
-   39:     while (--vUsec)
-000DC6 EF                MOV      A,R7
-000DC7 1F                DEC      R7
-000DC8 7001              JNZ      ?C0011?DRV_CPU
-000DCA 1E                DEC      R6
-000DCB         ?C0011?DRV_CPU:
-000DCB 14                DEC      A
-000DCC 4E                ORL      A,R6
-000DCD 6014              JZ       ?C0003?DRV_CPU
-   40:     {
-   41:       #if (CORE_CLOCK == 24000000UL)
-   42: 		NOP(); NOP(); NOP(); NOP(); NOP();
-000DCF 00                NOP      
-000DD0 00                NOP      
-000DD1 00                NOP      
-000DD2 00                NOP      
-000DD3 00                NOP      
-   43: 		NOP(); NOP(); NOP(); NOP(); NOP();
-000DD4 00                NOP      
-000DD5 00                NOP      
-000DD6 00                NOP      
-000DD7 00                NOP      
-000DD8 00                NOP      
-   44: 		NOP(); NOP(); NOP(); NOP(); NOP();
-000DD9 00                NOP      
-000DDA 00                NOP      
-000DDB 00                NOP      
-000DDC 00                NOP      
-000DDD 00                NOP      
-   45: 		NOP(); NOP(); NOP();
-000DDE         
-000DDE 00                NOP      
-000DDF 00                NOP      
-000DE0 00                NOP      
-   46:       #else
-   47:         #error "Unsupported Core Clock!"
-   48:       #endif
-   49:     }
-000DE1 80E3              SJMP     ?C0001?DRV_CPU
-   50: }
-000DE3         ?C0003?DRV_CPU:
-000DE3 22                RET      
------ FUNCTION _DRV_CPU_DelayUs (END) -------
-
-
------ FUNCTION DRV_IO_Init (BEGIN) -----
- FILE: '..\drv\drv_io.c'
-   37: void DRV_IO_Init(void)
-   38: {
-   39:     /* io internal init */
-   40:     P0      = _PORT_INIT(P0);
-000DE4 7580BF            MOV      P0,#0BFH
-   41:     P1      = _PORT_INIT(P1);
-000DE7 7590F6            MOV      P1,#0F6H
-   42:     P2      = _PORT_INIT(P2);
-000DEA 75A0FF            MOV      P2,#0FFH
-   43:     P3      = _PORT_INIT(P3);
-000DED 75B0FF            MOV      P3,#0FFH
-   44:     P0MDIN  = _PORT_MDIN(P0);
-000DF0 75F17F            MOV      P0MDIN,#07FH
-   45:     P1MDIN  = _PORT_MDIN(P1);
-000DF3 75F2FF            MOV      P1MDIN,#0FFH
-   46:     P2MDIN  = _PORT_MDIN(P2);
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:49:58  PAGE 12
-
-
-000DF6 75F3FB            MOV      P2MDIN,#0FBH
-   47:     P3MDIN  = _PORT_MDIN(P3);
-000DF9 75F4FE            MOV      P3MDIN,#0FEH
-   48:     P0MDOUT = _PORT_MDOUT(P0);
-000DFC 75A44A            MOV      P0MDOUT,#04AH
-   49:     P1MDOUT = _PORT_MDOUT(P1);
-000DFF 75A558            MOV      P1MDOUT,#058H
-   50:     P2MDOUT = _PORT_MDOUT(P2);
-000E02 75A60A            MOV      P2MDOUT,#0AH
-   51:     P3MDOUT = _PORT_MDOUT(P3);
-000E05 E4                CLR      A
-000E06 F5A7              MOV      P3MDOUT,A
-   52: 
-   53:     /* default, all pins are skipped for cross-bar */
-   54:     P0SKIP = 0xFF;
-000E08 75D4FF            MOV      P0SKIP,#0FFH
-   55:     P1SKIP = 0xFF;
-000E0B 75D5FF            MOV      P1SKIP,#0FFH
-   56:     P2SKIP = 0xFF;
-000E0E 75D6FF            MOV      P2SKIP,#0FFH
-   57: 
-   58:     /* enable cross-bar */
-   59:     XBR0 = 0x00;
-000E11 F5E1              MOV      XBR0,A
-   60:     XBR1 = 0x40;
-000E13 75E240            MOV      XBR1,#040H
-   61: }
-000E16 22                RET      
------ FUNCTION DRV_IO_Init (END) -------
+----- FUNCTION thread_LED_Init (BEGIN) -----
+ FILE: '..\plf\thread_led.c'
+   77: void thread_LED_Init(void)
+   78: {
+   79:     PT_INIT(&vTCB_LED);
+   80: }
+0019BC E4                CLR      A
+0019BD F512              MOV      vTCB_LED,A
+0019BF F513              MOV      vTCB_LED+01H,A
+   81: 
+0019C1 22                RET      
+----- FUNCTION thread_LED_Init (END) -------
 
 
 ----- FUNCTION DRV_VECTOR_Timer2 (BEGIN) -----
  FILE: '..\drv\drv_vector.c'
    38: void DRV_VECTOR_Timer2(void) __interrupt(INTERRUPT_TIMER2)
-000E17 C0E0              PUSH     ACC
-000E19 C0D0              PUSH     PSW
-000E1B 75D000            MOV      PSW,#00H
-000E1E C004              PUSH     AR4
-000E20 C005              PUSH     AR5
-000E22 C006              PUSH     AR6
-000E24 C007              PUSH     AR7
+0019C2 C0E0              PUSH     ACC
+0019C4 C0D0              PUSH     PSW
+0019C6 75D000            MOV      PSW,#00H
+0019C9 C004              PUSH     AR4
+0019CB C005              PUSH     AR5
+0019CD C006              PUSH     AR6
+0019CF C007              PUSH     AR7
    39: {
    40:     /* clear timeout flag */
    41:     DRV_TIMER_ClearTimeoutFlag();
-000E26 C2CF              CLR      TF2H
+0019D1 C2CF              CLR      TF2H
    42: 
    43:     /* update tick counter */
    44: 	DRV_TIMER_UpdateTick();
-000E28 AF11              MOV      R7,vTickCount+03H
-000E2A AE10              MOV      R6,vTickCount+02H
-000E2C AD0F              MOV      R5,vTickCount+01H
-000E2E AC0E              MOV      R4,vTickCount
-000E30 EF                MOV      A,R7
-000E31 2401              ADD      A,#01H
-000E33 F511              MOV      vTickCount+03H,A
-000E35 E4                CLR      A
-000E36 3E                ADDC     A,R6
-000E37 F510              MOV      vTickCount+02H,A
-000E39 E4                CLR      A
-000E3A 3D                ADDC     A,R5
-000E3B F50F              MOV      vTickCount+01H,A
-000E3D E4                CLR      A
-000E3E 3C                ADDC     A,R4
-000E3F F50E              MOV      vTickCount,A
+0019D3 AF0F              MOV      R7,vTickCount+03H
+0019D5 AE0E              MOV      R6,vTickCount+02H
+0019D7 AD0D              MOV      R5,vTickCount+01H
+0019D9 AC0C              MOV      R4,vTickCount
+0019DB EF                MOV      A,R7
+0019DC 2401              ADD      A,#01H
+0019DE F50F              MOV      vTickCount+03H,A
+0019E0 E4                CLR      A
+0019E1 3E                ADDC     A,R6
+0019E2 F50E              MOV      vTickCount+02H,A
+0019E4 E4                CLR      A
+0019E5 3D                ADDC     A,R5
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:58:02  PAGE 24
+
+
+0019E6 F50D              MOV      vTickCount+01H,A
+0019E8 E4                CLR      A
+0019E9 3C                ADDC     A,R4
+0019EA F50C              MOV      vTickCount,A
    45: }
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:49:58  PAGE 13
-
-
-000E41 D007              POP      AR7
-000E43 D006              POP      AR6
-000E45 D005              POP      AR5
-000E47 D004              POP      AR4
-000E49 D0D0              POP      PSW
-000E4B D0E0              POP      ACC
-000E4D 32                RETI     
+0019EC D007              POP      AR7
+0019EE D006              POP      AR6
+0019F0 D005              POP      AR5
+0019F2 D004              POP      AR4
+0019F4 D0D0              POP      PSW
+0019F6 D0E0              POP      ACC
+0019F8 32                RETI     
 ----- FUNCTION DRV_VECTOR_Timer2 (END) -------
 
 
+----- FUNCTION DRV_VECTOR_UserUSB (BEGIN) -----
+ FILE: '..\drv\drv_vector.c'
+   65: void DRV_VECTOR_UserUSB(void) __interrupt(INTERRUPT_UserUSB)
+0019F9 C0E0              PUSH     ACC
+0019FB C083              PUSH     DPH
+0019FD C082              PUSH     DPL
+0019FF C0D0              PUSH     PSW
+001A01 75D000            MOV      PSW,#00H
+001A04 C007              PUSH     AR7
+   66: {
+   67:   #if PKT_SUPPORT
+   68: 	thread_Pkt_Notify(DRV_USB_GetInterruptSource());
+001A06 121453            LCALL    Get_Interrupt_Source
+001A09 1217D8            LCALL    _thread_Pkt_Notify
+   69:   #endif
+   70: }
+001A0C D007              POP      AR7
+001A0E D0D0              POP      PSW
+001A10 D082              POP      DPL
+001A12 D083              POP      DPH
+001A14 D0E0              POP      ACC
+001A16 32                RETI     
+----- FUNCTION DRV_VECTOR_UserUSB (END) -------
+
+
 ----- FUNCTION ?L?COM0001 (BEGIN) -----
-000E4E E0                MOVX     A,@DPTR
-000E4F FC                MOV      R4,A
-000E50 A3                INC      DPTR
-000E51 E0                MOVX     A,@DPTR
-000E52 FD                MOV      R5,A
-000E53 A3                INC      DPTR
-000E54 E0                MOVX     A,@DPTR
-000E55 FE                MOV      R6,A
-000E56 A3                INC      DPTR
-000E57 E0                MOVX     A,@DPTR
-000E58 FF                MOV      R7,A
-000E59 AB11              MOV      R3,vTickCount+03H
-000E5B AA10              MOV      R2,vTickCount+02H
-000E5D A90F              MOV      R1,vTickCount+01H
-000E5F A80E              MOV      R0,vTickCount
-000E61 C3                CLR      C
-000E62 020471            LJMP     ?C?ULCMP
+001A17 E0                MOVX     A,@DPTR
+001A18 FC                MOV      R4,A
+001A19 A3                INC      DPTR
+001A1A E0                MOVX     A,@DPTR
+001A1B FD                MOV      R5,A
+001A1C A3                INC      DPTR
+001A1D E0                MOVX     A,@DPTR
+001A1E FE                MOV      R6,A
+001A1F A3                INC      DPTR
+001A20 E0                MOVX     A,@DPTR
+001A21 FF                MOV      R7,A
+001A22 AB0F              MOV      R3,vTickCount+03H
+001A24 AA0E              MOV      R2,vTickCount+02H
+001A26 A90D              MOV      R1,vTickCount+01H
+001A28 A80C              MOV      R0,vTickCount
+001A2A C3                CLR      C
+001A2B 020865            LJMP     ?C?ULCMP
 ----- FUNCTION ?L?COM0001 (END) -------
 
 
------ FUNCTION ?L?COM0004 (BEGIN) -----
-000E65 F583              MOV      DPH,A
-000E67 E4                CLR      A
-000E68 F0                MOVX     @DPTR,A
-000E69 0F                INC      R7
-000E6A 0F                INC      R7
-000E6B 22                RET      
------ FUNCTION ?L?COM0004 (END) -------
+----- FUNCTION ?L?COM0007 (BEGIN) -----
+001A2E F583              MOV      DPH,A
+001A30 E4                CLR      A
+001A31 F0                MOVX     @DPTR,A
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:58:02  PAGE 25
+
+
+001A32 0F                INC      R7
+001A33 0F                INC      R7
+001A34 22                RET      
+----- FUNCTION ?L?COM0007 (END) -------
+
+
+----- FUNCTION ?L?COM0008 (BEGIN) -----
+001A35 93                MOVC     A,@A+DPTR
+001A36 F523              MOV      vData,A
+001A38 C3                CLR      C
+001A39 9420              SUBB     A,#020H
+001A3B 22                RET      
+----- FUNCTION ?L?COM0008 (END) -------
 
 
 ----- FUNCTION ?L?COM0005 (BEGIN) -----
-000E6C 93                MOVC     A,@A+DPTR
-000E6D F509              MOV      vData,A
-000E6F C3                CLR      C
-000E70 9420              SUBB     A,#020H
-000E72 22                RET      
+001A3C FF                MOV      R7,A
+001A3D E4                CLR      A
+001A3E 350E              ADDC     A,vTickCount+02H
+001A40 FE                MOV      R6,A
+001A41 E4                CLR      A
+001A42 350D              ADDC     A,vTickCount+01H
+001A44 FD                MOV      R5,A
+001A45 E4                CLR      A
+001A46 350C              ADDC     A,vTickCount
+001A48 FC                MOV      R4,A
+001A49 22                RET      
 ----- FUNCTION ?L?COM0005 (END) -------
 
 
+----- FUNCTION ?L?COM0002 (BEGIN) -----
+001A4A F583              MOV      DPH,A
+001A4C 7401              MOV      A,#01H
+001A4E 93                MOVC     A,@A+DPTR
+001A4F FA                MOV      R2,A
+001A50 7402              MOV      A,#02H
+001A52 93                MOVC     A,@A+DPTR
+001A53 F9                MOV      R1,A
+001A54 1208AF            LCALL    ?C?ICALL
+001A57 0522              INC      i
+001A59 E522              MOV      A,i
+001A5B C3                CLR      C
+001A5C 9403              SUBB     A,#03H
+001A5E 22                RET      
+----- FUNCTION ?L?COM0002 (END) -------
+
+
 ----- FUNCTION ?L?COM0003 (BEGIN) -----
-000E73 FF                MOV      R7,A
-000E74 E4                CLR      A
-000E75 3510              ADDC     A,vTickCount+02H
-000E77 FE                MOV      R6,A
-000E78 E4                CLR      A
-000E79 350F              ADDC     A,vTickCount+01H
-000E7B FD                MOV      R5,A
-000E7C E4                CLR      A
-000E7D 350E              ADDC     A,vTickCount
-000E7F FC                MOV      R4,A
-000E80 22                RET      
+001A5F 7E04              MOV      R6,#04H
+001A61 7F44              MOV      R7,#044H
+001A63 7D00              MOV      R5,#00H
+001A65         ?L?COM0004:
+001A65 7B01              MOV      R3,#01H
+001A67 7A00              MOV      R2,#HIGH vFrame
+001A69 7900              MOV      R1,#LOW vFrame
+001A6B 22                RET      
 ----- FUNCTION ?L?COM0003 (END) -------
 
 
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:49:58  PAGE 14
+----- FUNCTION ?L?COM0006 (BEGIN) -----
+001A6C 120262            LCALL    _printf
+001A6F 900008            MOV      DPTR,#vFrame+08H
+001A72 7403              MOV      A,#03H
+001A74 F0                MOVX     @DPTR,A
+001A75 A3                INC      DPTR
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  11:58:02  PAGE 26
 
 
------ FUNCTION ?L?COM0002 (BEGIN) -----
-000E81 F583              MOV      DPH,A
-000E83 7401              MOV      A,#01H
-000E85 93                MOVC     A,@A+DPTR
-000E86 FA                MOV      R2,A
-000E87 7402              MOV      A,#02H
-000E89 93                MOVC     A,@A+DPTR
-000E8A F9                MOV      R1,A
-000E8B 12048E            LCALL    ?C?ICALL
-000E8E 0508              INC      i
-000E90 E508              MOV      A,i
-000E92 C3                CLR      C
-000E93 9402              SUBB     A,#02H
-000E95 22                RET      
------ FUNCTION ?L?COM0002 (END) -------
+001A76 22                RET      
+----- FUNCTION ?L?COM0006 (END) -------
+
+
+----- FUNCTION ?L?COM0009 (BEGIN) -----
+001A77 7D40              MOV      R5,#040H
+001A79 120FBD            LCALL    _Block_Read
+001A7C 8F26              MOV      vBlockLen,R7
+001A7E 22                RET      
+----- FUNCTION ?L?COM0009 (END) -------
 
 
