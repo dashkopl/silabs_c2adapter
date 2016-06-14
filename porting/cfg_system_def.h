@@ -54,7 +54,7 @@
 /* simulated peripheral */
 #define DRV_I2CM_SUPPORT            0   /* I2C Master */
  #define DRV_I2CM_RATE              400 /* 80/100/200/400 KHz */
-#define DRV_MDIOM_SUPPORT           0   /* MDIO Master */
+#define DRV_MDIOM_SUPPORT           1   /* MDIO Master */
  #define DRV_MDIOM_RATE             3   /* 1/2/3/4 MHz */
 #define DRV_C2M_SUPPORT             1   /* C2 Master */
 
@@ -75,7 +75,7 @@
  #define PKT_I2CM_RATE              100 /* 80/100/200/400 KHz */
  #define PKT_I2CM_VS_SUPPORT        (0 && PKT_I2CM_SUPPORT) /* Virtual I2C Slave */
   #define PKT_I2CM_VS_ADDR          (0xFE)                  /* Virtual I2C Slave Address */
-#define PKT_MDIOM_SUPPORT           (0 && PKT_SUPPORT)      /* USB packet: MDIO Master */
+#define PKT_MDIOM_SUPPORT           (1 && PKT_SUPPORT && DRV_MDIOM_SUPPORT) /* USB packet: MDIO Master */
  #define PKT_MDIOM_RATE             4   /* 1/2/4 MHz */
 #define PKT_C2M_SUPPORT             (1 && PKT_SUPPORT && DRV_C2M_SUPPORT)   /* USB packet: C2 Master */
 

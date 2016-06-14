@@ -25,15 +25,15 @@
 
 /* can support 3MHz MDC rate; (tested on C8051F321 @ 24MHz) */
 
-#define MDC_PP()        DRV_IO_Write(IO(IO_MDIOM_SCL_OEn), LOW)
-#define MDC_OD()        DRV_IO_Write(IO(IO_MDIOM_SCL_OEn), HIGH)
-#define MDC_SET(_v)     DRV_IO_Write(IO(IO_MDIOM_SCL_OUT), (_v))
-#define MDC_GET()       DRV_IO_Read(IO(IO_MDIOM_SCL_IN))
+#define MDC_PP()        DRV_IO_Write(IO(IO_DUT_MDIOM_SCL_OEn), LOW)
+#define MDC_OD()        DRV_IO_Write(IO(IO_DUT_MDIOM_SCL_OEn), HIGH)
+#define MDC_SET(_v)     DRV_IO_Write(IO(IO_DUT_MDIOM_SCL_OUT), (_v))
+#define MDC_GET()       DRV_IO_Read(IO(IO_DUT_MDIOM_SCL_IN))
 
-#define MDIO_PP()       DRV_IO_Write(IO(IO_MDIOM_SDA_OEn), LOW)
-#define MDIO_OD()       DRV_IO_Write(IO(IO_MDIOM_SDA_OEn), HIGH)
-#define MDIO_SET(_v)    DRV_IO_Write(IO(IO_MDIOM_SDA_OUT), (_v))
-#define MDIO_GET()      DRV_IO_Read(IO(IO_MDIOM_SDA_IN))
+#define MDIO_PP()       DRV_IO_Write(IO(IO_DUT_MDIOM_SDA_OEn), LOW)
+#define MDIO_OD()       DRV_IO_Write(IO(IO_DUT_MDIOM_SDA_OEn), HIGH)
+#define MDIO_SET(_v)    DRV_IO_Write(IO(IO_DUT_MDIOM_SDA_OUT), (_v))
+#define MDIO_GET()      DRV_IO_Read(IO(IO_DUT_MDIOM_SDA_IN))
 
 #endif
 
@@ -613,7 +613,7 @@ BOOL DRV_MDIOM_Read
     IN  UINT8               vPortAddr,
     IN  UINT8               vDevAddr,
     IN  UINT16              vRegAddr,
-    IN  UINT8               vDataLen,
+    IN  UINT16              vDataLen,
     OUT UINT16 SEG_XDATA   *pDataBuf
 )
 {
@@ -677,7 +677,7 @@ BOOL DRV_MDIOM_Write
     IN       UINT8              vPortAddr,
     IN       UINT8              vDevAddr,
     IN       UINT16             vRegAddr,
-    IN       UINT8              vDataLen,
+    IN       UINT16             vDataLen,
     IN const UINT16 SEG_XDATA  *pDataBuf
 )
 {

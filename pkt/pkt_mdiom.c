@@ -30,11 +30,34 @@ UINT16 PKT_MDIOM_Inspect(void)
     return PKT_REPLY_Done_ExecNoError;
 }
 
+UINT16 PKT_MDIOM_Probe(void)
+{
+    PKT_MDIOM_T SEG_XDATA *pPayload = (PKT_MDIOM_T SEG_XDATA *)PKT_GetPayload();
+    UINT16      SEG_XDATA  vData;
+
+    if (!DRV_MDIOM_FrameRead(pPayload->vPortAddr,
+                             pPayload->vDevAddr,
+                             &vData))
+    {
+        return PKT_REPLY_Fail_MdioNoAck;
+    }
+
+    return PKT_REPLY_Done_ExecNoError;
+}
+
 UINT16 PKT_MDIOM_Read(void)
 {
     PKT_MDIOM_T SEG_XDATA *pPayload = (PKT_MDIOM_T SEG_XDATA *)PKT_GetPayload();
 
-    NO_WARNING(pPayload);
+    if (!DRV_MDIOM_Read(pPayload->vPortAddr,
+                        pPayload->vDevAddr,
+                        pPayload->vOffset,
+                        pPayload->vDataCount,
+                        pPayload->aData))
+    {
+        return PKT_REPLY_Fail_MdioNoAck;
+    }
+
     return PKT_REPLY_Done_ExecNoError;
 }
 
@@ -42,7 +65,15 @@ UINT16 PKT_MDIOM_Write(void)
 {
     PKT_MDIOM_T SEG_XDATA *pPayload = (PKT_MDIOM_T SEG_XDATA *)PKT_GetPayload();
 
-    NO_WARNING(pPayload);
+    if (!DRV_MDIOM_Write(pPayload->vPortAddr,
+                         pPayload->vDevAddr,
+                         pPayload->vOffset,
+                         pPayload->vDataCount,
+                         pPayload->aData))
+    {
+        return PKT_REPLY_Fail_MdioNoAck;
+    }
+
     return PKT_REPLY_Done_ExecNoError;
 }
 

@@ -149,7 +149,7 @@ BOOL DRV_MDIOM_Read
     IN  UINT8               vPortAddr,
     IN  UINT8               vDevAddr,
     IN  UINT16              vRegAddr,
-    IN  UINT8               vDataLen,
+    IN  UINT16              vDataLen,
     OUT UINT16 SEG_XDATA   *pDataBuf
 );
 
@@ -177,7 +177,7 @@ BOOL DRV_MDIOM_Write
     IN       UINT8              vPortAddr,
     IN       UINT8              vDevAddr,
     IN       UINT16             vRegAddr,
-    IN       UINT8              vDataLen,
+    IN       UINT16             vDataLen,
     IN const UINT16 SEG_XDATA  *pDataBuf
 );
 
