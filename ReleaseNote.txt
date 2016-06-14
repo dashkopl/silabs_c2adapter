@@ -1,8 +1,10 @@
 
 Part Number  : 
-Firmware ID  : 510-0059-00
-Description  : Unified Platform: Main-Board.
-Solution     : C8051F340(MCU)
+Firmware ID  : 510-FFFF-00
+Description  : Silabs C2 USB Debug Adapter, 
+                with updated schematic and new firmware,
+                to support the USB-I2C/MDIO/C2 converter all-in-1.
+Solution     : C8051F321(MCU)
 
 HW Engineer  : 
 FW Engineer  : Panda.Xiong
@@ -13,44 +15,13 @@ History:
 
 ===============================================================================
 
-Release Version : 00-00-02
-Release Time    : 2016/05/23
+Release Version : 00-01-00
+Release Time    : 2016/06/14
 Released By     : Panda.Xiong
 
 Release Notes   :
  ****************  What's New  ****************
- *) Add config engine supporting;
- *) Add C2 Master supporting;
- *) Add DDM supporting;
- *) Add DUT supporting;
- *) Add new device supporting:
-     -> TPL0102
-     -> AT24C01
-     -> TMP103
-
- ****************  Enhancement  ***************
- *) Update I2C Master related part, for "software reset";
- *) Update USB driver: maximum current is 500mA;
- *) Source code improvement and optimization;
-
- ****************  Bug Fixing  ****************
- N/A
-
- ****************  Others  ********************
- N/A
-
-Memory Usage    :
- Program Size: data=80.1 xdata=2323 const=40 code=24421
-
-===============================================================================
-
-Release Version : 00-00-01
-Release Time    : 2016/05/04
-Released By     : Panda.Xiong
-
-Release Notes   :
- ****************  What's New  ****************
- *) Initial release, for internal usage;
+ *) Initial release;
 
  ****************  Enhancement  ***************
  N/A
@@ -62,6 +33,6 @@ Release Notes   :
  N/A
 
 Memory Usage    :
- Program Size: data=59.2 xdata=2191 const=69 code=15667
+ Program Size: data=82.1 xdata=1715 const=32 code=14242
 
 ===============================================================================
