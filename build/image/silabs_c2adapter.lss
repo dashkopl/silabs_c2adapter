@@ -1,4 +1,4 @@
-LX51 LINKER/LOCATER V4.66.41.0                                                          06/14/2016  17:14:05  PAGE 1
+LX51 LINKER/LOCATER V4.66.41.0                                                          06/14/2016  17:45:41  PAGE 1
 
 
 
@@ -67,7 +67,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
    38: {
    39:     /* CRC16-CCITT: X16+X15+X2+1 */
    40:     static SEG_CODE UINT16 aCRC16[256] =
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 2
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 2
 
 
    41:     {
@@ -135,7 +135,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 00164A 7400              MOV      A,#HIGH vFrame+08H
 00164C 3C                ADDC     A,R4
 00164D F583              MOV      DPH,A
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 3
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 3
 
 
 00164F E0                MOVX     A,@DPTR
@@ -203,7 +203,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 001694 F0                MOVX     @DPTR,A
 001695 A3                INC      DPTR
 001696 CE                XCH      A,R6
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 4
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 4
 
 
 001697 F0                MOVX     @DPTR,A
@@ -271,7 +271,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 0016D0 120262            LCALL    _printf
   145:         return FALSE;
 0016D3 C3                CLR      C
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 5
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 5
 
 
 0016D4 22                RET      
@@ -339,7 +339,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 001722 04                INC      A
 001723 F0                MOVX     @DPTR,A
   159:         return FALSE;
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 6
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 6
 
 
 001724 C3                CLR      C
@@ -407,7 +407,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 001770 F9                MOV      R1,A
 001771 F8                MOV      R0,A
 001772 D3                SETB     C
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 7
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 7
 
 
 001773 120607            LCALL    ?C?SLCMP
@@ -475,7 +475,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 0017AE D12C              ACALL    _thread_pkt_CalcCRC
 0017B0 900046            MOV      DPTR,#vFrame+06H
 0017B3 E0                MOVX     A,@DPTR
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 8
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 8
 
 
 0017B4 6E                XRL      A,R6
@@ -543,7 +543,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
   292: }
 0017E5         ?C0047?THREAD_PKT:
 0017E5 22                RET      
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 9
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 9
 
 
 ----- FUNCTION _thread_Pkt_Notify (END) -------
@@ -611,7 +611,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 001808 F52D              MOV      vCmd+01H,A
   218: 	vReply = PKT_REPLY_Fail_InvalidCmd;
 ;---- Variable 'vReply' assigned to Register 'R6/R7' ----
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 10
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 10
 
 
 00180A 7403              MOV      A,#03H
@@ -679,7 +679,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 00185A 6403              XRL      A,#03H
 00185C 7004              JNZ      ?C0041?THREAD_PKT
   230:     {
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 11
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 11
 
 
   231:         PKT_SetPayloadSize(0x00);
@@ -747,7 +747,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 0018A1 5002              JNC      ?C0064?THREAD_PKT
   319:         {
   320:             _thread_pkt_Handle();
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 12
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 12
 
 
 0018A3 1100              ACALL    _thread_pkt_Handle
@@ -815,7 +815,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 0018D8 7002              JNZ      ?C0372?PKT_I2CM
 0018DA 153F              DEC      _loop
 0018DC         ?C0372?PKT_I2CM:
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 13
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 13
 
 
 0018DC 4E                ORL      A,R6
@@ -883,7 +883,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 00191E C239              CLR      bDone
   216:     UINT16  vLoop;
   217: 
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 14
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 14
 
 
   218:     /* make sure the I2C is ready */
@@ -951,7 +951,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 00196A 54FE              ANL      A,#0FEH
 00196C FF                MOV      R7,A
 00196D 11B9              ACALL    __pkt_i2cm_TxByte
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 15
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 15
 
 
 00196F 4002              JC       $ + 4H
@@ -1019,7 +1019,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 0019B5 1233DE            LCALL    ?L?COM0043
 0019B8         ?C0278?PKT_I2CM:
 0019B8 208211            JB       IO_DUT_I2CM_SCL,?C0282?PKT_I2CM
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 16
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 16
 
 
 0019BB E53E              MOV      A,_loop+01H
@@ -1087,7 +1087,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
   267:         }
   268:     }
 001A0C         ?C0261?PKT_I2CM:
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 17
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 17
 
 
   269: 
@@ -1155,7 +1155,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 001A45 14                DEC      A
 001A46 4E                ORL      A,R6
 001A47 6014              JZ       ?C0003?DRV_CPU
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 18
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 18
 
 
    40:     {
@@ -1223,7 +1223,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
   181:          *  2) Look for SDA high in each cycle while SCL is high.
   182:          *  3) Create a START condition as SDA is high.
   183:          */
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 19
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 19
 
 
   184: 
@@ -1291,7 +1291,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 001AC4 1541              DEC      _loop+01H
 001AC6 AE40              MOV      R6,_loop
 001AC8 7002              JNZ      ?C0384?PKT_I2CM
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 20
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 20
 
 
 001ACA 1540              DEC      _loop
@@ -1359,7 +1359,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
   653:     }
 001AF7         ?C0964?DRV_C2M:
   654: 
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 21
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 21
 
 
   655:     c2m_WriteAR(vFPDAT);
@@ -1427,7 +1427,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 001B4C FF                MOV      R7,A
 001B4D 716D              ACALL    _drv_c2m_WriteData
   666:     }
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 22
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 22
 
 
 001B4F 80E1              SJMP     ?C0985?DRV_C2M
@@ -1495,7 +1495,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
   546: BOOL DRV_C2M_PageErase(UINT8 vPageNo)
   547: {
 ;---- Variable 'vPageNo' assigned to Register 'R3' ----
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 23
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 23
 
 
 001B8E AB07              MOV      R3,AR7
@@ -1563,7 +1563,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 001BE1         ?C0932?DRV_C2M:
 001BE1 71FC              ACALL    c2m_ReadAR
 001BE3 EF                MOV      A,R7
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 24
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 24
 
 
 001BE4 20E00B            JB       ACC.0,?C0930?DRV_C2M
@@ -1631,7 +1631,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
   212: 
   213:     c2m_TxStart();      /* tx frame start */
   214:     c2m_TxIns();        /* tx instruction */
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 25
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 25
 
 
   215:     c2m_TxTurnAround(); /* tx turn-around */
@@ -1699,7 +1699,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 001C7F 00                NOP      
 001C80 123284            LCALL    ?L?COM0021
   217:     c2m_RxStop();       /* rx frame stop */
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 26
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 26
 
 
   218: 
@@ -1767,7 +1767,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 001CC8 F4                CPL      A
 001CC9 6055              JZ       _exit?DRV_C2M
   462:     {
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 27
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 27
 
 
   463:         /* no device probed */
@@ -1835,7 +1835,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 001D17 B129              ACALL    c2m_ReadDR
 001D19 BF0D04            CJNE     R7,#0DH,_exit?DRV_C2M
 001D1C         ?C0881?DRV_C2M:
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 28
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 28
 
 
 001D1C         ?C0874?DRV_C2M:
@@ -1903,7 +1903,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 001D5A 00                NOP      
 001D5B 00                NOP      
 001D5C 00                NOP      
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 29
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 29
 
 
 001D5D 123386            LCALL    ?L?COM003B
@@ -1971,7 +1971,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 001DB1 9233              MOV      bC2Bit3,C
 001DB3 00                NOP      
 001DB4 00                NOP      
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 30
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 30
 
 
 001DB5 C297              CLR      IO_DUT_C2M_SCL
@@ -2039,7 +2039,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 001DF4         ?C0892?DRV_C2M:
 001DF4 71FC              ACALL    c2m_ReadAR
 001DF6 EF                MOV      A,R7
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 31
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 31
 
 
 001DF7 20E00B            JB       ACC.0,?C0890?DRV_C2M
@@ -2107,7 +2107,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
   593: {
   594:     UINT16  vLen = ((vCount==0)?256:vCount);
 001E40 EB                MOV      A,R3
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 32
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 32
 
 
 001E41 7005              JNZ      ?C0936?DRV_C2M
@@ -2175,7 +2175,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 001E93         ?C0959?DRV_C2M:
   608:     drv_c2m_WriteData(vCount);      /* read length    */
   609:     drv_c2m_CheckResponse(C2_TIMEOUT_VAL);
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 33
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 33
 
 
   610:     while (vLen--)
@@ -2243,7 +2243,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 001ECB 00                NOP      
 001ECC 00                NOP      
 001ECD 123295            LCALL    ?L?COM0024
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 34
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 34
 
 
 001ED0 00                NOP      
@@ -2311,7 +2311,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 001F21 D297              SETB     IO_DUT_C2M_SCL
 001F23 02328D            LJMP     ?L?COM0023
   198: 
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 35
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 35
 
 
   199:     /* unlock globally interrupt */
@@ -2379,7 +2379,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 001F60 25E0              ADD      A,ACC
 001F62 FD                MOV      R5,A
   150:         vData |= PKT_I2CM_GET_SDA();
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 36
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 36
 
 
 001F63 A292              MOV      C,IO_DUT_I2CM_SDA
@@ -2447,7 +2447,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 001FA1         ?C0831?DRV_C2M:
 001FA1 1232E0            LCALL    ?L?COM002B
 001FA4 53A57F            ANL      P1MDOUT,#07FH
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 37
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 37
 
 
   425:     return TRUE;
@@ -2515,7 +2515,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
    67: 
    68:   #if DRV_C2M_SUPPORT
 ----- FUNCTION DRV_Init (END) -------
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 38
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 38
 
 
 
@@ -2583,7 +2583,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
  FILE: '..\pkt\pkt_i2cm.c'
   287: static BOOL pkt_i2cm_vs_Stream(IN OUT PKT_I2CM_STREAM_T SEG_XDATA *pPayload)
   288: {
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 39
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 39
 
 
 002000 12349B            LCALL    ?L?COM005D
@@ -2651,7 +2651,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
   310:     if (vReadLen != 0)
 002046 E53A              MOV      A,vReadLen+01H
 002048 4539              ORL      A,vReadLen
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 40
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 40
 
 
 00204A 601C              JZ       ?C0334?PKT_I2CM
@@ -2719,7 +2719,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 00208A 12337E            LCALL    ?L?COM003A
 00208D A3                INC      DPTR
 00208E A3                INC      DPTR
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 41
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 41
 
 
 00208F E0                MOVX     A,@DPTR
@@ -2787,7 +2787,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 0020D1 FE                MOV      R6,A
 0020D2 12337E            LCALL    ?L?COM003A
 0020D5 A3                INC      DPTR
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 42
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 42
 
 
 0020D6 A3                INC      DPTR
@@ -2855,7 +2855,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
   182: 
   183:     /* limit Rx FIFO length to page boundary */
   184:     vPageSize = (MEMPAGE_IsRAM(vPID)? CFG_RAM_PAGE_SIZE : CFG_ROM_PAGE_SIZE);
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 43
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 43
 
 
 00210A 12340A            LCALL    ?L?COM004A
@@ -2923,7 +2923,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
   199: 
   200:             switch (vOffset)
 002150 E53D              MOV      A,vOffset
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 44
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 44
 
 
 002152 24E5              ADD      A,#0E5H
@@ -2991,7 +2991,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 002183 253E              ADD      A,vCount
 002185 24A0              ADD      A,#0A0H
 002187 F53E              MOV      vCount,A
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 45
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 45
 
 
   231:             }
@@ -3059,7 +3059,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 0021D9 1234AC            LCALL    ?L?COM005F
 0021DC 501F              JNC      ?C0089?CFG_DB
 0021DE 123390            LCALL    ?L?COM003C
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 46
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 46
 
 
 0021E1         ?C0107?CFG_DB:
@@ -3127,7 +3127,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 002229         ?C0056?CFG_DB:
 002229 22                RET      
 ----- FUNCTION _CFG_DB_WriteFlush (END) -------
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 47
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 47
 
 
 
@@ -3195,7 +3195,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
   203:         UINT8   vFlashData = CODE_U8(vPageBase+vPageOffset+vLoop);
 00225B E54B              MOV      A,vPageBase+01H
 00225D 254D              ADD      A,vPageOffset+01H
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 48
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 48
 
 
 00225F FD                MOV      R5,A
@@ -3263,7 +3263,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
   226:          *   2) update cache page with new data;
   227:          */
   228:         vWriteOffset  = FLASH_CACHE_PAGE_BASE;
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 49
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 49
 
 
 00229C 123480            LCALL    ?L?COM005A
@@ -3331,7 +3331,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 0022EE FB                MOV      R3,A
 0022EF 7D03              MOV      R5,#03H
 0022F1 AF4B              MOV      R7,vPageBase+01H
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 50
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 50
 
 
 0022F3 AE4A              MOV      R6,vPageBase
@@ -3399,7 +3399,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 002332         ?C0023?DRV_FLASH:
 002332 4E                ORL      A,R6
 002333 6040              JZ       ?C0010?DRV_FLASH
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 51
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 51
 
 
   146:     {
@@ -3467,7 +3467,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
    59:   #if DRV_WATCHDOG_SUPPORT
    60:     /* kick watchdog, to prevent watchdog reset MCU */
    61:     DRV_WATCHDOG_Kick();
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 52
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 52
 
 
    62:   #endif
@@ -3535,7 +3535,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 0023BB 123323            LCALL    ?L?COM002F
   333:     return PKT_REPLY_Done_ExecNoError;
 0023BE 7E01              MOV      R6,#01H
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 53
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 53
 
 
 0023C0 7F40              MOV      R7,#040H
@@ -3603,7 +3603,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
    60:                 PWD_LEVEL_SET(CFG_PWD_LEVEL_UserRW);
 0023FD 751502            MOV      vCfgPwdLevel,#02H
    61:             }
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 54
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 54
 
 
 002400 22                RET      
@@ -3653,31 +3653,31 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 00241E AE2D              MOV      R6,vRawADC
 ----- FUNCTION _apl_ddm_Calibrate (BEGIN) -----
  FILE: '..\apl\apl.c'
-   27: static UINT16 apl_ddm_Calibrate
-   28: (
+   28: static UINT16 apl_ddm_Calibrate
+   29: (
 002420 8E30              MOV      vRawADC,R6
 002422 8F31              MOV      vRawADC+01H,R7
 002424 8D32              MOV      vSlopeDelta,R5
-   29:     IN UINT16   vRawADC,
-   30:     IN UINT8    vSlopeDelta,
-   31:     IN BOOL     bSignDDM
-   32: )
-   33: {
-   34:     SINT64  vTmpData;
-   35:     SINT32  vTmpSlope, vTmpOffset;
-   36: 
-   37:     vTmpSlope  = (SINT32)CFG_GETO32(DDM_EVB_TEMP_Slope,  vSlopeDelta);
+   30:     IN UINT16   vRawADC,
+   31:     IN UINT8    vSlopeDelta,
+   32:     IN BOOL     bSignDDM
+   33: )
+   34: {
+   35:     SINT64  vTmpData;
+   36:     SINT32  vTmpSlope, vTmpOffset;
+   37: 
+   38:     vTmpSlope  = (SINT32)CFG_GETO32(DDM_EVB_TEMP_Slope,  vSlopeDelta);
 002426 E4                CLR      A
 002427 2532              ADD      A,vSlopeDelta
 002429 9110              ACALL    ?L?COM004E
 00242B 8F3A              MOV      vTmpSlope+03H,R7
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 55
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 55
 
 
 00242D 8E39              MOV      vTmpSlope+02H,R6
 00242F 8D38              MOV      vTmpSlope+01H,R5
 002431 8C37              MOV      vTmpSlope,R4
-   38:     vTmpOffset = (SINT32)CFG_GETO32(DDM_EVB_TEMP_Offset, vSlopeDelta);
+   39:     vTmpOffset = (SINT32)CFG_GETO32(DDM_EVB_TEMP_Offset, vSlopeDelta);
 002433 E532              MOV      A,vSlopeDelta
 002435 2404              ADD      A,#04H
 002437 9110              ACALL    ?L?COM004E
@@ -3685,8 +3685,8 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 00243B 8E3D              MOV      vTmpOffset+02H,R6
 00243D 8D3C              MOV      vTmpOffset+01H,R5
 00243F 8C3B              MOV      vTmpOffset,R4
-   39: 
-   40:     vTmpData = (((SINT64)vTmpSlope * vRawADC) >> Slope_ZoomIn_ShiftBits)
+   40: 
+   41:     vTmpData = (((SINT64)vTmpSlope * vRawADC) >> Slope_ZoomIn_ShiftBits)
 002441 AE30              MOV      R6,vRawADC
 002443 AF31              MOV      R7,vRawADC+01H
 002445 E4                CLR      A
@@ -3711,12 +3711,12 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 002467 EC                MOV      A,R4
 002468 353B              ADDC     A,vTmpOffset
 00246A F533              MOV      vTmpData,A
-   41:                 + vTmpOffset;
-   42: 
-   43:     /* limit the calibrated value to 16-bit formatting,
-   44:      *  to strictly follow MSA Standard.
-   45:      */
-   46:     return (UINT16)(bSignDDM? LIMIT_S16(vTmpData): LIMIT_U16(vTmpData));
+   42:                 + vTmpOffset;
+   43: 
+   44:     /* limit the calibrated value to 16-bit formatting,
+   45:      *  to strictly follow MSA Standard.
+   46:      */
+   47:     return (UINT16)(bSignDDM? LIMIT_S16(vTmpData): LIMIT_U16(vTmpData));
 00246C 303831            JNB      bSignDDM,?C0001?APL
 00246F E4                CLR      A
 002470 7FFF              MOV      R7,#0FFH
@@ -3739,7 +3739,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 002492 5006              JNC      ?C0005?APL
 002494 7E80              MOV      R6,#080H
 002496 7F00              MOV      R7,#00H
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 56
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 56
 
 
 002498 8004              SJMP     ?C0006?APL
@@ -3777,7 +3777,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 0024CA         ?C0010?APL:
 0024CA         ?C0008?APL:
 0024CA         ?C0002?APL:
-   47: }
+   48: }
 0024CA 22                RET      
 ----- FUNCTION _apl_ddm_Calibrate (END) -------
 
@@ -3807,15 +3807,15 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 
 ----- FUNCTION apl_ddm_GetEVBTemp (BEGIN) -----
  FILE: '..\apl\apl.c'
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 57
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 57
 
 
-   49: static UINT16 apl_ddm_GetEVBTemp(void)
-   50: {
-   51:     UINT16  vRawADC;
-   52: 
-   53:     /* get raw ADC value, and record it */
-   54:     vRawADC = (UINT16)DRV_ADC_Sample(ADC(ADC_EVB_TEMP));
+   50: static UINT16 apl_ddm_GetEVBTemp(void)
+   51: {
+   52:     UINT16  vRawADC;
+   53: 
+   54:     /* get raw ADC value, and record it */
+   55:     vRawADC = (UINT16)DRV_ADC_Sample(ADC(ADC_EVB_TEMP));
 0024DC 7B03              MOV      R3,#03H
 0024DE 7D1F              MOV      R5,#01FH
 0024E0 7F1E              MOV      R7,#01EH
@@ -3824,34 +3824,34 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 0024E7 7E00              MOV      R6,#00H
 0024E9 D1C6              ACALL    _CFG_RAM_SET16
 0024EB         ?C0013?APL:
-   55:     CFG_SET(DDM_ADC_EVB_TEMP, vRawADC);
-   56: 
-   57:     /* calibration */
-   58:     return apl_ddm_Calibrate(vRawADC,
-   59:                              GET_SLOPE_DELTA(DDM_EVB_TEMP_Slope),
-   60:                              TRUE);
+   56:     CFG_SET(DDM_ADC_EVB_TEMP, vRawADC);
+   57: 
+   58:     /* calibration */
+   59:     return apl_ddm_Calibrate(vRawADC,
+   60:                              GET_SLOPE_DELTA(DDM_EVB_TEMP_Slope),
+   61:                              TRUE);
 0024EB D238              SETB     ?_apl_ddm_Calibrate?BIT
 0024ED E4                CLR      A
 0024EE FD                MOV      R5,A
 0024EF 811C              AJMP     ?L?COM0045
-   61: }
+   62: }
 ----- FUNCTION apl_ddm_GetEVBTemp (END) -------
 
 
 ----- FUNCTION APL_Entry (BEGIN) -----
  FILE: '..\apl\apl.c'
-  108: void APL_Entry(void)
-  109: {
-  110:     /* PWM_VBUF */
-  111:     DRV_PCA_Write(PCA(PWM_VBUF), CFG_GET(RT_EVB_CTRL_PWM_VBUF));
+  109: void APL_Entry(void)
+  110: {
+  111:     /* PWM_VBUF */
+  112:     DRV_PCA_Write(PCA(PWM_VBUF), CFG_GET(RT_EVB_CTRL_PWM_VBUF));
 0024F1 7818              MOV      R0,#018H
 0024F3 E2                MOVX     A,@R0
 0024F4 FF                MOV      R7,A
 0024F5 8FFC              MOV      PCA0CPH0,R7
 0024F7         ?C0163?APL:
-  112: 
-  113: 	/* DDM */
-  114: 	CFG_SET_DDM(DDM_EVB_TEMP, apl_ddm_GetEVBTemp());
+  113: 
+  114: 	/* DDM */
+  115: 	CFG_SET_DDM(DDM_EVB_TEMP, apl_ddm_GetEVBTemp());
 0024F7 91DC              ACALL    apl_ddm_GetEVBTemp
 0024F9 AC06              MOV      R4,AR6
 0024FB AD07              MOV      R5,AR7
@@ -3860,7 +3860,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 0024FF FE                MOV      R6,A
 002500 D1C6              ACALL    _CFG_RAM_SET16
 002502         ?C0170?APL:
-  115: 	CFG_SET_DDM(DDM_EVB_VCC,  apl_ddm_GetEVBVCC());
+  116: 	CFG_SET_DDM(DDM_EVB_VCC,  apl_ddm_GetEVBVCC());
 002502 D1CE              ACALL    apl_ddm_GetEVBVCC
 002504 AC06              MOV      R4,AR6
 002506 AD07              MOV      R5,AR7
@@ -3868,23 +3868,23 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 00250A 7E00              MOV      R6,#00H
 00250C D1C6              ACALL    _CFG_RAM_SET16
 00250E         ?C0177?APL:
-  116: 	CFG_SET_DDM(DDM_EVB_VBUF, apl_ddm_GetEVBVBUF());
+  117: 	CFG_SET_DDM(DDM_EVB_VBUF, apl_ddm_GetEVBVBUF());
 00250E D1E3              ACALL    apl_ddm_GetEVBVBUF
 002510 AC06              MOV      R4,AR6
 002512 AD07              MOV      R5,AR7
 002514 7F04              MOV      R7,#04H
 002516 7E00              MOV      R6,#00H
 002518 D1C6              ACALL    _CFG_RAM_SET16
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 58
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 58
 
 
 00251A         ?C0176?APL:
-  117: 
-  118:     /* RT_EVB_STAT */
-  119:   #if 1
-  120:     /* EVB Temperature */
-  121:     if (((SINT16)CFG_GET(DDM_EVB_TEMP) > (SINT16)CFG_GET(DDM_EVB_TEMP_Max)) ||
-  122:         ((SINT16)CFG_GET(DDM_EVB_TEMP) < (SINT16)CFG_GET(DDM_EVB_TEMP_Min)))
+  118: 
+  119:     /* RT_EVB_STAT */
+  120:   #if 1
+  121:     /* EVB Temperature */
+  122:     if (((SINT16)CFG_GET(DDM_EVB_TEMP) > (SINT16)CFG_GET(DDM_EVB_TEMP_Max)) ||
+  123:         ((SINT16)CFG_GET(DDM_EVB_TEMP) < (SINT16)CFG_GET(DDM_EVB_TEMP_Min)))
 00251A 7F40              MOV      R7,#040H
 00251C 123334            LCALL    ?L?COM0031
 00251F C006              PUSH     AR6
@@ -3907,8 +3907,8 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 002542 C3                CLR      C
 002543 1233FF            LCALL    ?L?COM0049
 002546 500D              JNC      ?C0267?APL
-  123:     {
-  124:         CFG_SET(RT_EVB_STAT_EVB_TEMP_Ready, LOW);
+  124:     {
+  125:         CFG_SET(RT_EVB_STAT_EVB_TEMP_Ready, LOW);
 002548         ?C0219?APL:
 002548 E4                CLR      A
 002549 F52C              MOV      _v,A
@@ -3917,10 +3917,10 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 00254E 12314C            LCALL    ?L?COM000A
 002551 6020              JZ       ?C0231?APL
 002553 800B              SJMP     ?C0626?APL
-  125:     }
-  126:     else
-  127:     {
-  128:         CFG_SET(RT_EVB_STAT_EVB_TEMP_Ready, HIGH);
+  126:     }
+  127:     else
+  128:     {
+  129:         CFG_SET(RT_EVB_STAT_EVB_TEMP_Ready, HIGH);
 002555         ?C0267?APL:
 002555 752C01            MOV      _v,#01H
 002558 7819              MOV      R0,#019H
@@ -3943,15 +3943,15 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 002570 E4                CLR      A
 002571 EF                MOV      A,R7
 002572 F2                MOVX     @R0,A
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 59
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 59
 
 
-  129:     }
+  130:     }
 002573         ?C0231?APL:
-  130: 
-  131:     /* EVB VCC */
-  132:     if (((UINT16)CFG_GET(DDM_EVB_VCC) > (UINT16)CFG_GET(DDM_EVB_VCC_Max)) ||
-  133:         ((UINT16)CFG_GET(DDM_EVB_VCC) < (UINT16)CFG_GET(DDM_EVB_VCC_Min)))
+  131: 
+  132:     /* EVB VCC */
+  133:     if (((UINT16)CFG_GET(DDM_EVB_VCC) > (UINT16)CFG_GET(DDM_EVB_VCC_Max)) ||
+  134:         ((UINT16)CFG_GET(DDM_EVB_VCC) < (UINT16)CFG_GET(DDM_EVB_VCC_Min)))
 002573 7F44              MOV      R7,#044H
 002575 123334            LCALL    ?L?COM0031
 002578 C006              PUSH     AR6
@@ -3980,8 +3980,8 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 0025A1 EC                MOV      A,R4
 0025A2 9E                SUBB     A,R6
 0025A3 500F              JNC      ?C0364?APL
-  134:     {
-  135:         CFG_SET(RT_EVB_STAT_EVB_VCC_Ready, LOW);
+  135:     {
+  136:         CFG_SET(RT_EVB_STAT_EVB_VCC_Ready, LOW);
 0025A5         ?C0316?APL:
 0025A5 E4                CLR      A
 0025A6 F52C              MOV      _v,A
@@ -3992,10 +3992,10 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 0025AD 12314C            LCALL    ?L?COM000A
 0025B0 6033              JZ       ?C0328?APL
 0025B2 800D              SJMP     ?C0627?APL
-  136:     }
-  137:     else
-  138:     {
-  139:         CFG_SET(RT_EVB_STAT_EVB_VCC_Ready, HIGH);
+  137:     }
+  138:     else
+  139:     {
+  140:         CFG_SET(RT_EVB_STAT_EVB_VCC_Ready, HIGH);
 0025B4         ?C0364?APL:
 0025B4 752C01            MOV      _v,#01H
 0025B7 7819              MOV      R0,#019H
@@ -4011,7 +4011,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 0025C7 C004              PUSH     AR4
 0025C9 C005              PUSH     AR5
 0025CB C006              PUSH     AR6
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 60
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 60
 
 
 0025CD C007              PUSH     AR7
@@ -4026,12 +4026,12 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 0025DE D001              POP      AR1
 0025E0 D000              POP      AR0
 0025E2 1232C0            LCALL    ?L?COM0027
-  140:     }
+  141:     }
 0025E5         ?C0328?APL:
-  141: 
-  142:     /* EVB VBUF */
-  143:     if (((UINT16)CFG_GET(DDM_EVB_VBUF) > (UINT16)CFG_GET(DDM_EVB_VBUF_Max)) ||
-  144:         ((UINT16)CFG_GET(DDM_EVB_VBUF) < (UINT16)CFG_GET(DDM_EVB_VBUF_Min)))
+  142: 
+  143:     /* EVB VBUF */
+  144:     if (((UINT16)CFG_GET(DDM_EVB_VBUF) > (UINT16)CFG_GET(DDM_EVB_VBUF_Max)) ||
+  145:         ((UINT16)CFG_GET(DDM_EVB_VBUF) < (UINT16)CFG_GET(DDM_EVB_VBUF_Min)))
 0025E5 7F48              MOV      R7,#048H
 0025E7 123334            LCALL    ?L?COM0031
 0025EA C006              PUSH     AR6
@@ -4058,8 +4058,8 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 00260F EC                MOV      A,R4
 002610 9E                SUBB     A,R6
 002611 500D              JNC      ?C0461?APL
-  145:     {
-  146:         CFG_SET(RT_EVB_STAT_EVB_VBUF_Ready, LOW);
+  146:     {
+  147:         CFG_SET(RT_EVB_STAT_EVB_VBUF_Ready, LOW);
 002613         ?C0413?APL:
 002613 E4                CLR      A
 002614 F52C              MOV      _v,A
@@ -4067,10 +4067,10 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 002619 12314C            LCALL    ?L?COM000A
 00261C 6031              JZ       ?C0425?APL
 00261E 800B              SJMP     ?C0628?APL
-  147:     }
-  148:     else
-  149:     {
-  150:         CFG_SET(RT_EVB_STAT_EVB_VBUF_Ready, HIGH);
+  148:     }
+  149:     else
+  150:     {
+  151:         CFG_SET(RT_EVB_STAT_EVB_VBUF_Ready, HIGH);
 002620         ?C0461?APL:
 002620 752C01            MOV      _v,#01H
 002623 1233E7            LCALL    ?L?COM0044
@@ -4079,7 +4079,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 00262B         
 00262B 12326F            LCALL    ?L?COM001D
 00262E 54FB              ANL      A,#0FBH
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 61
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 61
 
 
 002630 FF                MOV      R7,A
@@ -4098,13 +4098,13 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 002648 D001              POP      AR1
 00264A D000              POP      AR0
 00264C 1232C0            LCALL    ?L?COM0027
-  151:     }
+  152:     }
 00264F         ?C0425?APL:
-  152: 
-  153:     /* EVB Global Ready */
-  154:     if ((CFG_GET(RT_EVB_STAT_EVB_TEMP_Ready) == HIGH) &&
-  155:         (CFG_GET(RT_EVB_STAT_EVB_VCC_Ready)  == HIGH) &&
-  156:         (CFG_GET(RT_EVB_STAT_EVB_VBUF_Ready) == HIGH))
+  153: 
+  154:     /* EVB Global Ready */
+  155:     if ((CFG_GET(RT_EVB_STAT_EVB_TEMP_Ready) == HIGH) &&
+  156:         (CFG_GET(RT_EVB_STAT_EVB_VCC_Ready)  == HIGH) &&
+  157:         (CFG_GET(RT_EVB_STAT_EVB_VBUF_Ready) == HIGH))
 00264F 12326F            LCALL    ?L?COM001D
 002652 1233C8            LCALL    ?L?COM0041
 002655 702E              JNZ      ?C0557?APL
@@ -4129,17 +4129,17 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 002675 C3                CLR      C
 002676 12061D            LCALL    ?C?ULCMP
 002679 700A              JNZ      ?C0557?APL
-  157:     {
-  158:         CFG_SET(RT_EVB_STAT_Global_Ready, HIGH);
+  158:     {
+  159:         CFG_SET(RT_EVB_STAT_Global_Ready, HIGH);
 00267B         ?C0509?APL:
 00267B 752C01            MOV      _v,#01H
 00267E 123143            LCALL    ?L?COM0009
 002681 602E              JZ       ?C0569?APL
 002683 8008              SJMP     ?C0629?APL
-  159:     }
-  160:     else
-  161:     {
-  162:         CFG_SET(RT_EVB_STAT_Global_Ready, LOW);
+  160:     }
+  161:     else
+  162:     {
+  163:         CFG_SET(RT_EVB_STAT_Global_Ready, LOW);
 002685         ?C0557?APL:
 002685 E4                CLR      A
 002686 F52C              MOV      _v,A
@@ -4147,7 +4147,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 00268B 6024              JZ       ?C0569?APL
 00268D         
 00268D 12326F            LCALL    ?L?COM001D
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 62
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 62
 
 
 002690 547F              ANL      A,#07FH
@@ -4167,9 +4167,9 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 0026AA D001              POP      AR1
 0026AC D000              POP      AR0
 0026AE 1232C0            LCALL    ?L?COM0027
-  163:     }
-  164:   #endif
-  165: }
+  164:     }
+  165:   #endif
+  166: }
 0026B1         ?C0569?APL:
 0026B1 22                RET      
 ----- FUNCTION APL_Entry (END) -------
@@ -4215,7 +4215,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 ;---- Variable 'vAddr' assigned to Register 'R6/R7' ----
 0026C6 A807              MOV      R0,AR7
 0026C8 EC                MOV      A,R4
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 63
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 63
 
 
 0026C9 F2                MOVX     @R0,A
@@ -4228,12 +4228,12 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 
 ----- FUNCTION apl_ddm_GetEVBVCC (BEGIN) -----
  FILE: '..\apl\apl.c'
-   63: static UINT16 apl_ddm_GetEVBVCC(void)
-   64: {
-   65:     UINT16  vRawADC;
-   66: 
-   67:     /* get raw ADC value, and record it */
-   68:     vRawADC = (UINT16)DRV_ADC_Sample(ADC(ADC_EVB_VCC));
+   64: static UINT16 apl_ddm_GetEVBVCC(void)
+   65: {
+   66:     UINT16  vRawADC;
+   67: 
+   68:     /* get raw ADC value, and record it */
+   69:     vRawADC = (UINT16)DRV_ADC_Sample(ADC(ADC_EVB_VCC));
 0026CE 7B03              MOV      R3,#03H
 0026D0 7D1E              MOV      R5,#01EH
 0026D2 7F1F              MOV      R7,#01FH
@@ -4242,27 +4242,27 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 0026D9 7E00              MOV      R6,#00H
 0026DB D1C6              ACALL    _CFG_RAM_SET16
 0026DD         ?C0061?APL:
-   69:     CFG_SET(DDM_ADC_EVB_VCC, vRawADC);
-   70: 
-   71:     /* calibration */
-   72:     return apl_ddm_Calibrate(vRawADC,
-   73:                              GET_SLOPE_DELTA(DDM_EVB_VCC_Slope),
-   74:                              FALSE);
+   70:     CFG_SET(DDM_ADC_EVB_VCC, vRawADC);
+   71: 
+   72:     /* calibration */
+   73:     return apl_ddm_Calibrate(vRawADC,
+   74:                              GET_SLOPE_DELTA(DDM_EVB_VCC_Slope),
+   75:                              FALSE);
 0026DD C238              CLR      ?_apl_ddm_Calibrate?BIT
 0026DF 7D08              MOV      R5,#08H
 0026E1 811C              AJMP     ?L?COM0045
-   75: }
+   76: }
 ----- FUNCTION apl_ddm_GetEVBVCC (END) -------
 
 
 ----- FUNCTION apl_ddm_GetEVBVBUF (BEGIN) -----
  FILE: '..\apl\apl.c'
-   77: static UINT16 apl_ddm_GetEVBVBUF(void)
-   78: {
-   79:     UINT16  vRawADC;
-   80: 
-   81:     /* get raw ADC value, and record it */
-   82:     vRawADC = (UINT16)DRV_ADC_Sample(ADC(ADC_EVB_VBUF));
+   78: static UINT16 apl_ddm_GetEVBVBUF(void)
+   79: {
+   80:     UINT16  vRawADC;
+   81: 
+   82:     /* get raw ADC value, and record it */
+   83:     vRawADC = (UINT16)DRV_ADC_Sample(ADC(ADC_EVB_VBUF));
 0026E3 7B03              MOV      R3,#03H
 0026E5 7D1F              MOV      R5,#01FH
 0026E7 7F0A              MOV      R7,#0AH
@@ -4271,19 +4271,19 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 0026EE 7E00              MOV      R6,#00H
 0026F0 D1C6              ACALL    _CFG_RAM_SET16
 0026F2         ?C0109?APL:
-   83:     CFG_SET(DDM_ADC_EVB_VBUF, vRawADC);
-   84: 
-   85:     /* calibration */
-   86:     return apl_ddm_Calibrate(vRawADC,
-   87:                              GET_SLOPE_DELTA(DDM_EVB_VBUF_Slope),
-   88:                              FALSE);
+   84:     CFG_SET(DDM_ADC_EVB_VBUF, vRawADC);
+   85: 
+   86:     /* calibration */
+   87:     return apl_ddm_Calibrate(vRawADC,
+   88:                              GET_SLOPE_DELTA(DDM_EVB_VBUF_Slope),
+   89:                              FALSE);
 0026F2 C238              CLR      ?_apl_ddm_Calibrate?BIT
 0026F4 7D10              MOV      R5,#010H
 0026F6 811C              AJMP     ?L?COM0045
-   89: }
+   90: }
 ----- FUNCTION apl_ddm_GetEVBVBUF (END) -------
 
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 64
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 64
 
 
 
@@ -4351,7 +4351,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
    65:         /* sum the ADC result */
    66:         vAdcSum += (SINT16)(((UINT16)ADC0H<<8)|ADC0L);
 00271E AFBE              MOV      R7,ADC0H
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 65
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 65
 
 
 002720 EF                MOV      A,R7
@@ -4419,7 +4419,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 002757 7E03              MOV      R6,#03H
    43:     }
 002759         ?C0005?PKT_MDIOM:
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 66
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 66
 
 
    44: 
@@ -4487,7 +4487,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 ----- FUNCTION drv_mdiom_RxDataFrame (BEGIN) -----
  FILE: '..\drv\drv_mdiom.c'
   332: static void drv_mdiom_RxDataFrame(void)
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 67
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 67
 
 
   333: {
@@ -4555,7 +4555,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
  FILE: '..\cfg\cfg_db.c'
    75:     }
    76: 
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 68
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 68
 
 
 ;---- Variable 'vAddr' assigned to Register 'R6/R7' ----
@@ -4623,7 +4623,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
   612: (
 ;---- Variable 'vPortAddr' assigned to Register 'R7' ----
 ;---- Variable 'vRegAddr' assigned to Register 'R2/R3' ----
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 69
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 69
 
 
 ;---- Variable 'vDevAddr' assigned to Register 'R5' ----
@@ -4691,7 +4691,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 002844 8E83              MOV      DPH,R6
 002846 123363            LCALL    ?L?COM0038
 002849 4003              JC       ?C2507?DRV_MDIOM
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 70
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 70
 
 
 00284B D3                SETB     C
@@ -4759,7 +4759,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 002894 A21F              MOV      C,bMdioAddr7
 002896 12304C            LCALL    ?L?COM0004
 002899 A21E              MOV      C,bMdioAddr6
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 71
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 71
 
 
 00289B 12304C            LCALL    ?L?COM0004
@@ -4827,7 +4827,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
   678:     IN       UINT8              vDevAddr,
   679:     IN       UINT16             vRegAddr,
   680:     IN       UINT16             vDataLen,
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 72
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 72
 
 
   681:     IN const UINT16 SEG_XDATA  *pDataBuf
@@ -4895,7 +4895,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
   708:     }
 002914 0538              INC      vRegAddr+01H
 002916 E538              MOV      A,vRegAddr+01H
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 73
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 73
 
 
 002918 7002              JNZ      ?C2546?DRV_MDIOM
@@ -4963,7 +4963,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 002979 A22B              MOV      C,bMdioData3
 00297B 12304C            LCALL    ?L?COM0004
 00297E A22A              MOV      C,bMdioData2
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 74
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 74
 
 
 002980 12304C            LCALL    ?L?COM0004
@@ -5031,7 +5031,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 0029A8 123323            LCALL    ?L?COM002F
    37:             PKT_REPLY_Done_ExecNoError :
    38:             PKT_REPLY_Fail_ExecErrorCode0);
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 75
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 75
 
 
 0029AB 121F99            LCALL    DRV_C2M_Reset
@@ -5099,7 +5099,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 0029E0 E0                MOVX     A,@DPTR
 0029E1 7004              JNZ      ?C0043?PKT_C2M
 0029E3 A3                INC      DPTR
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 76
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 76
 
 
 0029E4 E0                MOVX     A,@DPTR
@@ -5167,7 +5167,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 002A1E         ?C0030?PKT_C2M:
    80: 
    81:     /* split too long read data buffer into pieces to read */
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 77
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 77
 
 
    82:     PKT_SetPayloadSize(PKT_C2M_RW_HEADER_LEN+vLen);
@@ -5235,7 +5235,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 002A65 22                RET      
 ----- FUNCTION PKT_C2M_FlashRead (END) -------
 
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 78
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 78
 
 
 
@@ -5303,7 +5303,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 002A9E AD34              MOV      R5,pBuf+01H
 002AA0 AC33              MOV      R4,pBuf
 002AA2 AF36              MOV      R7,vAddr+01H
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 79
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 79
 
 
 002AA4 AE35              MOV      R6,vAddr
@@ -5371,7 +5371,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 002AE3 751131            MOV      vTCB_Idle+01H,#031H
 002AE6         ?C0012?THREAD_IDLE:
 002AE6 00                NOP      
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 80
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 80
 
 
 002AE7 9004FC            MOV      DPTR,#vEndTick
@@ -5420,10 +5420,10 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 
 ----- FUNCTION APL_Init (BEGIN) -----
  FILE: '..\apl\apl.c'
-  182: void APL_Init(void)
-  183: {
-  184:     /* copy initial setting */
-  185:     CFG_SET(RT_EVB_CTRL, CFG_GET(INIT_RT_EVB_CTRL));
+  183: void APL_Init(void)
+  184: {
+  185:     /* copy initial setting */
+  186:     CFG_SET(RT_EVB_CTRL, CFG_GET(INIT_RT_EVB_CTRL));
 002B0E         ?C0598?APL:
 002B0E 903860            MOV      DPTR,#03860H
 002B11 E4                CLR      A
@@ -5433,25 +5433,25 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 002B16 EF                MOV      A,R7
 002B17 F2                MOVX     @R0,A
 002B18         ?C0619?APL:
-  186: 
-  187:     /* enable PWM_VBUF output */
-  188:     DRV_PCA_Write(PCA(PWM_VBUF), CFG_GET(RT_EVB_CTRL_PWM_VBUF));
+  187: 
+  188:     /* enable PWM_VBUF output */
+  189:     DRV_PCA_Write(PCA(PWM_VBUF), CFG_GET(RT_EVB_CTRL_PWM_VBUF));
 002B18 7818              MOV      R0,#018H
 002B1A E2                MOVX     A,@R0
 002B1B FF                MOV      R7,A
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 81
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 81
 
 
 002B1C E4                CLR      A
 002B1D 8FFC              MOV      PCA0CPH0,R7
 002B1F         ?C0618?APL:
-  189:     DRV_CPU_DelayMs(10);
+  190:     DRV_CPU_DelayMs(10);
 002B1F 7F0A              MOV      R7,#0AH
 002B21 7E00              MOV      R6,#00H
 002B23 7128              ACALL    _DRV_CPU_DelayMs
-  190:     DRV_IO_Write(IO(IO_VBUF_OEn), LOW);
+  191:     DRV_IO_Write(IO(IO_VBUF_OEn), LOW);
 002B25 C291              CLR      IO_VBUF_OEn
-  191: }
+  192: }
 002B27 22                RET      
 ----- FUNCTION APL_Init (END) -------
 
@@ -5507,7 +5507,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 002B58 7002              JNZ      ?C0012?DRV_CPU
 002B5A 1583              DEC      DPH
 002B5C         ?C0012?DRV_CPU:
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 82
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 82
 
 
 002B5C 4E                ORL      A,R6
@@ -5575,7 +5575,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
    53:             /* system running abnormally */
    54:             DRV_IO_Write(IO(IO_LED_1_OUT), LOW);
 002B91 C293              CLR      IO_LED_1_OUT
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 83
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 83
 
 
    55:             DRV_IO_Write(IO(IO_LED_2_OUT), HIGH);
@@ -5643,7 +5643,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
  FILE: '..\plf\main.c'
    61: void main(void)
    62: {
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 84
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 84
 
 
    63: 	/* previous init */
@@ -5711,7 +5711,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 002BFB F582              MOV      DPL,A
 002BFD E4                CLR      A
 002BFE 3416              ADDC     A,#HIGH aThreadList+03H
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 85
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 85
 
 
 002C00 123302            LCALL    ?L?COM002D
@@ -5779,7 +5779,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 002C48 EF                MOV      A,R7
 002C49 54EF              ANL      A,#0EFH
 002C4B FF                MOV      R7,A
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 86
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 86
 
 
 002C4C 8FD4              MOV      P0SKIP,R7
@@ -5847,7 +5847,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 002C67 54FD              ANL      A,#0FDH
 002C69 FF                MOV      R7,A
 002C6A 8FD4              MOV      P0SKIP,R7
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 87
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 87
 
 
 002C6C 0B                INC      R3
@@ -5915,7 +5915,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 002CB4 75A60A            MOV      P2MDOUT,#0AH
    51:     P3MDOUT = _PORT_MDOUT(P3);
 002CB7 E4                CLR      A
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 88
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 88
 
 
 002CB8 F5A7              MOV      P3MDOUT,A
@@ -5983,7 +5983,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 002CEA         ?C0022?CFG_DB:
    53:     {
    54:         switch (CFG_GET8(Vendor_Page_Select))
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 89
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 89
 
 
 002CEA 781F              MOV      R0,#01FH
@@ -6051,7 +6051,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
  FILE: '..\cfg\cfg_db.c'
    95: UINT8 CFG_DB_ReadByte(IN UINT8 vOffset)
    96: {
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 90
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 90
 
 
 ;---- Variable 'vOffset' assigned to Register 'R5' ----
@@ -6119,7 +6119,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
   114:         {
   115:             case MEMPAGE_PID_DIRECT_FE_60:
 002D57         ?C0038?CFG_DB:
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 91
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 91
 
 
   116:                 switch (vOffset)
@@ -6187,7 +6187,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 002D87 EE                MOV      A,R6
 002D88 6480              XRL      A,#080H
 002D8A 9482              SUBB     A,#082H
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 92
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 92
 
 
 002D8C 500C              JNC      ?C0049?CFG_DB
@@ -6255,7 +6255,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 ----- FUNCTION DRV_VECTOR_Timer2 (BEGIN) -----
  FILE: '..\drv\drv_vector.c'
    38: void DRV_VECTOR_Timer2(void) __interrupt(INTERRUPT_TIMER2)
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 93
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 93
 
 
 002DCF C0E0              PUSH     ACC
@@ -6323,7 +6323,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 002E23 32                RETI     
 ----- FUNCTION DRV_VECTOR_UserUSB (END) -------
 
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 94
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 94
 
 
 
@@ -6391,7 +6391,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 002E60 80CA              SJMP     ?C0001?DRV_USB
 002E62         ?C0002?DRV_USB:
    62:     aManufacturerStr[0] = vLoop;
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 95
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 95
 
 
 002E62 900484            MOV      DPTR,#aManufacturerStr
@@ -6459,7 +6459,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 002EA9 F0                MOVX     @DPTR,A
    79: 
    80:     /* init USB serial number string */
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 96
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 96
 
 
    81:     aSerialNumberStr[1] = 0x03;
@@ -6527,7 +6527,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
    98: 
    99:     /* init USB device */
   100:     USB_Clock_Start();
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 97
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 97
 
 
 002EF0 120046            LCALL    USB_Clock_Start
@@ -6595,7 +6595,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 ;---- Variable 'vData' assigned to Register 'R7' ----
   228:     BOOL    bIntState;
   229: 
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 98
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 98
 
 
   230:     c2m_SetIns(0x1);    /* instruction: write data */
@@ -6663,7 +6663,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 002F81 00                NOP      
 002F82 123453            LCALL    ?L?COM0055
 002F85 00                NOP      
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 99
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 99
 
 
 002F86 00                NOP      
@@ -6731,7 +6731,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 ;---- Variable 'vPortAddr' assigned to Register 'R7' ----
   380:     IN UINT8    vPortAddr,
   381:     IN UINT8    vDevAddr
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 100
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 100
 
 
   382: )
@@ -6799,7 +6799,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 003022 A207              MOV      C,bMdioPortAddr0
 003024 D296              SETB     IO_DUT_MDIOM_SCL_OUT
 003026 9294              MOV      IO_DUT_MDIOM_SDA_OUT,C
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 101
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 101
 
 
 003028 C296              CLR      IO_DUT_MDIOM_SCL_OUT
@@ -6867,7 +6867,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 003099 D296              SETB     IO_DUT_MDIOM_SCL_OUT
 00309B 9294              MOV      IO_DUT_MDIOM_SDA_OUT,C
 00309D C296              CLR      IO_DUT_MDIOM_SCL_OUT
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 102
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 102
 
 
 00309F A248              MOV      C,bMdioPreamble
@@ -6935,7 +6935,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 003107 541F              ANL      A,#01FH
 003109 13                RRC      A
 00310A 920A              MOV      bMdioPortAddr3,C
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 103
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 103
 
 
 00310C EF                MOV      A,R7
@@ -7003,7 +7003,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 003155 AF2C              MOV      R7,_v
 003157 FC                MOV      R4,A
 003158 FD                MOV      R5,A
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 104
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 104
 
 
 003159 FE                MOV      R6,A
@@ -7071,7 +7071,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 0031AA E534              MOV      A,pPayload+01H
 0031AC 2406              ADD      A,#06H
 0031AE F53C              MOV      ?_DRV_MDIOM_Write?BYTE+07H,A
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 105
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 105
 
 
 0031B0 E4                CLR      A
@@ -7139,7 +7139,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 ----- FUNCTION ?L?COM0014 (END) -------
 
 
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 106
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 106
 
 
 ----- FUNCTION ?L?COM0017 (BEGIN) -----
@@ -7207,7 +7207,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 
 ----- FUNCTION ?L?COM001B (BEGIN) -----
 003258 E0                MOVX     A,@DPTR
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 107
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 107
 
 
 003259 FC                MOV      R4,A
@@ -7275,7 +7275,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 00329A A243              MOV      C,bIns0
 00329C 92A0              MOV      IO_DUT_C2M_SDA,C
 00329E C297              CLR      IO_DUT_C2M_SCL
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 108
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 108
 
 
 0032A0 22                RET      
@@ -7343,7 +7343,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 0032DD 640D              XRL      A,#0DH
 0032DF 22                RET      
 ----- FUNCTION ?L?COM002A (END) -------
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 109
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 109
 
 
 
@@ -7411,7 +7411,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 
 
 ----- FUNCTION ?L?COM0030 (BEGIN) -----
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 110
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 110
 
 
 00332B D282              SETB     IO_DUT_I2CM_SCL
@@ -7479,7 +7479,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 00336C 22                RET      
 ----- FUNCTION ?L?COM0037 (END) -------
 
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 111
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 111
 
 
 
@@ -7547,7 +7547,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 0033B1 753927            MOV      _timeout+02H,#027H
 0033B4 F538              MOV      _timeout+01H,A
 0033B6 F537              MOV      _timeout,A
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 112
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 112
 
 
 0033B8 22                RET      
@@ -7615,7 +7615,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 0033F6 22                RET      
 ----- FUNCTION ?L?COM0047 (END) -------
 
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 113
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 113
 
 
 
@@ -7683,7 +7683,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 00342F D297              SETB     IO_DUT_C2M_SCL
 003431 A245              MOV      C,bLength0
 003433 92A0              MOV      IO_DUT_C2M_SDA,C
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 114
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 114
 
 
 003435 C297              CLR      IO_DUT_C2M_SCL
@@ -7751,7 +7751,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 003472 92A0              MOV      IO_DUT_C2M_SDA,C
 003474 C297              CLR      IO_DUT_C2M_SCL
 003476 22                RET      
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 115
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 115
 
 
 ----- FUNCTION ?L?COM0058 (END) -------
@@ -7819,7 +7819,7 @@ ASSEMBLER CODE PACKING OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 0034AF 6480              XRL      A,#080H
 0034B1 9486              SUBB     A,#086H
 0034B3 22                RET      
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 116
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 116
 
 
 ----- FUNCTION ?L?COM005F (END) -------

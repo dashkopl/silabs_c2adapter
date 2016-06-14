@@ -1,4 +1,4 @@
-LX51 LINKER/LOCATER V4.66.41.0                                                          06/14/2016  17:14:05  PAGE 1
+LX51 LINKER/LOCATER V4.66.41.0                                                          06/14/2016  17:45:41  PAGE 1
 
 
 LX51 LINKER/LOCATER V4.66.41.0, INVOKED BY:
@@ -67,7 +67,7 @@ INPUT MODULES INCLUDED:
          COMMENT TYPE 0: C51 V9.54
   ..\drv\usbxpress_lib_f32x.lib (USB_API)
          COMMENT TYPE 1: C51 Compiler
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 2
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 2
 
 
   ..\drv\usbxpress_lib_f32x.lib (USB_CLOCK_START)
@@ -135,7 +135,7 @@ INPUT MODULES INCLUDED:
   D:\PROGRAMS_WORK\KEIL\C51\LIB\C51S.LIB (?C?CSTPTR)
          COMMENT TYPE 1: A51 / ASM51 Assembler
   D:\PROGRAMS_WORK\KEIL\C51\LIB\C51S.LIB (?C?PLDIIDATA)
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 3
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 3
 
 
          COMMENT TYPE 1: A51 / ASM51 Assembler
@@ -203,7 +203,7 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 000200H   00055BH   00035CH   BYTE   UNIT     CODE           ?PR?PRINTF?PRINTF
 00055CH   000866H   00030BH   BYTE   UNIT     CODE           ?C?LIB_CODE
 000867H   000B29H   0002C3H   BYTE   UNIT     CODE           ?CO?THREAD_PKT
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 4
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 4
 
 
 000B2AH   000D3EH   000215H   BYTE   UNIT     CODE           ?PR?USBXCORE_HANDLE_SETUP?USB_API
@@ -271,7 +271,7 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 0023C3H   00240FH   00004DH   BYTE   INBLOCK  CODE           ?PR?CFG_PWD_REFRESHLEVEL?CFG_PWD
 002410H   00241BH   00000CH   BYTE   INBLOCK  CODE           ?PR?_CFG_ROM_GET32?CFG_DB
 00241CH   0024CAH   0000AFH   BYTE   INBLOCK  CODE           ?PR?_APL_DDM_CALIBRATE?APL
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 5
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 5
 
 
 0024CBH   0024DBH   000011H   BYTE   INBLOCK  CODE           ?PR?CFG_PWD_INIT?CFG_PWD
@@ -339,7 +339,7 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 003232H   003257H   000026H   BYTE   UNIT     CODE           ?L?COM001A
 003258H   00326EH   000017H   BYTE   UNIT     CODE           ?L?COM001B
 00326FH   003278H   00000AH   BYTE   UNIT     CODE           ?L?COM001D
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 6
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 6
 
 
 003279H   003283H   00000BH   BYTE   UNIT     CODE           ?L?COM001F
@@ -407,7 +407,7 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 000040H   000483H   000444H   BYTE   UNIT     XDATA          ?XD?THREAD_PKT
 000484H   0004E9H   000066H   BYTE   UNIT     XDATA          ?XD?DRV_USB
 0004EAH   0004FBH   000012H   BYTE   UNIT     XDATA          _XDATA_GROUP_
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 7
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 7
 
 
 0004FCH   0004FFH   000004H   BYTE   UNIT     XDATA          ?XD?THREAD_IDLE
@@ -475,7 +475,7 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 
 OVERLAY MAP OF MODULE:   ..\build\obj\silabs_c2adapter (THREAD_PKT)
 
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 8
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 8
 
 
 
@@ -543,7 +543,7 @@ _CFG_ROM_GET32/CFG_DB                         ----- -----  ----- -----  ----- --
 APL_DDM_GETEVBVCC/APL                         ----- -----  002DH 002FH  ----- -----
   +--> _DRV_ADC_SAMPLE/DRV_ADC
   +--> _CFG_RAM_SET16/CFG_DB
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 9
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 9
 
 
   +--> _APL_DDM_CALIBRATE/APL
@@ -611,7 +611,7 @@ THREAD_LED_ENTRY/THREAD_LED                   ----- -----  002BH 002BH  ----- --
 
 THREAD_LED_INIT/THREAD_LED                    ----- -----  ----- -----  ----- -----
 
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 10
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 10
 
 
 THREAD_PKT_ENTRY/THREAD_PKT                   ----- -----  002BH 002BH  ----- -----
@@ -679,7 +679,7 @@ _DRV_FLASH_WRITEBYTES/DRV_FLASH               27H.0 27H.0  0050H 0056H  ----- --
 _DRV_FLASH_CONTROL/DRV_FLASH                  ----- -----  0057H 0058H  ----- -----
 
 _CFG_DB_READBYTE/CFG_DB                       ----- -----  ----- -----  ----- -----
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 11
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 11
 
 
   +--> _CFG_DB_GETPID/CFG_DB
@@ -747,7 +747,7 @@ DRV_C2M_RESET/DRV_C2M                         ----- -----  ----- -----  ----- --
   +--> _DRV_CPU_DELAYUS/DRV_CPU
 
 PKT_C2M_PROBE/PKT_C2M                         ----- -----  ----- -----  ----- -----
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 12
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 12
 
 
   +--> DRV_C2M_PROBE/DRV_C2M
@@ -815,7 +815,7 @@ _DRV_C2M_FLASHREAD/DRV_C2M                    27H.0 27H.0  003BH 0044H  ----- --
   +--> _DRV_C2M_WRITEDATA/DRV_C2M
   +--> C2M_READAR/DRV_C2M
   +--> _DRV_CPU_DELAYUS/DRV_CPU
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 13
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 13
 
 
   +--> C2M_READDR/DRV_C2M
@@ -883,7 +883,7 @@ _THREAD_PKT_NOTIFY/THREAD_PKT                 ----- -----  ----- -----  ----- --
 USBXCORE_USB_ISR/USB_API                      ----- -----  ----- -----  ----- -----
   +--> USBXCORE_USB_RESET/USB_API
   +--> USBXCORE_HANDLE_SETUP/USB_API
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 14
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 14
 
 
   +--> USBXCORE_JUMP_ISR/USB_JUMP_ISR
@@ -951,7 +951,7 @@ PUBLIC SYMBOLS OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       VALUE       CLASS    TYPE      PUBLIC SYMBOL NAME
       =================================================
       0000002CH   DATA     BYTE      ?_CFG_RAM_SET32?BYTE
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 15
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 15
 
 
 *DEL*:00000000H   DATA     BYTE      ?_CFG_ROM_SET32?BYTE
@@ -1019,7 +1019,7 @@ PUBLIC SYMBOLS OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 *DEL*:00000000H   CODE     ---       _DRV_MDIOM_FramePRIA
       0100275CH   CODE     ---       _DRV_MDIOM_FrameRead
 *DEL*:00000000H   CODE     ---       _DRV_MDIOM_FrameWrite
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 16
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 16
 
 
       0100280FH   CODE     ---       _DRV_MDIOM_Read
@@ -1087,7 +1087,7 @@ PUBLIC SYMBOLS OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000023H.5 DATA     BIT       bMdioAddr5
       00000023H.6 DATA     BIT       bMdioAddr6
       00000023H.7 DATA     BIT       bMdioAddr7
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 17
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 17
 
 
       00000022H.0 DATA     BIT       bMdioAddr8
@@ -1155,7 +1155,7 @@ PUBLIC SYMBOLS OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       01001FA9H   CODE     ---       DRV_Init
       01002C96H   CODE     ---       DRV_IO_Init
 *DEL*:00000000H   CODE     ---       DRV_MDIOM_Init
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 18
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 18
 
 
       01002C5CH   CODE     ---       DRV_PCA_Init
@@ -1223,7 +1223,7 @@ PUBLIC SYMBOLS OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 *SFR* 000000F8H.3 DATA     BIT       NSSMD1
       01002BF0H   CODE     ---       OS_Init
       01002BD9H   CODE     ---       OS_Start
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 19
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 19
 
 
 *SFR* 000000B3H   DATA     BYTE      OSCICL
@@ -1291,7 +1291,7 @@ PUBLIC SYMBOLS OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 *SFR* 000000D0H   DATA     BYTE      PSW
 *SFR* 000000B8H.1 DATA     BIT       PT0
 *SFR* 000000B8H.3 DATA     BIT       PT1
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 20
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 20
 
 
 *SFR* 000000B8H.5 DATA     BIT       PT2
@@ -1359,7 +1359,7 @@ PUBLIC SYMBOLS OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 *SFR* 00000091H   DATA     BYTE      TMR3CN
 *SFR* 00000095H   DATA     BYTE      TMR3H
 *SFR* 00000094H   DATA     BYTE      TMR3L
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 21
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 21
 
 
 *SFR* 00000092H   DATA     WORD      TMR3RL
@@ -1427,7 +1427,7 @@ PUBLIC SYMBOLS OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       02000040H   XDATA    ---       vFrame
       0000000CH   DATA     DWORD     vTickCount
 *SFR* 000000F8H.6 DATA     BIT       WCOL
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 22
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 22
 
 
 *SFR* 000000E1H   DATA     BYTE      XBR0
@@ -1495,7 +1495,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000B7H   SFRSYM    DATA     BYTE      FLKEY
       000000B8H   SFRSYM    DATA     BYTE      IP
       000000B9H   SFRSYM    DATA     BYTE      CLKMUL
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 23
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 23
 
 
       000000BAH   SFRSYM    DATA     BYTE      AMX0N
@@ -1563,7 +1563,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000094H   SFRSYM    DATA     WORD      TMR3
       000000BDH   SFRSYM    DATA     WORD      ADC0
       000000C3H   SFRSYM    DATA     WORD      ADC0GT
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 24
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 24
 
 
       000000C5H   SFRSYM    DATA     WORD      ADC0LT
@@ -1631,7 +1631,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000D8H.7 SFRSYM    DATA     BIT       CF
       000000D8H.6 SFRSYM    DATA     BIT       CR
       000000D8H.4 SFRSYM    DATA     BIT       CCF4
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 25
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 25
 
 
       000000D8H.3 SFRSYM    DATA     BIT       CCF3
@@ -1699,7 +1699,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       0100162CH   BLOCK     CODE     ---       LVL=0
       0100162CH   LINE      ---      ---       #37
       0100162CH   LINE      ---      ---       #38
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 26
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 26
 
 
       0100162CH   BLOCK     CODE     NEAR LAB  LVL=1
@@ -1767,7 +1767,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       0100178BH   LINE      ---      ---       #187
       0100178DH   LINE      ---      ---       #189
       0100179BH   LINE      ---      ---       #190
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 27
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 27
 
 
       0100179BH   LINE      ---      ---       #191
@@ -1835,7 +1835,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       010017CFH   LINE      ---      ---       #281
       010017CFH   LINE      ---      ---       #283
       010017D7H   LINE      ---      ---       #284
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 28
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 28
 
 
       010017D7H   LINE      ---      ---       #286
@@ -1903,7 +1903,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       0000009AH   SFRSYM    DATA     BYTE      CPT1CN
       0000009BH   SFRSYM    DATA     BYTE      CPT0CN
       0000009CH   SFRSYM    DATA     BYTE      CPT1MD
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 29
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 29
 
 
       0000009DH   SFRSYM    DATA     BYTE      CPT0MD
@@ -1971,7 +1971,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000E8H   SFRSYM    DATA     BYTE      ADC0CN
       000000E9H   SFRSYM    DATA     BYTE      PCA0CPL1
       000000EAH   SFRSYM    DATA     BYTE      PCA0CPH1
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 30
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 30
 
 
       000000EBH   SFRSYM    DATA     BYTE      PCA0CPL2
@@ -2039,7 +2039,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000B8H.1 SFRSYM    DATA     BIT       PT0
       000000B8H   SFRSYM    DATA     BIT       PX0
       000000C0H.7 SFRSYM    DATA     BIT       MASTER
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 31
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 31
 
 
       000000C0H.6 SFRSYM    DATA     BIT       TXMODE
@@ -2107,7 +2107,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000A0H.1 SFRSYM    DATA     BIT       IO_DUT_MDIOM_SDA_OEn
       000000A0H.2 SFRSYM    DATA     BIT       ADC_VBUF_IN
       000000A0H.3 SFRSYM    DATA     BIT       IO_LED_STATUS_OUT
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 32
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 32
 
 
       000000A0H.4 SFRSYM    DATA     BIT       IO_Reserved_P2_4
@@ -2175,7 +2175,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000B3H   SFRSYM    DATA     BYTE      OSCICL
       000000B6H   SFRSYM    DATA     BYTE      FLSCL
       000000B7H   SFRSYM    DATA     BYTE      FLKEY
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 33
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 33
 
 
       000000B8H   SFRSYM    DATA     BYTE      IP
@@ -2243,7 +2243,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000082H   SFRSYM    DATA     WORD      DP
       00000092H   SFRSYM    DATA     WORD      TMR3RL
       00000094H   SFRSYM    DATA     WORD      TMR3
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 34
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 34
 
 
       000000BDH   SFRSYM    DATA     WORD      ADC0
@@ -2311,7 +2311,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000D0H.1 SFRSYM    DATA     BIT       F1
       000000D0H   SFRSYM    DATA     BIT       P
       000000D8H.7 SFRSYM    DATA     BIT       CF
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 35
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 35
 
 
       000000D8H.6 SFRSYM    DATA     BIT       CR
@@ -2379,7 +2379,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       010018BBH   LINE      ---      ---       #116
       00000005H   SYMBOL    DATA     BYTE      vData
       010018BBH   BLOCK     CODE     NEAR LAB  LVL=1
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 36
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 36
 
 
       010018BBH   LINE      ---      ---       #120
@@ -2447,7 +2447,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       0000003FH   SYMBOL    DATA     WORD      _loop
       01001F94H   LINE      ---      ---       #158
       01001F96H   LINE      ---      ---       #160
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 37
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 37
 
 
       01001F98H   LINE      ---      ---       #161
@@ -2515,7 +2515,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       01001924H   LINE      ---      ---       #221
       01001927H   LINE      ---      ---       #222
       01001927H   LINE      ---      ---       #225
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 38
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 38
 
 
       01001932H   LINE      ---      ---       #228
@@ -2583,7 +2583,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       01002000H   BLOCK     CODE     ---       LVL=0
       01002000H   LINE      ---      ---       #287
       00000035H   SYMBOL    DATA     ---       pPayload
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 39
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 39
 
 
       01002000H   BLOCK     CODE     NEAR LAB  LVL=1
@@ -2651,7 +2651,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 
       ---         MODULE    ---      ---       PKT_MDIOM
       01002992H   PUBLIC    CODE     ---       PKT_MDIOM_Write
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 40
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 40
 
 
       01002800H   PUBLIC    CODE     ---       PKT_MDIOM_Read
@@ -2719,7 +2719,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000C3H   SFRSYM    DATA     BYTE      ADC0GTL
       000000C4H   SFRSYM    DATA     BYTE      ADC0GTH
       000000C5H   SFRSYM    DATA     BYTE      ADC0LTL
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 41
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 41
 
 
       000000C6H   SFRSYM    DATA     BYTE      ADC0LTH
@@ -2787,7 +2787,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000FDH   SFRSYM    DATA     WORD      PCA0CP4
       00000088H.7 SFRSYM    DATA     BIT       TF1
       00000088H.6 SFRSYM    DATA     BIT       TR1
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 42
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 42
 
 
       00000088H.5 SFRSYM    DATA     BIT       TF0
@@ -2855,7 +2855,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000E8H.3 SFRSYM    DATA     BIT       AD0WINT
       000000E8H.2 SFRSYM    DATA     BIT       AD0CM2
       000000E8H.1 SFRSYM    DATA     BIT       AD0CM1
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 43
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 43
 
 
       000000E8H   SFRSYM    DATA     BIT       AD0CM0
@@ -2923,7 +2923,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       020004EAH   SYMBOL    XDATA    WORD      vData
       ---         BLOCKEND  CODE     ---       LVL=1
       ---         BLOCKEND  CODE     ---       LVL=0
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 44
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 44
 
 
 
@@ -2991,7 +2991,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       0000009CH   SFRSYM    DATA     BYTE      CPT1MD
       0000009DH   SFRSYM    DATA     BYTE      CPT0MD
       0000009EH   SFRSYM    DATA     BYTE      CPT1MX
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 45
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 45
 
 
       0000009FH   SFRSYM    DATA     BYTE      CPT0MX
@@ -3059,7 +3059,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000EAH   SFRSYM    DATA     BYTE      PCA0CPH1
       000000EBH   SFRSYM    DATA     BYTE      PCA0CPL2
       000000ECH   SFRSYM    DATA     BYTE      PCA0CPH2
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 46
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 46
 
 
       000000EDH   SFRSYM    DATA     BYTE      PCA0CPL3
@@ -3127,7 +3127,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000C0H.7 SFRSYM    DATA     BIT       MASTER
       000000C0H.6 SFRSYM    DATA     BIT       TXMODE
       000000C0H.5 SFRSYM    DATA     BIT       STA
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 47
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 47
 
 
       000000C0H.4 SFRSYM    DATA     BIT       STO
@@ -3195,7 +3195,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000A0H.3 SFRSYM    DATA     BIT       IO_LED_STATUS_OUT
       000000A0H.4 SFRSYM    DATA     BIT       IO_Reserved_P2_4
       000000A0H.5 SFRSYM    DATA     BIT       IO_Reserved_P2_5
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 48
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 48
 
 
       000000A0H.6 SFRSYM    DATA     BIT       IO_Reserved_P2_6
@@ -3263,7 +3263,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       01002A19H   LINE      ---      ---       #78
       01002A1EH   LINE      ---      ---       #79
       01002A1EH   LINE      ---      ---       #82
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 49
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 49
 
 
       01002A2DH   LINE      ---      ---       #83
@@ -3331,7 +3331,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       0000008BH   SFRSYM    DATA     BYTE      TL1
       0000008CH   SFRSYM    DATA     BYTE      TH0
       0000008DH   SFRSYM    DATA     BYTE      TH1
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 50
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 50
 
 
       0000008EH   SFRSYM    DATA     BYTE      CKCON
@@ -3399,7 +3399,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000D6H   SFRSYM    DATA     BYTE      P2SKIP
       000000D7H   SFRSYM    DATA     BYTE      USB0XCN
       000000D8H   SFRSYM    DATA     BYTE      PCA0CN
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 51
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 51
 
 
       000000D9H   SFRSYM    DATA     BYTE      PCA0MD
@@ -3467,7 +3467,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000098H.1 SFRSYM    DATA     BIT       TI0
       00000098H   SFRSYM    DATA     BIT       RI0
       000000A8H.7 SFRSYM    DATA     BIT       EA
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 52
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 52
 
 
       000000A8H.6 SFRSYM    DATA     BIT       ESPI0
@@ -3535,7 +3535,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000080H.2 SFRSYM    DATA     BIT       IO_DUT_I2CM_SCL
       00000080H.3 SFRSYM    DATA     BIT       IO_DUT_MDIOM_SCL_OEn
       00000080H.4 SFRSYM    DATA     BIT       UART_TXD
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 53
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 53
 
 
       00000080H.5 SFRSYM    DATA     BIT       UART_RXD
@@ -3603,7 +3603,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000083H   SFRSYM    DATA     BYTE      DPH
       00000087H   SFRSYM    DATA     BYTE      PCON
       00000088H   SFRSYM    DATA     BYTE      TCON
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 54
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 54
 
 
       00000089H   SFRSYM    DATA     BYTE      TMOD
@@ -3671,7 +3671,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000CDH   SFRSYM    DATA     BYTE      TMR2H
       000000D0H   SFRSYM    DATA     BYTE      PSW
       000000D1H   SFRSYM    DATA     BYTE      REF0CN
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 55
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 55
 
 
       000000D4H   SFRSYM    DATA     BYTE      P0SKIP
@@ -3739,7 +3739,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000098H.7 SFRSYM    DATA     BIT       S0MODE
       00000098H.5 SFRSYM    DATA     BIT       MCE0
       00000098H.4 SFRSYM    DATA     BIT       REN0
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 56
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 56
 
 
       00000098H.3 SFRSYM    DATA     BIT       TB80
@@ -3807,7 +3807,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000F8H.2 SFRSYM    DATA     BIT       NSSMD0
       000000F8H.1 SFRSYM    DATA     BIT       TXBMT
       000000F8H   SFRSYM    DATA     BIT       SPIEN
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 57
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 57
 
 
       00000080H   SFRSYM    DATA     BIT       IO_DUT_MDIOM_SDA_IN
@@ -3875,7 +3875,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       010027F9H   BLOCK     CODE     ---       LVL=0
       010027F9H   LINE      ---      ---       #80
       010027F9H   LINE      ---      ---       #81
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 58
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 58
 
 
       010027F9H   LINE      ---      ---       #82
@@ -3943,7 +3943,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000C0H   SFRSYM    DATA     BYTE      SMB0CN
       000000C1H   SFRSYM    DATA     BYTE      SMB0CF
       000000C2H   SFRSYM    DATA     BYTE      SMB0DAT
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 59
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 59
 
 
       000000C3H   SFRSYM    DATA     BYTE      ADC0GTL
@@ -4011,7 +4011,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000EDH   SFRSYM    DATA     WORD      PCA0CP3
       000000F9H   SFRSYM    DATA     WORD      PCA0
       000000FBH   SFRSYM    DATA     WORD      PCA0CP0
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 60
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 60
 
 
       000000FDH   SFRSYM    DATA     WORD      PCA0CP4
@@ -4079,7 +4079,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000E8H.6 SFRSYM    DATA     BIT       AD0TM
       000000E8H.5 SFRSYM    DATA     BIT       AD0INT
       000000E8H.4 SFRSYM    DATA     BIT       AD0BUSY
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 61
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 61
 
 
       000000E8H.3 SFRSYM    DATA     BIT       AD0WINT
@@ -4147,7 +4147,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       010001DDH   PUBLIC    CODE     ---       CFG_Init
       00000080H   SFRSYM    DATA     BYTE      P0
       00000081H   SFRSYM    DATA     BYTE      SP
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 62
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 62
 
 
       00000082H   SFRSYM    DATA     BYTE      DPL
@@ -4215,7 +4215,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000C9H   SFRSYM    DATA     BYTE      REG0CN
       000000CAH   SFRSYM    DATA     BYTE      TMR2RLL
       000000CBH   SFRSYM    DATA     BYTE      TMR2RLH
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 63
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 63
 
 
       000000CCH   SFRSYM    DATA     BYTE      TMR2L
@@ -4283,7 +4283,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000088H.3 SFRSYM    DATA     BIT       IE1
       00000088H.2 SFRSYM    DATA     BIT       IT1
       00000088H.1 SFRSYM    DATA     BIT       IE0
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 64
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 64
 
 
       00000088H   SFRSYM    DATA     BIT       IT0
@@ -4351,7 +4351,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000F8H.6 SFRSYM    DATA     BIT       WCOL
       000000F8H.5 SFRSYM    DATA     BIT       MODF
       000000F8H.4 SFRSYM    DATA     BIT       RXOVRN
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 65
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 65
 
 
       000000F8H.3 SFRSYM    DATA     BIT       NSSMD1
@@ -4419,7 +4419,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000089H   SFRSYM    DATA     BYTE      TMOD
       0000008AH   SFRSYM    DATA     BYTE      TL0
       0000008BH   SFRSYM    DATA     BYTE      TL1
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 66
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 66
 
 
       0000008CH   SFRSYM    DATA     BYTE      TH0
@@ -4487,7 +4487,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000D4H   SFRSYM    DATA     BYTE      P0SKIP
       000000D5H   SFRSYM    DATA     BYTE      P1SKIP
       000000D6H   SFRSYM    DATA     BYTE      P2SKIP
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 67
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 67
 
 
       000000D7H   SFRSYM    DATA     BYTE      USB0XCN
@@ -4555,7 +4555,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000098H.3 SFRSYM    DATA     BIT       TB80
       00000098H.2 SFRSYM    DATA     BIT       RB80
       00000098H.1 SFRSYM    DATA     BIT       TI0
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 68
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 68
 
 
       00000098H   SFRSYM    DATA     BIT       RI0
@@ -4623,7 +4623,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000080H   SFRSYM    DATA     BIT       IO_DUT_MDIOM_SDA_IN
       00000080H.1 SFRSYM    DATA     BIT       PWM_VBUF_OUT
       00000080H.2 SFRSYM    DATA     BIT       IO_DUT_I2CM_SCL
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 69
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 69
 
 
       00000080H.3 SFRSYM    DATA     BIT       IO_DUT_MDIOM_SCL_OEn
@@ -4691,7 +4691,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       01002415H   LINE      ---      ---       #76
       00000082H   SYMBOL    DATA     WORD      vAddr
       ---         BLOCKEND  ---      ---       LVL=0
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 70
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 70
 
 
 
@@ -4759,7 +4759,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       01002D62H   LINE      ---      ---       #123
       01002D65H   LINE      ---      ---       #124
       01002D68H   LINE      ---      ---       #126
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 71
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 71
 
 
       01002D68H   LINE      ---      ---       #127
@@ -4827,7 +4827,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       01002169H   LINE      ---      ---       #220
       01002169H   LINE      CODE     ---       #220
       01002169H   LINE      ---      ---       #222
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 72
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 72
 
 
       01002169H   LINE      ---      ---       #223
@@ -4895,7 +4895,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       0000009DH   SFRSYM    DATA     BYTE      CPT0MD
       0000009EH   SFRSYM    DATA     BYTE      CPT1MX
       0000009FH   SFRSYM    DATA     BYTE      CPT0MX
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 73
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 73
 
 
       000000A0H   SFRSYM    DATA     BYTE      P2
@@ -4963,7 +4963,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000EBH   SFRSYM    DATA     BYTE      PCA0CPL2
       000000ECH   SFRSYM    DATA     BYTE      PCA0CPH2
       000000EDH   SFRSYM    DATA     BYTE      PCA0CPL3
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 74
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 74
 
 
       000000EEH   SFRSYM    DATA     BYTE      PCA0CPH3
@@ -5031,7 +5031,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000C0H.6 SFRSYM    DATA     BIT       TXMODE
       000000C0H.5 SFRSYM    DATA     BIT       STA
       000000C0H.4 SFRSYM    DATA     BIT       STO
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 75
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 75
 
 
       000000C0H.3 SFRSYM    DATA     BIT       ACKRQ
@@ -5099,7 +5099,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000A0H.4 SFRSYM    DATA     BIT       IO_Reserved_P2_4
       000000A0H.5 SFRSYM    DATA     BIT       IO_Reserved_P2_5
       000000A0H.6 SFRSYM    DATA     BIT       IO_Reserved_P2_6
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 76
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 76
 
 
       000000A0H.7 SFRSYM    DATA     BIT       IO_Reserved_P2_7
@@ -5167,7 +5167,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       01000000H   BLOCK     CODE     NEAR LAB  LVL=0
       01000000H   LINE      CODE     ---       #49
       ---         BLOCKEND  ---      ---       LVL=0
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 77
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 77
 
 
 
@@ -5235,7 +5235,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000AAH   SFRSYM    DATA     BYTE      EMI0CN
       000000B0H   SFRSYM    DATA     BYTE      P3
       000000B1H   SFRSYM    DATA     BYTE      OSCXCN
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 78
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 78
 
 
       000000B2H   SFRSYM    DATA     BYTE      OSCICN
@@ -5303,7 +5303,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000FCH   SFRSYM    DATA     BYTE      PCA0CPH0
       000000FDH   SFRSYM    DATA     BYTE      PCA0CPL4
       000000FEH   SFRSYM    DATA     BYTE      PCA0CPH4
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 79
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 79
 
 
       000000FFH   SFRSYM    DATA     BYTE      VDM0CN
@@ -5371,7 +5371,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000D0H.5 SFRSYM    DATA     BIT       F0
       000000D0H.4 SFRSYM    DATA     BIT       RS1
       000000D0H.3 SFRSYM    DATA     BIT       RS0
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 80
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 80
 
 
       000000D0H.2 SFRSYM    DATA     BIT       OV
@@ -5439,7 +5439,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       01001FA9H   LINE      ---      ---       #49
       01001FCBH   LINE      ---      ---       #53
       01001FCEH   LINE      ---      ---       #57
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 81
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 81
 
 
       01001FD7H   LINE      ---      ---       #61
@@ -5507,7 +5507,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000B6H   SFRSYM    DATA     BYTE      FLSCL
       000000B7H   SFRSYM    DATA     BYTE      FLKEY
       000000B8H   SFRSYM    DATA     BYTE      IP
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 82
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 82
 
 
       000000B9H   SFRSYM    DATA     BYTE      CLKMUL
@@ -5575,7 +5575,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000092H   SFRSYM    DATA     WORD      TMR3RL
       00000094H   SFRSYM    DATA     WORD      TMR3
       000000BDH   SFRSYM    DATA     WORD      ADC0
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 83
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 83
 
 
       000000C3H   SFRSYM    DATA     WORD      ADC0GT
@@ -5643,7 +5643,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000D0H   SFRSYM    DATA     BIT       P
       000000D8H.7 SFRSYM    DATA     BIT       CF
       000000D8H.6 SFRSYM    DATA     BIT       CR
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 84
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 84
 
 
       000000D8H.4 SFRSYM    DATA     BIT       CCF4
@@ -5711,7 +5711,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       01001A53H   LINE      ---      ---       #44
       01001A58H   LINE      ---      ---       #45
       01001A5BH   LINE      ---      ---       #49
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 85
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 85
 
 
       01001A5DH   LINE      ---      ---       #50
@@ -5779,7 +5779,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000A2H   SFRSYM    DATA     BYTE      SPI0CKR
       000000A3H   SFRSYM    DATA     BYTE      SPIDAT
       000000A3H   SFRSYM    DATA     BYTE      SPI0DAT
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 86
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 86
 
 
       000000A4H   SFRSYM    DATA     BYTE      P0MDOUT
@@ -5847,7 +5847,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000F2H   SFRSYM    DATA     BYTE      P1MDIN
       000000F3H   SFRSYM    DATA     BYTE      P2MDIN
       000000F4H   SFRSYM    DATA     BYTE      P3MDIN
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 87
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 87
 
 
       000000F6H   SFRSYM    DATA     BYTE      EIP1
@@ -5915,7 +5915,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000C8H.7 SFRSYM    DATA     BIT       TF2H
       000000C8H.6 SFRSYM    DATA     BIT       TF2L
       000000C8H.5 SFRSYM    DATA     BIT       TF2LEN
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 88
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 88
 
 
       000000C8H.4 SFRSYM    DATA     BIT       T2SOF
@@ -5983,7 +5983,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000B0H.3 SFRSYM    DATA     BIT       IO_Reserved_P3_3
       000000B0H.4 SFRSYM    DATA     BIT       IO_Reserved_P3_4
       000000B0H.5 SFRSYM    DATA     BIT       IO_Reserved_P3_5
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 89
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 89
 
 
       000000B0H.6 SFRSYM    DATA     BIT       IO_Reserved_P3_6
@@ -6051,7 +6051,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000B1H   SFRSYM    DATA     BYTE      OSCXCN
       000000B2H   SFRSYM    DATA     BYTE      OSCICN
       000000B3H   SFRSYM    DATA     BYTE      OSCICL
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 90
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 90
 
 
       000000B6H   SFRSYM    DATA     BYTE      FLSCL
@@ -6119,7 +6119,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000FEH   SFRSYM    DATA     BYTE      PCA0CPH4
       000000FFH   SFRSYM    DATA     BYTE      VDM0CN
       00000082H   SFRSYM    DATA     WORD      DP
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 91
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 91
 
 
       00000092H   SFRSYM    DATA     WORD      TMR3RL
@@ -6187,7 +6187,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000D0H.3 SFRSYM    DATA     BIT       RS0
       000000D0H.2 SFRSYM    DATA     BIT       OV
       000000D0H.1 SFRSYM    DATA     BIT       F1
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 92
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 92
 
 
       000000D0H   SFRSYM    DATA     BIT       P
@@ -6255,7 +6255,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       01002C9CH   LINE      ---      ---       #42
       01002C9FH   LINE      ---      ---       #43
       01002CA2H   LINE      ---      ---       #44
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 93
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 93
 
 
       01002CA5H   LINE      ---      ---       #45
@@ -6323,7 +6323,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000B2H   SFRSYM    DATA     BYTE      OSCICN
       000000B3H   SFRSYM    DATA     BYTE      OSCICL
       000000B6H   SFRSYM    DATA     BYTE      FLSCL
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 94
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 94
 
 
       000000B7H   SFRSYM    DATA     BYTE      FLKEY
@@ -6391,7 +6391,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000FFH   SFRSYM    DATA     BYTE      VDM0CN
       00000082H   SFRSYM    DATA     WORD      DP
       00000092H   SFRSYM    DATA     WORD      TMR3RL
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 95
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 95
 
 
       00000094H   SFRSYM    DATA     WORD      TMR3
@@ -6459,7 +6459,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000D0H.2 SFRSYM    DATA     BIT       OV
       000000D0H.1 SFRSYM    DATA     BIT       F1
       000000D0H   SFRSYM    DATA     BIT       P
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 96
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 96
 
 
       000000D8H.7 SFRSYM    DATA     BIT       CF
@@ -6527,7 +6527,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       01002E24H   BLOCK     CODE     NEAR LAB  LVL=1
       01002E24H   LINE      ---      ---       #49
       01002E2AH   LINE      ---      ---       #50
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 97
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 97
 
 
       01002E32H   LINE      ---      ---       #51
@@ -6595,7 +6595,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000095H   SFRSYM    DATA     BYTE      TMR3H
       00000096H   SFRSYM    DATA     BYTE      USB0ADR
       00000097H   SFRSYM    DATA     BYTE      USB0DAT
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 98
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 98
 
 
       00000098H   SFRSYM    DATA     BYTE      SCON0
@@ -6663,7 +6663,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000E1H   SFRSYM    DATA     BYTE      XBR0
       000000E2H   SFRSYM    DATA     BYTE      XBR1
       000000E4H   SFRSYM    DATA     BYTE      IT01CF
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 99
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 99
 
 
       000000E6H   SFRSYM    DATA     BYTE      EIE1
@@ -6731,7 +6731,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000B8H.6 SFRSYM    DATA     BIT       PSPI0
       000000B8H.5 SFRSYM    DATA     BIT       PT2
       000000B8H.4 SFRSYM    DATA     BIT       PS0
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 100
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 100
 
 
       000000B8H.3 SFRSYM    DATA     BIT       PT1
@@ -6799,7 +6799,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000090H.4 SFRSYM    DATA     BIT       IO_DUT_MDIOM_SDA_OUT
       00000090H.5 SFRSYM    DATA     BIT       IO_DUT_MDIOM_SCL_IN
       00000090H.6 SFRSYM    DATA     BIT       IO_DUT_MDIOM_SCL_OUT
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 101
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 101
 
 
       00000090H.7 SFRSYM    DATA     BIT       IO_DUT_C2M_SCL
@@ -6867,7 +6867,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000089H   SFRSYM    DATA     BYTE      TMOD
       0000008AH   SFRSYM    DATA     BYTE      TL0
       0000008BH   SFRSYM    DATA     BYTE      TL1
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 102
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 102
 
 
       0000008CH   SFRSYM    DATA     BYTE      TH0
@@ -6935,7 +6935,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000D4H   SFRSYM    DATA     BYTE      P0SKIP
       000000D5H   SFRSYM    DATA     BYTE      P1SKIP
       000000D6H   SFRSYM    DATA     BYTE      P2SKIP
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 103
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 103
 
 
       000000D7H   SFRSYM    DATA     BYTE      USB0XCN
@@ -7003,7 +7003,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000098H.3 SFRSYM    DATA     BIT       TB80
       00000098H.2 SFRSYM    DATA     BIT       RB80
       00000098H.1 SFRSYM    DATA     BIT       TI0
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 104
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 104
 
 
       00000098H   SFRSYM    DATA     BIT       RI0
@@ -7071,7 +7071,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000080H   SFRSYM    DATA     BIT       IO_DUT_MDIOM_SDA_IN
       00000080H.1 SFRSYM    DATA     BIT       PWM_VBUF_OUT
       00000080H.2 SFRSYM    DATA     BIT       IO_DUT_I2CM_SCL
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 105
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 105
 
 
       00000080H.3 SFRSYM    DATA     BIT       IO_DUT_MDIOM_SCL_OEn
@@ -7139,7 +7139,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       01002363H   LINE      ---      ---       #154
       0100236BH   LINE      ---      ---       #155
       01002373H   LINE      ---      ---       #156
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 106
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 106
 
 
       00000056H   SYMBOL    DATA     BYTE      vData
@@ -7207,7 +7207,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000082H   SFRSYM    DATA     BYTE      DPL
       00000083H   SFRSYM    DATA     BYTE      DPH
       00000087H   SFRSYM    DATA     BYTE      PCON
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 107
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 107
 
 
       00000088H   SFRSYM    DATA     BYTE      TCON
@@ -7275,7 +7275,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000CCH   SFRSYM    DATA     BYTE      TMR2L
       000000CDH   SFRSYM    DATA     BYTE      TMR2H
       000000D0H   SFRSYM    DATA     BYTE      PSW
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 108
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 108
 
 
       000000D1H   SFRSYM    DATA     BYTE      REF0CN
@@ -7343,7 +7343,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000088H   SFRSYM    DATA     BIT       IT0
       00000098H.7 SFRSYM    DATA     BIT       S0MODE
       00000098H.5 SFRSYM    DATA     BIT       MCE0
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 109
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 109
 
 
       00000098H.4 SFRSYM    DATA     BIT       REN0
@@ -7411,7 +7411,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000F8H.3 SFRSYM    DATA     BIT       NSSMD1
       000000F8H.2 SFRSYM    DATA     BIT       NSSMD0
       000000F8H.1 SFRSYM    DATA     BIT       TXBMT
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 110
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 110
 
 
       000000F8H   SFRSYM    DATA     BIT       SPIEN
@@ -7479,7 +7479,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       0000008BH   SFRSYM    DATA     BYTE      TL1
       0000008CH   SFRSYM    DATA     BYTE      TH0
       0000008DH   SFRSYM    DATA     BYTE      TH1
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 111
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 111
 
 
       0000008EH   SFRSYM    DATA     BYTE      CKCON
@@ -7547,7 +7547,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000D6H   SFRSYM    DATA     BYTE      P2SKIP
       000000D7H   SFRSYM    DATA     BYTE      USB0XCN
       000000D8H   SFRSYM    DATA     BYTE      PCA0CN
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 112
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 112
 
 
       000000D9H   SFRSYM    DATA     BYTE      PCA0MD
@@ -7615,7 +7615,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000098H.1 SFRSYM    DATA     BIT       TI0
       00000098H   SFRSYM    DATA     BIT       RI0
       000000A8H.7 SFRSYM    DATA     BIT       EA
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 113
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 113
 
 
       000000A8H.6 SFRSYM    DATA     BIT       ESPI0
@@ -7683,7 +7683,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000080H.2 SFRSYM    DATA     BIT       IO_DUT_I2CM_SCL
       00000080H.3 SFRSYM    DATA     BIT       IO_DUT_MDIOM_SCL_OEn
       00000080H.4 SFRSYM    DATA     BIT       UART_TXD
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 114
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 114
 
 
       00000080H.5 SFRSYM    DATA     BIT       UART_RXD
@@ -7751,7 +7751,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000095H   SFRSYM    DATA     BYTE      TMR3H
       00000096H   SFRSYM    DATA     BYTE      USB0ADR
       00000097H   SFRSYM    DATA     BYTE      USB0DAT
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 115
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 115
 
 
       00000098H   SFRSYM    DATA     BYTE      SCON0
@@ -7819,7 +7819,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000E1H   SFRSYM    DATA     BYTE      XBR0
       000000E2H   SFRSYM    DATA     BYTE      XBR1
       000000E4H   SFRSYM    DATA     BYTE      IT01CF
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 116
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 116
 
 
       000000E6H   SFRSYM    DATA     BYTE      EIE1
@@ -7887,7 +7887,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000B8H.6 SFRSYM    DATA     BIT       PSPI0
       000000B8H.5 SFRSYM    DATA     BIT       PT2
       000000B8H.4 SFRSYM    DATA     BIT       PS0
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 117
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 117
 
 
       000000B8H.3 SFRSYM    DATA     BIT       PT1
@@ -7955,7 +7955,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000090H.4 SFRSYM    DATA     BIT       IO_DUT_MDIOM_SDA_OUT
       00000090H.5 SFRSYM    DATA     BIT       IO_DUT_MDIOM_SCL_IN
       00000090H.6 SFRSYM    DATA     BIT       IO_DUT_MDIOM_SCL_OUT
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 118
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 118
 
 
       00000090H.7 SFRSYM    DATA     BIT       IO_DUT_C2M_SCL
@@ -8023,7 +8023,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000007H   SYMBOL    DATA     BYTE      vData
       01002F30H   BLOCK     CODE     NEAR LAB  LVL=1
       01002F30H   LINE      ---      ---       #230
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 119
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 119
 
 
       01002F34H   LINE      ---      ---       #231
@@ -8091,7 +8091,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000003H   SYMBOL    DATA     BYTE      vData
       00000003H   SYMBOL    DATA     BYTE      vAddr
       00000002H   SYMBOL    DATA     BYTE      vData
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 120
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 120
 
 
 
@@ -8159,7 +8159,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       01001DEBH   LINE      ---      ---       #515
       01001DEBH   LINE      ---      ---       #517
       01001DEFH   LINE      ---      ---       #518
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 121
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 121
 
 
       00000027H.0 SYMBOL    BIT      BIT       bDone
@@ -8227,7 +8227,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       01001E40H   BLOCK     CODE     NEAR LAB  LVL=1
       01001E40H   LINE      ---      ---       #594
       01001E50H   LINE      ---      ---       #595
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 122
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 122
 
 
       01001E52H   LINE      ---      ---       #597
@@ -8295,7 +8295,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       01001B51H   BLOCK     CODE     NEAR LAB  LVL=2
       00000041H   SYMBOL    DATA     DWORD     _timeout
       01001B68H   LINE      ---      ---       #668
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 123
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 123
 
 
       01001B6AH   LINE      ---      ---       #670
@@ -8363,7 +8363,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000021H.6 PUBLIC    DATA     BIT       bMdioStartFrame0
       00000021H.7 PUBLIC    DATA     BIT       bMdioStartFrame1
       00000035H   PUBLIC    DATA     BYTE      ?_DRV_MDIOM_Write?BYTE
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 124
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 124
 
 
       010028D1H   PUBLIC    CODE     ---       _DRV_MDIOM_Write
@@ -8431,7 +8431,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000C2H   SFRSYM    DATA     BYTE      SMB0DAT
       000000C3H   SFRSYM    DATA     BYTE      ADC0GTL
       000000C4H   SFRSYM    DATA     BYTE      ADC0GTH
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 125
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 125
 
 
       000000C5H   SFRSYM    DATA     BYTE      ADC0LTL
@@ -8499,7 +8499,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000FBH   SFRSYM    DATA     WORD      PCA0CP0
       000000FDH   SFRSYM    DATA     WORD      PCA0CP4
       00000088H.7 SFRSYM    DATA     BIT       TF1
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 126
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 126
 
 
       00000088H.6 SFRSYM    DATA     BIT       TR1
@@ -8567,7 +8567,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000E8H.4 SFRSYM    DATA     BIT       AD0BUSY
       000000E8H.3 SFRSYM    DATA     BIT       AD0WINT
       000000E8H.2 SFRSYM    DATA     BIT       AD0CM2
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 127
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 127
 
 
       000000E8H.1 SFRSYM    DATA     BIT       AD0CM1
@@ -8635,7 +8635,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       0100292BH   LINE      ---      ---       #319
       0100292BH   LINE      ---      ---       #320
       0100292BH   LINE      ---      ---       #321
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 128
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 128
 
 
       01002933H   LINE      ---      ---       #327
@@ -8703,7 +8703,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000007H   SYMBOL    DATA     BYTE      vPortAddr
       00000005H   SYMBOL    DATA     BYTE      vDevAddr
       00000082H   SYMBOL    DATA     ---       pData
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 129
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 129
 
 
 
@@ -8771,7 +8771,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       0200077EH   PUBLIC    XDATA    ---       USBXCORE_SETUP
       02000752H   PUBLIC    XDATA    ---       USBXCORE_CONFIGDESCCOPY
       02000794H   PUBLIC    XDATA    WORD      USBXCORE_WVALUE
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 130
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 130
 
 
       02000740H   PUBLIC    XDATA    ---       USBXCORE_DEVICEDESCCOPY
@@ -8839,7 +8839,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       01000EDFH   LINE      CODE     ---       #291
       01000EE9H   LINE      CODE     ---       #293
       01000EEFH   LINE      CODE     ---       #294
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 131
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 131
 
 
       01000EF3H   LINE      CODE     ---       #296
@@ -8907,7 +8907,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       01000B87H   LINE      CODE     ---       #411
       01000B8AH   LINE      CODE     ---       #412
       01000B8DH   LINE      CODE     ---       #413
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 132
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 132
 
 
       01000B8DH   LINE      CODE     ---       #414
@@ -8975,7 +8975,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       01000CC9H   LINE      CODE     ---       #489
       01000CCBH   LINE      CODE     ---       #491
       01000CCBH   LINE      CODE     ---       #492
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 133
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 133
 
 
       01000CD0H   LINE      CODE     ---       #493
@@ -9043,7 +9043,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       01001380H   LINE      CODE     ---       #632
       ---         BLOCKEND  ---      ---       LVL=0
       01001381H   BLOCK     ---      ---       LVL=1
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 134
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 134
 
 
       01001381H   LINE      CODE     ---       #640
@@ -9111,7 +9111,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       0100107EH   LINE      CODE     ---       #754
       0100107EH   LINE      CODE     ---       #755
       01001082H   LINE      CODE     ---       #757
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 135
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 135
 
 
       0100108DH   LINE      CODE     ---       #759
@@ -9179,7 +9179,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       020004FBH   SYMBOL    XDATA    BYTE      temp
       ---         BLOCKEND  ---      ---       LVL=1
       010011B3H   LINE      CODE     ---       #867
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 136
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 136
 
 
       010011B3H   LINE      CODE     ---       #872
@@ -9247,7 +9247,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       0100145BH   LINE      CODE     ---       #986
       01001466H   LINE      CODE     ---       #987
       01001471H   LINE      CODE     ---       #988
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 137
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 137
 
 
       0100147CH   LINE      CODE     ---       #996
@@ -9315,7 +9315,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       01000E07H   LINE      CODE     ---       #1114
       01000E07H   LINE      CODE     ---       #1116
       01000E1AH   LINE      CODE     ---       #1119
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 138
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 138
 
 
       01000E1EH   LINE      CODE     ---       #1120
@@ -9383,7 +9383,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       ---         BLOCKEND  ---      ---       LVL=0
 
       ---         MODULE    ---      ---       BLOCK_READ
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 139
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 139
 
 
       010010D5H   PUBLIC    CODE     ---       _BLOCK_READ
@@ -9451,7 +9451,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
 
       ---         MODULE    ---      ---       BLOCK_WRITE
       01000086H   PUBLIC    CODE     ---       _BLOCK_WRITE
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 140
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 140
 
 
       00000000H   SYMBOL    CODE     WORD      _ICE_DUMMY_
@@ -9519,7 +9519,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       01000167H   LINE      CODE     ---       #226
       0100016AH   LINE      CODE     ---       #227
       0100016CH   LINE      CODE     ---       #229
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 141
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 141
 
 
       0100016CH   LINE      CODE     ---       #230
@@ -9587,7 +9587,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000087H   SFRSYM    DATA     BYTE      PCON
       00000088H   SFRSYM    DATA     BYTE      TCON
       00000089H   SFRSYM    DATA     BYTE      TMOD
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 142
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 142
 
 
       0000008AH   SFRSYM    DATA     BYTE      TL0
@@ -9655,7 +9655,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000D0H   SFRSYM    DATA     BYTE      PSW
       000000D1H   SFRSYM    DATA     BYTE      REF0CN
       000000D4H   SFRSYM    DATA     BYTE      P0SKIP
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 143
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 143
 
 
       000000D5H   SFRSYM    DATA     BYTE      P1SKIP
@@ -9723,7 +9723,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000098H.5 SFRSYM    DATA     BIT       MCE0
       00000098H.4 SFRSYM    DATA     BIT       REN0
       00000098H.3 SFRSYM    DATA     BIT       TB80
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 144
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 144
 
 
       00000098H.2 SFRSYM    DATA     BIT       RB80
@@ -9791,7 +9791,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000F8H.1 SFRSYM    DATA     BIT       TXBMT
       000000F8H   SFRSYM    DATA     BIT       SPIEN
       00000080H   SFRSYM    DATA     BIT       IO_DUT_MDIOM_SDA_IN
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 145
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 145
 
 
       00000080H.1 SFRSYM    DATA     BIT       PWM_VBUF_OUT
@@ -9859,7 +9859,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000083H   SFRSYM    DATA     BYTE      DPH
       00000087H   SFRSYM    DATA     BYTE      PCON
       00000088H   SFRSYM    DATA     BYTE      TCON
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 146
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 146
 
 
       00000089H   SFRSYM    DATA     BYTE      TMOD
@@ -9927,7 +9927,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000CDH   SFRSYM    DATA     BYTE      TMR2H
       000000D0H   SFRSYM    DATA     BYTE      PSW
       000000D1H   SFRSYM    DATA     BYTE      REF0CN
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 147
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 147
 
 
       000000D4H   SFRSYM    DATA     BYTE      P0SKIP
@@ -9995,7 +9995,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       00000098H.7 SFRSYM    DATA     BIT       S0MODE
       00000098H.5 SFRSYM    DATA     BIT       MCE0
       00000098H.4 SFRSYM    DATA     BIT       REN0
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 148
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 148
 
 
       00000098H.3 SFRSYM    DATA     BIT       TB80
@@ -10063,7 +10063,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000F8H.2 SFRSYM    DATA     BIT       NSSMD0
       000000F8H.1 SFRSYM    DATA     BIT       TXBMT
       000000F8H   SFRSYM    DATA     BIT       SPIEN
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 149
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 149
 
 
       00000080H   SFRSYM    DATA     BIT       IO_DUT_MDIOM_SDA_IN
@@ -10131,7 +10131,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       0000009FH   SFRSYM    DATA     BYTE      CPT0MX
       000000A0H   SFRSYM    DATA     BYTE      P2
       000000A1H   SFRSYM    DATA     BYTE      SPICFG
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 150
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 150
 
 
       000000A1H   SFRSYM    DATA     BYTE      SPI0CFG
@@ -10199,7 +10199,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000EDH   SFRSYM    DATA     BYTE      PCA0CPL3
       000000EEH   SFRSYM    DATA     BYTE      PCA0CPH3
       000000EFH   SFRSYM    DATA     BYTE      RSTSRC
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 151
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 151
 
 
       000000F0H   SFRSYM    DATA     BYTE      B
@@ -10267,7 +10267,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000C0H.4 SFRSYM    DATA     BIT       STO
       000000C0H.3 SFRSYM    DATA     BIT       ACKRQ
       000000C0H.2 SFRSYM    DATA     BIT       ARBLOST
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 152
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 152
 
 
       000000C0H.1 SFRSYM    DATA     BIT       ACK
@@ -10335,7 +10335,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000A0H.6 SFRSYM    DATA     BIT       IO_Reserved_P2_6
       000000A0H.7 SFRSYM    DATA     BIT       IO_Reserved_P2_7
       000000B0H   SFRSYM    DATA     BIT       IO_Reserved_P3_0
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 153
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 153
 
 
       000000B0H.1 SFRSYM    DATA     BIT       IO_Reserved_P3_1
@@ -10403,7 +10403,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000B9H   SFRSYM    DATA     BYTE      CLKMUL
       000000BAH   SFRSYM    DATA     BYTE      AMX0N
       000000BBH   SFRSYM    DATA     BYTE      AMX0P
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 154
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 154
 
 
       000000BCH   SFRSYM    DATA     BYTE      ADC0CF
@@ -10471,7 +10471,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000C3H   SFRSYM    DATA     WORD      ADC0GT
       000000C5H   SFRSYM    DATA     WORD      ADC0LT
       000000CAH   SFRSYM    DATA     WORD      TMR2RL
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 155
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 155
 
 
       000000CCH   SFRSYM    DATA     WORD      TMR2
@@ -10539,7 +10539,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       000000D8H.4 SFRSYM    DATA     BIT       CCF4
       000000D8H.3 SFRSYM    DATA     BIT       CCF3
       000000D8H.2 SFRSYM    DATA     BIT       CCF2
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 156
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 156
 
 
       000000D8H.1 SFRSYM    DATA     BIT       CCF1
@@ -10598,20 +10598,20 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       010026E3H   SYMBOL    CODE     ---       apl_ddm_GetEVBVBUF
 
       0100241CH   BLOCK     CODE     ---       LVL=0
-      01002420H   LINE      ---      ---       #27
-      01002426H   LINE      ---      ---       #33
+      01002420H   LINE      ---      ---       #28
+      01002426H   LINE      ---      ---       #34
       00000030H   SYMBOL    DATA     WORD      vRawADC
       00000032H   SYMBOL    DATA     BYTE      vSlopeDelta
       00000027H.0 SYMBOL    BIT      BIT       bSignDDM
       01002426H   BLOCK     CODE     NEAR LAB  LVL=1
-      01002426H   LINE      ---      ---       #37
-      01002433H   LINE      ---      ---       #38
-      01002441H   LINE      ---      ---       #40
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 157
+      01002426H   LINE      ---      ---       #38
+      01002433H   LINE      ---      ---       #39
+      01002441H   LINE      ---      ---       #41
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 157
 
 
-      0100246CH   LINE      ---      ---       #46
-      010024CAH   LINE      ---      ---       #47
+      0100246CH   LINE      ---      ---       #47
+      010024CAH   LINE      ---      ---       #48
       00000033H   SYMBOL    DATA     LONG      vTmpData
       00000037H   SYMBOL    DATA     LONG      vTmpSlope
       0000003BH   SYMBOL    DATA     LONG      vTmpOffset
@@ -10619,54 +10619,54 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       ---         BLOCKEND  CODE     ---       LVL=0
 
       010024DCH   BLOCK     CODE     ---       LVL=0
-      010024DCH   LINE      ---      ---       #49
       010024DCH   LINE      ---      ---       #50
+      010024DCH   LINE      ---      ---       #51
       010024DCH   BLOCK     CODE     NEAR LAB  LVL=1
-      010024DCH   LINE      ---      ---       #54
+      010024DCH   LINE      ---      ---       #55
       0000002DH   SYMBOL    DATA     WORD      vRawADC
       010024EBH   BLOCK     CODE     NEAR LAB  LVL=2
       0000002FH   SYMBOL    DATA     BYTE      _v
-      010024EBH   LINE      ---      ---       #60
-      010024EBH   LINE      CODE     ---       #60
+      010024EBH   LINE      ---      ---       #61
+      010024EBH   LINE      CODE     ---       #61
       ---         BLOCKEND  CODE     ---       LVL=1
       ---         BLOCKEND  CODE     ---       LVL=0
 
       010026CEH   BLOCK     CODE     ---       LVL=0
-      010026CEH   LINE      ---      ---       #63
       010026CEH   LINE      ---      ---       #64
+      010026CEH   LINE      ---      ---       #65
       010026CEH   BLOCK     CODE     NEAR LAB  LVL=1
-      010026CEH   LINE      ---      ---       #68
+      010026CEH   LINE      ---      ---       #69
       0000002DH   SYMBOL    DATA     WORD      vRawADC
       010026DDH   BLOCK     CODE     NEAR LAB  LVL=2
       0000002FH   SYMBOL    DATA     BYTE      _v
-      010026DDH   LINE      ---      ---       #74
-      010026DDH   LINE      CODE     ---       #74
+      010026DDH   LINE      ---      ---       #75
+      010026DDH   LINE      CODE     ---       #75
       ---         BLOCKEND  CODE     ---       LVL=1
       ---         BLOCKEND  CODE     ---       LVL=0
 
       010026E3H   BLOCK     CODE     ---       LVL=0
-      010026E3H   LINE      ---      ---       #77
       010026E3H   LINE      ---      ---       #78
+      010026E3H   LINE      ---      ---       #79
       010026E3H   BLOCK     CODE     NEAR LAB  LVL=1
-      010026E3H   LINE      ---      ---       #82
+      010026E3H   LINE      ---      ---       #83
       0000002DH   SYMBOL    DATA     WORD      vRawADC
       010026F2H   BLOCK     CODE     NEAR LAB  LVL=2
       0000002FH   SYMBOL    DATA     BYTE      _v
-      010026F2H   LINE      ---      ---       #88
-      010026F2H   LINE      CODE     ---       #88
+      010026F2H   LINE      ---      ---       #89
+      010026F2H   LINE      CODE     ---       #89
       ---         BLOCKEND  CODE     ---       LVL=1
       ---         BLOCKEND  CODE     ---       LVL=0
 
       010024F1H   BLOCK     CODE     ---       LVL=0
-      010024F1H   LINE      ---      ---       #108
       010024F1H   LINE      ---      ---       #109
-      010024F1H   LINE      ---      ---       #111
-      010024F7H   LINE      ---      ---       #114
-      01002502H   LINE      ---      ---       #115
-      0100250EH   LINE      ---      ---       #116
-      0100251AH   LINE      ---      ---       #122
-      01002548H   LINE      ---      ---       #123
+      010024F1H   LINE      ---      ---       #110
+      010024F1H   LINE      ---      ---       #112
+      010024F7H   LINE      ---      ---       #115
+      01002502H   LINE      ---      ---       #116
+      0100250EH   LINE      ---      ---       #117
+      0100251AH   LINE      ---      ---       #123
       01002548H   LINE      ---      ---       #124
+      01002548H   LINE      ---      ---       #125
       01002548H   BLOCK     CODE     NEAR LAB  LVL=1
       0000002CH   SYMBOL    DATA     BYTE      _v
       0000002CH   SYMBOL    DATA     BYTE      _v
@@ -10675,14 +10675,14 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       0000002CH   SYMBOL    DATA     BYTE      _v
       0000002CH   SYMBOL    DATA     BYTE      _v
       0000002CH   SYMBOL    DATA     BYTE      _v
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 158
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 158
 
 
       0000002CH   SYMBOL    DATA     BYTE      _v
-      01002555H   LINE      ---      ---       #125
-      01002555H   LINE      ---      ---       #127
+      01002555H   LINE      ---      ---       #126
       01002555H   LINE      ---      ---       #128
-      01002555H   LINE      CODE     ---       #128
+      01002555H   LINE      ---      ---       #129
+      01002555H   LINE      CODE     ---       #129
       01002555H   BLOCK     CODE     NEAR LAB  LVL=1
       0000002CH   SYMBOL    DATA     BYTE      _v
       0000002CH   SYMBOL    DATA     BYTE      _v
@@ -10691,11 +10691,11 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       0000002CH   SYMBOL    DATA     BYTE      _v
       0000002CH   SYMBOL    DATA     BYTE      _v
       0000002CH   SYMBOL    DATA     BYTE      _v
-      01002573H   LINE      ---      ---       #129
-      01002573H   LINE      ---      ---       #133
-      010025A5H   LINE      ---      ---       #134
+      01002573H   LINE      ---      ---       #130
+      01002573H   LINE      ---      ---       #134
       010025A5H   LINE      ---      ---       #135
-      010025A5H   LINE      CODE     ---       #135
+      010025A5H   LINE      ---      ---       #136
+      010025A5H   LINE      CODE     ---       #136
       010025A5H   BLOCK     CODE     NEAR LAB  LVL=1
       0000002CH   SYMBOL    DATA     BYTE      _v
       0000002CH   SYMBOL    DATA     BYTE      _v
@@ -10703,67 +10703,67 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       0000002CH   SYMBOL    DATA     BYTE      _v
       0000002CH   SYMBOL    DATA     BYTE      _v
       0000002CH   SYMBOL    DATA     BYTE      _v
-      010025B4H   LINE      ---      ---       #136
-      010025B4H   LINE      ---      ---       #138
+      010025B4H   LINE      ---      ---       #137
       010025B4H   LINE      ---      ---       #139
-      010025B4H   LINE      CODE     ---       #139
+      010025B4H   LINE      ---      ---       #140
+      010025B4H   LINE      CODE     ---       #140
       010025B4H   BLOCK     CODE     NEAR LAB  LVL=1
       0000002CH   SYMBOL    DATA     BYTE      _v
       0000002CH   SYMBOL    DATA     BYTE      _v
       0000002CH   SYMBOL    DATA     BYTE      _v
       0000002CH   SYMBOL    DATA     BYTE      _v
       0000002CH   SYMBOL    DATA     BYTE      _v
-      010025E5H   LINE      ---      ---       #140
-      010025E5H   LINE      ---      ---       #144
-      01002613H   LINE      ---      ---       #145
+      010025E5H   LINE      ---      ---       #141
+      010025E5H   LINE      ---      ---       #145
       01002613H   LINE      ---      ---       #146
-      01002613H   LINE      CODE     ---       #146
+      01002613H   LINE      ---      ---       #147
+      01002613H   LINE      CODE     ---       #147
       01002613H   BLOCK     CODE     NEAR LAB  LVL=1
       0000002CH   SYMBOL    DATA     BYTE      _v
       0000002CH   SYMBOL    DATA     BYTE      _v
       0000002CH   SYMBOL    DATA     BYTE      _v
       0000002CH   SYMBOL    DATA     BYTE      _v
-      01002620H   LINE      ---      ---       #147
-      01002620H   LINE      ---      ---       #149
+      01002620H   LINE      ---      ---       #148
       01002620H   LINE      ---      ---       #150
-      01002620H   LINE      CODE     ---       #150
+      01002620H   LINE      ---      ---       #151
+      01002620H   LINE      CODE     ---       #151
       01002620H   BLOCK     CODE     NEAR LAB  LVL=1
       0000002CH   SYMBOL    DATA     BYTE      _v
       0000002CH   SYMBOL    DATA     BYTE      _v
       0000002CH   SYMBOL    DATA     BYTE      _v
-      0100264FH   LINE      ---      ---       #151
-      0100264FH   LINE      ---      ---       #156
-      0100267BH   LINE      ---      ---       #157
+      0100264FH   LINE      ---      ---       #152
+      0100264FH   LINE      ---      ---       #157
       0100267BH   LINE      ---      ---       #158
-      0100267BH   LINE      CODE     ---       #158
+      0100267BH   LINE      ---      ---       #159
+      0100267BH   LINE      CODE     ---       #159
       0100267BH   BLOCK     CODE     NEAR LAB  LVL=1
       0000002CH   SYMBOL    DATA     BYTE      _v
       0000002CH   SYMBOL    DATA     BYTE      _v
-      01002685H   LINE      ---      ---       #159
-      01002685H   LINE      ---      ---       #161
+      01002685H   LINE      ---      ---       #160
       01002685H   LINE      ---      ---       #162
-      01002685H   LINE      CODE     ---       #162
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 159
+      01002685H   LINE      ---      ---       #163
+      01002685H   LINE      CODE     ---       #163
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 159
 
 
       01002685H   BLOCK     CODE     NEAR LAB  LVL=1
       0000002CH   SYMBOL    DATA     BYTE      _v
-      010026B1H   LINE      ---      ---       #163
-      010026B1H   LINE      ---      ---       #165
-      010026B1H   LINE      CODE     ---       #165
+      010026B1H   LINE      ---      ---       #164
+      010026B1H   LINE      ---      ---       #166
+      010026B1H   LINE      CODE     ---       #166
       ---         BLOCKEND  CODE     ---       LVL=0
 
       01002B0EH   BLOCK     CODE     ---       LVL=0
-      01002B0EH   LINE      ---      ---       #182
       01002B0EH   LINE      ---      ---       #183
-      01002B0EH   LINE      ---      ---       #185
+      01002B0EH   LINE      ---      ---       #184
+      01002B0EH   LINE      ---      ---       #186
       01002B18H   BLOCK     CODE     NEAR LAB  LVL=1
       0000002BH   SYMBOL    DATA     BYTE      _v
-      01002B18H   LINE      ---      ---       #188
-      01002B1FH   LINE      ---      ---       #189
-      01002B25H   LINE      ---      ---       #190
-      01002B27H   LINE      ---      ---       #191
-      01002B27H   LINE      CODE     ---       #191
+      01002B18H   LINE      ---      ---       #189
+      01002B1FH   LINE      ---      ---       #190
+      01002B25H   LINE      ---      ---       #191
+      01002B27H   LINE      ---      ---       #192
+      01002B27H   LINE      CODE     ---       #192
       ---         BLOCKEND  CODE     ---       LVL=0
 
       ---         MODULE    ---      ---       ?C_INIT
@@ -10811,7 +10811,7 @@ SYMBOL TABLE OF MODULE:  ..\build\obj\silabs_c2adapter (THREAD_PKT)
       0100069DH   PUBLIC    CODE     ---       ?C?ICASE
 
       ---         MODULE    ---      ---       ?C?LCASE
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 160
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 160
 
 
       010006CAH   PUBLIC    CODE     ---       ?C?LCASE
@@ -10879,7 +10879,7 @@ _DRV_FLASH_Update. . . . . . . @0x1e0008fe
 _DRV_MDIOM_FrameAddress. . . . @0x18000800
 _DRV_MDIOM_FramePRIA . . . . . @0x1e000800
 _DRV_MDIOM_FrameRead . . . . . @0x1e000800
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 161
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 161
 
 
 _DRV_MDIOM_FrameWrite. . . . . @0x18000800
@@ -10947,7 +10947,7 @@ MESSAGE                         MODULE
 INTER-MODULE CROSS-REFERENCE LISTING
 
 
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 162
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 162
 
 
 NAME . . . . . . . . . . . . CLASS    MODULE NAMES
@@ -11015,7 +11015,7 @@ _DRV_C2M_PageErase . . . . . CODE     DRV_C2M  PKT_C2M
 _DRV_CPU_DelayMs . . . . . . CODE     DRV_CPU  APL  DRV_C2M  _STDIO  
 _DRV_CPU_DelayUs . . . . . . CODE     DRV_CPU  DRV  DRV_ADC  DRV_C2M  PKT_I2CM  THREAD_PKT  
 _DRV_FLASH_Update. . . . . . CODE     DRV_FLASH  CFG_DB  
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 163
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 163
 
 
 _DRV_MDIOM_FrameAddress. . . CODE     DRV_MDIOM  
@@ -11083,7 +11083,7 @@ bMdioAddr14. . . . . . . . . DATA     DRV_MDIOM
 bMdioAddr15. . . . . . . . . DATA     DRV_MDIOM  
 bMdioAddr2 . . . . . . . . . DATA     DRV_MDIOM  
 bMdioAddr3 . . . . . . . . . DATA     DRV_MDIOM  
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 164
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 164
 
 
 bMdioAddr4 . . . . . . . . . DATA     DRV_MDIOM  
@@ -11151,7 +11151,7 @@ DRV_ADC_Init . . . . . . . . CODE     DRV_ADC  DRV
 DRV_C2M_ChipErase. . . . . . CODE     DRV_C2M  PKT_C2M  
 DRV_C2M_Init . . . . . . . . CODE     DRV_C2M  DRV  
 DRV_C2M_Probe. . . . . . . . CODE     DRV_C2M  PKT_C2M  
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 165
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 165
 
 
 DRV_C2M_Reset. . . . . . . . CODE     DRV_C2M  PKT_C2M  
@@ -11219,7 +11219,7 @@ main . . . . . . . . . . . . CODE     MAIN  ?C_INIT
 MASTER . . . . . . . . . . . DATA     THREAD_PKT  
 MCE0 . . . . . . . . . . . . DATA     THREAD_PKT  
 MODF . . . . . . . . . . . . DATA     THREAD_PKT  
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 166
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 166
 
 
 NSSMD0 . . . . . . . . . . . DATA     THREAD_PKT  
@@ -11287,7 +11287,7 @@ PKT_MDIOM_Read . . . . . . . CODE     PKT_MDIOM  THREAD_PKT
 PKT_MDIOM_Write. . . . . . . CODE     PKT_MDIOM  THREAD_PKT  
 PS0. . . . . . . . . . . . . DATA     THREAD_PKT  
 PSCTL. . . . . . . . . . . . DATA     THREAD_PKT  
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 167
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 167
 
 
 PSPI0. . . . . . . . . . . . DATA     THREAD_PKT  
@@ -11355,7 +11355,7 @@ TMR2L. . . . . . . . . . . . DATA     THREAD_PKT
 TMR2RL . . . . . . . . . . . DATA     THREAD_PKT  
 TMR2RLH. . . . . . . . . . . DATA     THREAD_PKT  
 TMR2RLL. . . . . . . . . . . DATA     THREAD_PKT  
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 168
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 168
 
 
 TMR3 . . . . . . . . . . . . DATA     THREAD_PKT  
@@ -11423,7 +11423,7 @@ USBXcore_wLength . . . . . . XDATA    USB_API
 USBXcore_wValue. . . . . . . XDATA    USB_API  
 USBXcore_ZERO_PACKET . . . . CODE     USB_API  
 vCfgPwdLevel . . . . . . . . DATA     CFG_PWD  CFG_DB  
-LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:14:05  PAGE 169
+LX51 LINKER/LOCATER V4.66.41.0                                                        06/14/2016  17:45:41  PAGE 169
 
 
 VDM0CN . . . . . . . . . . . DATA     THREAD_PKT  

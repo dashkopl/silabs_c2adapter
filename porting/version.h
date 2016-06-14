@@ -38,7 +38,7 @@
         0x00,           /* product branch id      */                        \
         0x00,           /* configuration revision */                        \
         0x01,           /* function revision      */                        \
-        0x00            /* bug-fixing revision    */
+        0x01            /* bug-fixing revision    */
 
 #else
 
