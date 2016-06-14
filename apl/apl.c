@@ -19,6 +19,7 @@
 #include "apl.h"
 
 
+/* DDM related */
 #if 1
 
 #define Slope_ZoomIn_ShiftBits      (8)
