@@ -36,15 +36,12 @@
  #define DRV_UART_BAUDRATE          115200UL    /* bps */
  #define DRV_UART_RX_ENABLE         0
 #define DRV_IO_SUPPORT              1   /* UART */
-#define DRV_FLASH_SUPPORT           0   /* Flash */
+#define DRV_FLASH_SUPPORT           1   /* Flash */
 #define DRV_TIMER_SUPPORT           1   /* Timer */
  #define DRV_TIMER_INTERVAL         1   /* ms */
 #define DRV_USB_SUPPORT             1   /* USB Slave */
  #define DRV_USB_VID                0x10C4  /* VID */
  #define DRV_USB_PID                0xEA61  /* PID */
- #define DRV_USB_VendorName         "CreaLights Inc."   /* max. 16 bytes */
- #define DRV_USB_PartNumber         "USB-Converter"     /* max. 16 bytes */
- #define DRV_USB_SerialNumber       "Silabs-C2Adapter"  /* max. 16 bytes */
 
 /* on-chip analog peripheral */
 #define DRV_VREF_SUPPORT            0   /* Voltage Reference */
@@ -73,14 +70,14 @@
 #define PKT_SYSTEM_SUPPORT          (0 && PKT_SUPPORT)      /* USB packet: System */
 #define PKT_I2CM_SUPPORT            (1 && PKT_SUPPORT)      /* USB packet: I2C Master */
  #define PKT_I2CM_RATE              100 /* 80/100/200/400 KHz */
- #define PKT_I2CM_VS_SUPPORT        (0 && PKT_I2CM_SUPPORT) /* Virtual I2C Slave */
+ #define PKT_I2CM_VS_SUPPORT        (1 && PKT_I2CM_SUPPORT) /* Virtual I2C Slave */
   #define PKT_I2CM_VS_ADDR          (0xFE)                  /* Virtual I2C Slave Address */
 #define PKT_MDIOM_SUPPORT           (1 && PKT_SUPPORT && DRV_MDIOM_SUPPORT) /* USB packet: MDIO Master */
  #define PKT_MDIOM_RATE             4   /* 1/2/4 MHz */
 #define PKT_C2M_SUPPORT             (1 && PKT_SUPPORT && DRV_C2M_SUPPORT)   /* USB packet: C2 Master */
 
 /* other function */
-#define CFG_SUPPORT                 0   /* Config Engine */
+#define CFG_SUPPORT                 1   /* Config Engine */
 
 
 #endif /* __CFG_SYSTEM_DEF_H */

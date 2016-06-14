@@ -21,8 +21,7 @@
 #if DRV_USB_SUPPORT
 
 /* USB related strings: maximum 16 bytes USB string */
-#define DRV_USB_STRING_MAX_LEN      16
-#define DRV_USB_STRING_TABLE_LEN    (2+DRV_USB_STRING_MAX_LEN*2)
+#define DRV_USB_STRING_TABLE_LEN  (2+16*2)
 static UINT8 SEG_XDATA  aManufacturerStr[DRV_USB_STRING_TABLE_LEN];
 static UINT8 SEG_XDATA  aProductStr[DRV_USB_STRING_TABLE_LEN];
 static UINT8 SEG_XDATA  aSerialNumberStr[DRV_USB_STRING_TABLE_LEN];
@@ -43,9 +42,6 @@ static UINT8 SEG_XDATA  aSerialNumberStr[DRV_USB_STRING_TABLE_LEN];
  ******************************************************************************/
 void DRV_USB_Init(void)
 {
-    static SEG_CODE UINT8 aVN[DRV_USB_STRING_MAX_LEN+1] = DRV_USB_VendorName;
-    static SEG_CODE UINT8 aPN[DRV_USB_STRING_MAX_LEN+1] = DRV_USB_PartNumber;
-    static SEG_CODE UINT8 aSN[DRV_USB_STRING_MAX_LEN+1] = DRV_USB_SerialNumber;
     UINT8   vData;
     UINT8   vLoop;
 
@@ -53,7 +49,7 @@ void DRV_USB_Init(void)
     aManufacturerStr[1] = 0x03;
     for (vLoop=2; vLoop<sizeof(aManufacturerStr); vLoop+=2)
     {
-        vData = aVN[(vLoop>>1)-1];
+        vData = CFG_GETO8(EE_Vendor_Name, (vLoop>>1)-1);
 
         if ((vData < 0x20) || (vData >= 0x7F))
         {
@@ -69,7 +65,7 @@ void DRV_USB_Init(void)
     aProductStr[1] = 0x03;
     for (vLoop=2; vLoop<sizeof(aProductStr); vLoop+=2)
     {
-        vData = aPN[(vLoop>>1)-1];
+        vData = CFG_GETO8(EE_Vendor_PN, (vLoop>>1)-1);
 
         if ((vData < 0x20) || (vData >= 0x7F))
         {
@@ -85,7 +81,7 @@ void DRV_USB_Init(void)
     aSerialNumberStr[1] = 0x03;
     for (vLoop=2; vLoop<sizeof(aSerialNumberStr); vLoop+=2)
     {
-        vData = aSN[(vLoop>>1)-1];
+        vData = CFG_GETO8(EE_Vendor_SN, (vLoop>>1)-1);
 
         if ((vData < 0x20) || (vData >= 0x7F))
         {

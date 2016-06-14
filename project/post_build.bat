@@ -29,7 +29,7 @@ set IMG_DIR=%PROJECT_DIR%\build\image
 :: ============================================================================
 ::  Porting Part
 :: ============================================================================
-set CFG_BASE=0x3A00
+set CFG_BASE=0x3800
 
 :: ============================================================================
 ::  Common Part
@@ -70,17 +70,17 @@ sign --mcu=c8051fxxx                                                        ^
 echo Done.
 
 :: create *.fw file
-:: set /p="Creating %PROJECT_NAME%.fw    ... " <nul
-:: cp %IMG_DIR%\%PROJECT_NAME%.sig %IMG_DIR%\%PROJECT_NAME%.fw
-:: echo Done.
+set /p="Creating %PROJECT_NAME%.fw    ... " <nul
+cp %IMG_DIR%\%PROJECT_NAME%.sig %IMG_DIR%\%PROJECT_NAME%.fw
+echo Done.
 
 :: create *.flash file
-:: set /p="Creating %PROJECT_NAME%.flash ... " <nul
-:: binmerge --input1=%IMG_DIR%\%PROJECT_NAME%.fw                               ^
-::          --input2=%IMG_DIR%\%PROJECT_NAME%.cfg                              ^
-::          --output=%IMG_DIR%\%PROJECT_NAME%.flash                            ^
-::          --pad1-to=%CFG_BASE%                                               ^
-::          --pad-val=0xFF
-:: echo Done.
+set /p="Creating %PROJECT_NAME%.flash ... " <nul
+binmerge --input1=%IMG_DIR%\%PROJECT_NAME%.fw                               ^
+         --input2=%IMG_DIR%\%PROJECT_NAME%.cfg                              ^
+         --output=%IMG_DIR%\%PROJECT_NAME%.flash                            ^
+         --pad1-to=%CFG_BASE%                                               ^
+         --pad-val=0xFF
+echo Done.
 
 echo **************************************************************************

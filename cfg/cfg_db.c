@@ -41,13 +41,13 @@ static UINT8 SEG_CODE   aPagePwdWriteTable[] = MEMPAGE_WRITE_PWD_LEVEL_TABLE;
  *****************************************************************************/
 static SINT8 cfg_db_GetPID(IN UINT8 vOffset)
 {
-    if (vOffset < MEMMAP_REAL_OFFSET(RT_DUT_VCCSET))
+    if (vOffset < MEMMAP_REAL_OFFSET(DDM_EVB_TEMP))
     {
         return MEMPAGE_PID_DIRECT_FE_00;
     }
     else if (vOffset < I2CS_PAGE_SIZE)
     {
-        return MEMPAGE_PID_DIRECT_FE_40;
+        return MEMPAGE_PID_DIRECT_FE_60;
     }
     else
     {
@@ -67,7 +67,6 @@ static SINT8 cfg_db_GetPID(IN UINT8 vOffset)
             case 0x82: return MEMPAGE_PID_EXTEND_FE_82;
 
             /* virtual pages */
-            case 0x00: return MEMPAGE_PID_EXTEND_FE_00;
             case 0xFF: return MEMPAGE_PID_EXTEND_FE_FF;
 
             default:
@@ -113,7 +112,7 @@ UINT8 CFG_DB_ReadByte(IN UINT8 vOffset)
         /* password check pass */
         switch (vPID)
         {
-            case MEMPAGE_PID_DIRECT_FE_40:
+            case MEMPAGE_PID_DIRECT_FE_60:
                 switch (vOffset)
                 {
                     /* for security reason,
@@ -128,16 +127,6 @@ UINT8 CFG_DB_ReadByte(IN UINT8 vOffset)
                         break;
                 }
                 break;
-
-            /* DUT Board EEPROM field */
-            case MEMPAGE_PID_EXTEND_FE_00:
-              #if DEV_AT24C01_SUPPORT
-                return (DEV_AT24C01_IsReady() ?
-                        DEV_AT24C01_ReadReg(vOffset) :
-                        (UINT8)I2CS_INVALID_DATA);
-              #else
-                return (UINT8)I2CS_INVALID_DATA;
-              #endif
 
             case MEMPAGE_PID_EXTEND_FE_FF:
                 return (((vOffset >= CFG_HEAD(Vendor_FwVersion))
@@ -199,7 +188,7 @@ void CFG_DB_WriteFlush
         vCount = (vOffset+vCount) - vPageSize;
     }
 
-    if (vPID == MEMPAGE_PID_DIRECT_FE_40)
+    if (vPID == MEMPAGE_PID_DIRECT_FE_60)
     {
         /* A2.40-7F page */
 
@@ -210,15 +199,6 @@ void CFG_DB_WriteFlush
 
             switch (vOffset)
             {
-                case CFG(RT_DUT_VCCSET)+0:
-                case CFG(RT_DUT_VCCSET)+1:
-                case CFG(RT_DUT_PIN_MODABS):
-                case CFG(RT_DUT_MODE0):
-                case CFG(RT_DUT_MODE1):
-                case CFG(RT_DUT_MODE2):
-                case CFG(RT_DUT_OUT0):
-                case CFG(RT_DUT_OUT1):
-                case CFG(RT_DUT_OUT2):
                 case CFG(RT_EVB_CTRL):
                     /* EVB/DUT related */
                 case CFG(Vendor_PWD_Entry)+0:
@@ -226,7 +206,7 @@ void CFG_DB_WriteFlush
                 case CFG(Vendor_PWD_Entry)+2:
                 case CFG(Vendor_PWD_Entry)+3:
                 case CFG(Vendor_Page_Select):
-                    CFG_SETV8(MEMPAGE_PID_DIRECT_FE_40, vOffset, vData);
+                    CFG_SETV8(MEMPAGE_PID_DIRECT_FE_60, vOffset, vData);
                     break;
 
                 default:    /* read-only field */
@@ -242,12 +222,12 @@ void CFG_DB_WriteFlush
     {
         if (vPID == MEMPAGE_PID_DIRECT_FE_00)
         {
-            if (vOffset+vCount > MEMMAP_REAL_OFFSET(RT_DUT_VCCSET))
+            if (vOffset+vCount > MEMMAP_REAL_OFFSET(DDM_EVB_TEMP))
             {
-                /* cross-write from A2.00-3F to A2.40-7F field,
-                 * only accept A2.00-3F field data.
+                /* cross-write from A2.00-5F to A2.60-7F field,
+                 * only accept A2.00-5F field data.
                  */
-                vCount = (vOffset+vCount) - MEMMAP_REAL_OFFSET(RT_DUT_VCCSET);
+                vCount = (vOffset+vCount) - MEMMAP_REAL_OFFSET(DDM_EVB_TEMP);
             }
         }
 
@@ -272,16 +252,7 @@ void CFG_DB_WriteFlush
             else
             {
                 /* VIRTUAL page */
-                if (vPID == MEMPAGE_PID_EXTEND_FE_00)
-                {
-                    /* flush into DUT board EEPROM */
-                  #if DEV_AT24C01_SUPPORT
-                    if (DEV_AT24C01_IsReady())
-                    {
-                        DEV_AT24C01_Write(vOffset, vCount, pBuf);
-                    }
-                  #endif
-                }
+                /* do nothing */
             }
         }
     }

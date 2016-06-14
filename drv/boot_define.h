@@ -33,7 +33,7 @@
 /* flash */
 #define FLASH_PAGE_SIZE     512
 #define FLASH_BASE          0x0000
-#define FLASH_SIZE          0xFA00  /* 62.5KB */
+#define FLASH_SIZE          0x3C00  /* 15KB */
 
 /* flash allocation */
 #define BOOT_BASE           FLASH_BASE

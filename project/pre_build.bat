@@ -37,6 +37,21 @@ if exist %IMG_DIR% (
 mkdir %IMG_DIR%
 
 :: generating necessary files
+set /p="Generating mempage header file ... " <nul
+python %PROJECT_DIR%\tools\mempage_converter.py                             ^
+    --input=%PROJECT_DIR%\doc\design\%PROJECT_NAME%_Memmap.xls              ^
+    --output=%PROJECT_DIR%\porting\~cfg_mempage_def.h
+echo Done.
+set /p="Generating memmap header file  ... " <nul
+python %PROJECT_DIR%\tools\memmap_converter.py                              ^
+    --input=%PROJECT_DIR%\doc\design\%PROJECT_NAME%_Memmap.xls              ^
+    --output=%PROJECT_DIR%\porting\~cfg_memmap_def.h
+echo Done.
+set /p="Generating memcfg binary file  ... " <nul
+python %PROJECT_DIR%\tools\memcfg_converter.py                              ^
+    --input=%PROJECT_DIR%\doc\design\%PROJECT_NAME%_Memmap.xls              ^
+    --output=%IMG_DIR%\%PROJECT_NAME%.cfg
+echo Done.
 set /p="Generating hardware info file  ... " <nul
 python %PROJECT_DIR%\tools\hw_converter.py                                  ^
     --input=%PROJECT_DIR%\porting\cfg_hw_def.h                              ^
