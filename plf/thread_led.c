@@ -44,16 +44,19 @@ OS_HANDLE thread_LED_Entry(void)
         if (CFG_GET(RT_EVB_STAT_Global_Ready) == HIGH)
         {
             /* system running OK */
-            DRV_IO_Write(IO(IO_LED_STATUS_OUT), LOW);
+            DRV_IO_Write(IO(IO_LED_1_OUT), HIGH);
+            DRV_IO_Write(IO(IO_LED_2_OUT), LOW);
         }
         else
       #endif
         {
             /* system running abnormally */
-            DRV_IO_Toggle(IO(IO_LED_STATUS_OUT));
+            DRV_IO_Write(IO(IO_LED_1_OUT), LOW);
+            DRV_IO_Write(IO(IO_LED_2_OUT), HIGH);
         }
 
-        OS_SLEEP_MS(&vTCB_LED, 100);
+        DRV_IO_Toggle(IO(IO_LED_STATUS_OUT));
+        OS_SLEEP_MS(&vTCB_LED, 500);
     }
 
     PT_END(&vTCB_LED);

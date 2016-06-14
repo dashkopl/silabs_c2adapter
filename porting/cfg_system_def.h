@@ -28,7 +28,7 @@
 #define DRV_CLOCK_SUPPORT           1   /* Clock */
  #define CORE_CLOCK                 24000000UL  /* Hz */
 #define DRV_RESET_SUPPORT           1   /* Reset */
-#define DRV_PCA_SUPPORT             0   /* PCA */
+#define DRV_PCA_SUPPORT             1   /* PCA */
  #define DRV_PCA_SOURCE_CLOCK       PCA_CLK_CORE_CLOCK
 #define DRV_WATCHDOG_SUPPORT        (0 && DRV_PCA_SUPPORT)  /* Watchdog */
  #define DRV_WATCHDOG_TIMEOUT       3000 /* 25.6~6553.6 ms */
@@ -44,8 +44,8 @@
  #define DRV_USB_PID                0xEA61  /* PID */
 
 /* on-chip analog peripheral */
-#define DRV_VREF_SUPPORT            0   /* Voltage Reference */
-#define DRV_ADC_SUPPORT             (0 && DRV_VREF_SUPPORT)
+#define DRV_VREF_SUPPORT            1   /* Voltage Reference */
+#define DRV_ADC_SUPPORT             (1 && DRV_VREF_SUPPORT)
  #define DRV_ADC_SAR_RATE           100 /* ksps */
 
 /* simulated peripheral */

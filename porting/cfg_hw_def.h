@@ -27,7 +27,7 @@ DECLARE_IO(UART_RXD,             _IO(P0.5), IO_MODE_DIGITAL_OD, HIGH,  "OE_VBUF"
 DECLARE_IO(IO_LED_2_OUT,         _IO(P0.6), IO_MODE_DIGITAL_PP, LOW,   "LED_2")
 DECLARE_IO(ADC_VREF_OUT,         _IO(P0.7), IO_MODE_ANALOG,     HIGH,  "")
 
-DECLARE_IO(IO_DUT_MDIOM_SDA_LOW, _IO(P1.0), IO_MODE_DIGITAL_OD, LOW,   "for sample MDIOM_SDA voltage usage")
+DECLARE_IO(IO_Reserved_P1_0,     _IO(P1.0), IO_MODE_ANALOG,     HIGH,  "")
 DECLARE_IO(IO_VBUF_OEn,          _IO(P1.1), IO_MODE_DIGITAL_OD, HIGH,  "TDO_IN")
 DECLARE_IO(IO_DUT_I2CM_SDA,      _IO(P1.2), IO_MODE_DIGITAL_OD, HIGH,  "TDO_OUT")
 DECLARE_IO(IO_LED_1_OUT,         _IO(P1.3), IO_MODE_DIGITAL_PP, LOW,   "LED_1")
@@ -45,7 +45,7 @@ DECLARE_IO(IO_Reserved_P2_5,     _IO(P2.5), IO_MODE_DIGITAL_OD, HIGH,  "Non-exis
 DECLARE_IO(IO_Reserved_P2_6,     _IO(P2.6), IO_MODE_DIGITAL_OD, HIGH,  "Non-existance pin")
 DECLARE_IO(IO_Reserved_P2_7,     _IO(P2.7), IO_MODE_DIGITAL_OD, HIGH,  "Non-existance pin")
 
-DECLARE_IO(ADC_DUT_MDIOM_SDA_IN, _IO(P3.0), IO_MODE_ANALOG,     HIGH,  "C2DAT")
+DECLARE_IO(IO_Reserved_P3_0,     _IO(P3.0), IO_MODE_ANALOG,     HIGH,  "C2DAT")
 DECLARE_IO(IO_Reserved_P3_1,     _IO(P3.1), IO_MODE_DIGITAL_OD, HIGH,  "Non-existance pin")
 DECLARE_IO(IO_Reserved_P3_2,     _IO(P3.2), IO_MODE_DIGITAL_OD, HIGH,  "Non-existance pin")
 DECLARE_IO(IO_Reserved_P3_3,     _IO(P3.3), IO_MODE_DIGITAL_OD, HIGH,  "Non-existance pin")
@@ -59,11 +59,10 @@ DECLARE_IO(IO_Reserved_P3_7,     _IO(P3.7), IO_MODE_DIGITAL_OD, HIGH,  "Non-exis
 
 #ifdef DECLARE_ADC
 
-/*            name         PosCh          NegCh         AvgNO        desc  */
-DECLARE_ADC(ADC_TEMP,   ADC_CHP_TEMP,  ADC_CHN_GND,   ADC_AVGNO_8,    "")
-DECLARE_ADC(ADC_VCC,    ADC_CHP_VDD,   ADC_CHN_VREF,  ADC_AVGNO_8,    "")
-DECLARE_ADC(ADC_VBUF,   ADC_CHP_P2_2,  ADC_CHN_GND,   ADC_AVGNO_8,    "")
-DECLARE_ADC(ADC_VMDIO,  ADC_CHP_P3_0,  ADC_CHN_GND,   ADC_AVGNO_8,    "")
+/*            name             PosCh          NegCh         AvgNO        desc  */
+DECLARE_ADC(ADC_EVB_TEMP,   ADC_CHP_TEMP,  ADC_CHN_GND,   ADC_AVGNO_8,    "")
+DECLARE_ADC(ADC_EVB_VCC,    ADC_CHP_VDD,   ADC_CHN_VREF,  ADC_AVGNO_8,    "")
+DECLARE_ADC(ADC_EVB_VBUF,   ADC_CHP_P2_2,  ADC_CHN_GND,   ADC_AVGNO_8,    "")
 
 #endif
 
