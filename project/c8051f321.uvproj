@@ -240,7 +240,7 @@
               <Ocm1>
                 <Type>0</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0x3dff</Size>
+                <Size>0x3800</Size>
               </Ocm1>
               <Ocm2>
                 <Type>0</Type>

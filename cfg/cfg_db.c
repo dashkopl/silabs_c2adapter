@@ -235,8 +235,8 @@ void CFG_DB_WriteFlush
         {
             if (vOffset+vCount > MEMMAP_REAL_OFFSET(DDM_EVB_TEMP))
             {
-                /* cross-write from A2.00-5F to A2.60-7F field,
-                 * only accept A2.00-5F field data.
+                /* cross-write from FE.00-5F to FE.60-7F field,
+                 * only accept FE.00-5F field data.
                  */
                 vCount = (vOffset+vCount) - MEMMAP_REAL_OFFSET(DDM_EVB_TEMP);
             }
