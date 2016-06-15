@@ -15,6 +15,28 @@ History:
 
 ===============================================================================
 
+Release Version : 00-01-02
+Release Time    : 2016/06/15
+Released By     : Panda.Xiong
+
+Release Notes   :
+ ****************  What's New  ****************
+ N/A
+
+ ****************  Enhancement  ***************
+ *) Optimize BSP part;
+
+ ****************  Bug Fixing  ****************
+ N/A
+
+ ****************  Others  ********************
+ N/A
+
+Memory Usage    :
+ Program Size: data=80.1 xdata=1715 const=32 code=13907
+
+===============================================================================
+
 Release Version : 00-01-01
 Release Time    : 2016/06/14
 Released By     : Panda.Xiong
@@ -33,7 +55,7 @@ Release Notes   :
  N/A
 
 Memory Usage    :
-Program Size: data=82.1 xdata=1715 const=32 code=13994
+ Program Size: data=82.1 xdata=1715 const=32 code=13994
 
 ===============================================================================
 
