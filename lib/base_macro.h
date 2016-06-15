@@ -50,16 +50,16 @@
 #define COMBINE3(a,b,c)             _COMBINE3_DELAY5(a,b,c)
 #define COMBINE4(a,b,c,d)           _COMBINE4_DELAY5(a,b,c,d)
 
-/* Calculate the total element of an array.
+/* calculate the total element of an array.
  *
  * e.g:
  *   int  array[100];
- *  To get the total element of (array), just use COUNT_OF(array).
+ *  to get the total element of (array), just use COUNT_OF(array).
  *   acturally, the total element in this sample is 100.
  */
 #define COUNT_OF(n)         (SINT32)(sizeof(n) / sizeof((n)[0]))
 
-/* calculate the Byte Offset of member in struct.
+/* calculate the byte offset of member in struct.
  *
  * e.g:
  *  typedef struct
@@ -69,14 +69,11 @@
  *      char c;
  *  } TYPE_S;
  *
- * To get the Byte Offset of (c) in TYPE_S, just use offsetof(TYPE_S, c).
+ * to get the byte offset of (c) in TYPE_S, just use offsetof(TYPE_S, c).
  *  acturally, the offset in this sample is 8.
  */
-#undef offsetof
-#ifdef __compiler_offsetof
- #define offsetof(type, member)  __compiler_offsetof(type, member)
-#else
- #define offsetof(type, member)  ((size_t) &((type *)0)->member)
+#ifndef offsetof
+ #define offsetof(type, member) ((size_t) &((type *)0)->member)
 #endif
 
 /* bit operation */
@@ -89,28 +86,28 @@
 /* remove warning */
 #define NO_WARNING(x)       do { if (x) {} } while (0)
 
-/* Limit value API */
-#define LIMIT_U16(x)    (((x) >=  65535L)? (UINT16)(0xFFFF) :               \
-                         ((x) <=       0)? (UINT16)(0x0000) :               \
+/* limit range */
+#define LIMIT_U16(x)        (((x) >=  65535L)? (UINT16)(0xFFFF) :           \
+                             ((x) <=       0)? (UINT16)(0x0000) :           \
                                            (UINT16)(x))
-#define LIMIT_S16(x)    (((x) >=  32767L)? (SINT16)(0x7FFF) :               \
-                         ((x) <= -32768L)? (SINT16)(0x8000) :               \
+#define LIMIT_S16(x)        (((x) >=  32767L)? (SINT16)(0x7FFF) :           \
+                             ((x) <= -32768L)? (SINT16)(0x8000) :           \
                                            (SINT16)(x))
 
-#define LIMIT_U8(x)     (((x) >=  255L)? (UINT8)(0xFF) :                    \
-                         ((x) <=     0)? (UINT8)(0x0000) :                  \
+#define LIMIT_U8(x)         (((x) >=  255L)? (UINT8)(0xFF) :                \
+                             ((x) <=     0)? (UINT8)(0x0000) :              \
                                          (UINT8)(x))
-#define LIMIT_S8(x)     (((x) >=  127L)? (SINT8)(0x7F) :                    \
-                         ((x) <= -128L)? (SINT8)(0x80) :                    \
+#define LIMIT_S8(x)         (((x) >=  127L)? (SINT8)(0x7F) :                \
+                             ((x) <= -128L)? (SINT8)(0x80) :                \
                                          (SINT8)(x))
 
-/* Get mask.
+/* get mask.
  *
  * e.g:
  *   if get 10-bit mask started from bit0, it will return 0x3FF.
  *   if get 10-bit mask started from bit5, it will return 0x7FE0.
  *
- * Note:
+ * note:
  *   1. the range of (start) : 0 <= start <= 31
  *      the range of (n)     : 0 <= n <= 31
  *   2. by default, this will return 32-bit mask, if only need 8-bit or 16-bit mask,

@@ -20,41 +20,36 @@
 
 #if DRV_FLASH_SUPPORT
 
-/* the last flash page is used as flash auto-update cache */
-#define FLASH_CACHE_PAGE_BASE       ((FLASH_BASE+FLASH_SIZE) - FLASH_PAGE_SIZE)
-
-/* EEPROM related API */
-#define EEPROM_MEMCPY(dst,src,len)                                          \
-    do {                                                                    \
-        DRV_FLASH_Update((UINT16)(dst),                                     \
-                         (UINT8)(len),                                      \
-                         (const UINT8 SEG_XDATA *)(src));                   \
-    } while (0)
+/* EEPROM/FLASH External API */
+#define EEPROM_MEMCPY(_dst,_src,_len)   FLASH_MEMCPY((_dst), (_src), (_len))
+#define FLASH_MEMCPY(_dst,_src,_len)    DRV_FLASH_Update((UINT16)(_dst),                    \
+                                                         (const UINT8 SEG_XDATA *)(_src),   \
+                                                         (UINT8)(_len))
 
 /******************************************************************************
  * FUNCTION NAME:
  *   DRV_FLASH_Update
  * DESCRIPTION:
- *   Flash update driver.
- *   i.e., if the update area is not empty, will auto-erase it,
- *         then write the new data into it.
+ *   Flash update API.
  * PARAMETERS:
- *   vFlashAddr : Flash start address to be updated.
- *   vLen       : Update byte length from flash, count as byte. (max.256 Byte)
- *   pBuf       : Update data buffer in XRAM.
+ *   vDstAddr : Flash start address to be updated.
+ *   pSrcAddr : Update data buffer in ram.
+ *   vLen     : Update byte length from flash, unit of byte. (max. 256 bytes)
  * RETURN:
  *   N/A
  * NOTES:
- *   Only support update one flash page, if overlap flash pages,
- *    the result is unknown.
+ *   1) If the update area is not empty, will auto-erase it,
+ *       then write the new data into it.
+ *   2) Only support update one flash page, if overlap flash pages,
+ *       the overlapped data will be forcibly ignored.
  * HISTORY:
  *   2016.1.29        Panda.Xiong          Create
  *****************************************************************************/
 void DRV_FLASH_Update
 (
-    IN       UINT16           vFlashAddr,
-    IN       UINT8            vLen,
-    IN const UINT8 SEG_XDATA *pBuf
+    IN       UINT16           vDstAddr,
+    IN const UINT8 SEG_XDATA *pSrcAddr,
+    IN       UINT8            vLen
 );
 
 /******************************************************************************
@@ -71,7 +66,7 @@ void DRV_FLASH_Update
  * HISTORY:
  *   2016.1.29        Panda.Xiong          Create
  *****************************************************************************/
- #define DRV_FLASH_Init()               /* do nothing */
+#define DRV_FLASH_Init()                /* do nothing */
 
 #else
  #define EEPROM_MEMCPY(dst,src,len)     NO_WARNING((dst)+(src)+(len))

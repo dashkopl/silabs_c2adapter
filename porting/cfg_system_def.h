@@ -46,7 +46,7 @@
 /* on-chip analog peripheral */
 #define DRV_VREF_SUPPORT            1   /* Voltage Reference */
 #define DRV_ADC_SUPPORT             (1 && DRV_VREF_SUPPORT)
- #define DRV_ADC_SAR_RATE           100 /* ksps */
+ #define DRV_ADC_SAR_RATE           100 /* 0~200 ksps */
 
 /* simulated peripheral */
 #define DRV_I2CM_SUPPORT            0   /* I2C Master */

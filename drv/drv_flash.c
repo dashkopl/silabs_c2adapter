@@ -20,6 +20,9 @@
 
 #if DRV_FLASH_SUPPORT
 
+/* the last flash page is used as flash auto-update cache */
+#define FLASH_CACHE_PAGE    ((FLASH_BASE+FLASH_SIZE) - FLASH_PAGE_SIZE)
+
 /* flash KEY definition, these KEYs must be written sequentially into
  * FLKEY register, to enable erase/write.
  *
@@ -35,8 +38,8 @@
 #define PSWE_BIT            0   /* =1, enable flash write; =0, disable flash write. */
 #define PSEE_BIT            1   /* =1, enable flash erase; =0, disable flash erase. */
 
-/* flash block size mask */
-#define FLASH_PAGE_MASK    (UINT16)(~(FLASH_PAGE_SIZE-1))
+/* flash page size mask */
+#define FLASH_PAGE_MASK     (UINT16)(~(FLASH_PAGE_SIZE-1))
 
 /******************************************************************************
  * FUNCTION NAME:
@@ -122,11 +125,11 @@ static void drv_flash_Control(UINT16 vFlashAddr, UINT8 vPSCTL, UINT8 vData)
  * DESCRIPTION:
  *   Flash write bytes driver.
  * PARAMETERS:
- *   vFlashAddr : Flash start address to be written.
- *   vLen       : Write byte length to flash, count as byte.
- *   vDataAddr  : Write data buffer.
- *   bFromFlash : =TRUE,  the data is from Flash;
- *                =FALSE, the data is from RAM.
+ *   vDstAddr  : Flash destination address.
+ *   vSrcAddr  : Source data buffer.
+ *   vLen      : Data buffer length, count as byte.
+ *   bSrcFlash : =TRUE,  source data buffer is in flash;
+ *               =FALSE, source data buffer is in ram;
  * RETURN:
  *   N/A
  * NOTES:
@@ -136,23 +139,19 @@ static void drv_flash_Control(UINT16 vFlashAddr, UINT8 vPSCTL, UINT8 vData)
  *****************************************************************************/
 static void drv_flash_WriteBytes
 (
-    IN UINT16     vFlashAddr,
+    IN UINT16     vDstAddr,
+    IN UINT16     vSrcAddr,
     IN UINT16     vLen,
-    IN UINT16     vDataAddr,
-    IN BOOL       bFromFlash
+    IN BOOL       bSrcFlash
 )
 {
-    while (vLen--)
+    for (; vLen-- != 0; vDstAddr++,vSrcAddr++)
     {
-        UINT8   vData;
-
-        vData = (bFromFlash? CODE_U8(vDataAddr) : XDATA_U8((vDataAddr)&0xFF));
-        if (CODE_U8(vFlashAddr) != vData)
+        UINT8 vData = (bSrcFlash? CODE_U8(vSrcAddr) : XDATA_U8(vSrcAddr));
+        if (CODE_U8(vDstAddr) != vData)
         {
-            drv_flash_WriteByte(vFlashAddr, vData);
+            drv_flash_WriteByte(vDstAddr, vData);
         }
-        vFlashAddr++;
-        vDataAddr++;
     }
 }
 
@@ -161,49 +160,49 @@ static void drv_flash_WriteBytes
  * FUNCTION NAME:
  *   DRV_FLASH_Update
  * DESCRIPTION:
- *   Flash update driver.
- *   i.e., if the update area is not empty, will auto-erase it,
- *         then write the new data into it.
+ *   Flash update API.
  * PARAMETERS:
- *   vFlashAddr : Flash start address to be updated.
- *   vLen       : Update byte length from flash, count as byte. (max.256 Byte)
- *   pBuf       : Update data buffer in XRAM.
+ *   vDstAddr : Flash start address to be updated.
+ *   pSrcAddr : Update data buffer in ram.
+ *   vLen     : Update byte length from flash, unit of byte. (max. 256 bytes)
  * RETURN:
  *   N/A
  * NOTES:
- *   Only support update one flash page, if overlap flash pages,
- *    the result is unknown.
+ *   1) If the update area is not empty, will auto-erase it,
+ *       then write the new data into it.
+ *   2) Only support update one flash page, if overlap flash pages,
+ *       the overlapped data will be forcibly ignored.
  * HISTORY:
  *   2016.1.29        Panda.Xiong          Create
  *****************************************************************************/
 void DRV_FLASH_Update
 (
-    IN       UINT16           vFlashAddr,
-    IN       UINT8            vLen,
-    IN const UINT8 SEG_XDATA *pBuf
+    IN       UINT16           vDstAddr,
+    IN const UINT8 SEG_XDATA *pSrcAddr,
+    IN       UINT8            vLen
 )
 {
-    UINT8  bIntStatus;
-    UINT8  bErase;
-    UINT8  vLoop;
+    BOOL   bIntStatus;
     UINT16 vPageBase;
     UINT16 vPageOffset;
+    BOOL   bErase;
+    UINT8  vLoop;
 
     /* globally lock interrupt */
     bIntStatus = DRV_INT_LockGlobalInterrupt();
 
     /* calculate flash page base address & offset of this page */
-    vPageBase   = vFlashAddr & FLASH_PAGE_MASK;
-    vPageOffset = vFlashAddr & ~FLASH_PAGE_MASK;
+    vPageBase   = vDstAddr & FLASH_PAGE_MASK;
+    vPageOffset = vDstAddr & ~FLASH_PAGE_MASK;
 
     /* check whether need to erase flash page */
     bErase = FALSE;
     for (vLoop = 0; vLoop < vLen; vLoop++)
     {
-        UINT8   vFlashData = CODE_U8(vPageBase+vPageOffset+vLoop);
-        UINT8   vRamData   = pBuf[vLoop];
+        UINT8   vDstData = CODE_U8(vPageBase+vPageOffset+vLoop);
+        UINT8   vSrcData = pSrcAddr[vLoop];
 
-        if ((vFlashData & vRamData) != vRamData)
+        if ((vDstData&vSrcData) != vSrcData)
         {
             bErase = TRUE;
             break;
@@ -215,35 +214,37 @@ void DRV_FLASH_Update
         /* no need to erase,
           * just write the new data into flash is OK.
           */
-        drv_flash_WriteBytes(vFlashAddr, vLen, (UINT16)pBuf, FALSE);
+        drv_flash_WriteBytes(vDstAddr, (UINT16)pSrcAddr, vLen, FALSE);
     }
     else
     {
-        UINT16 vWriteOffset;
+        UINT16 vCacheAddr;
 
-        /* prepare cache page content, to the final flash page content:
-         *   1) copy other content into cache page;
-         *   2) update cache page with new data;
+        /* prepare cache page content, to be the final flash page content:
+         *  1) copy other content into cache page;
+         *  2) update cache page with new data;
          */
-        vWriteOffset  = FLASH_CACHE_PAGE_BASE;
-        drv_flash_WriteBytes(vWriteOffset, vPageOffset, vPageBase, TRUE);
-        vWriteOffset += vPageOffset;
-        drv_flash_WriteBytes(vWriteOffset, vLen, (UINT16)pBuf, FALSE);
-        vWriteOffset += vLen;
-        drv_flash_WriteBytes(vWriteOffset,
-                             FLASH_PAGE_SIZE - (vPageOffset+vLen),
-                             vPageBase+vPageOffset + vLen,
+        vCacheAddr  = FLASH_CACHE_PAGE;
+        drv_flash_WriteBytes(vCacheAddr, vPageBase, vPageOffset, TRUE);
+        vCacheAddr += vPageOffset;
+        drv_flash_WriteBytes(vCacheAddr, (UINT16)pSrcAddr, vLen, FALSE);
+        vCacheAddr += vLen;
+        drv_flash_WriteBytes(vCacheAddr,
+                             vDstAddr + vLen,
+                             (FLASH_PAGE_SIZE-1) - (vPageOffset+vLen),
                              TRUE);
 
         /* erase target flash page */
         drv_flash_ErasePage(vPageBase);
 
         /* copy cache page content into target flash page */
-        vWriteOffset  = FLASH_CACHE_PAGE_BASE;
-        drv_flash_WriteBytes(vPageBase, FLASH_PAGE_SIZE, vWriteOffset, TRUE);
+        drv_flash_WriteBytes(vPageBase,
+                             FLASH_CACHE_PAGE,
+                             FLASH_PAGE_SIZE,
+                             TRUE);
 
         /* erase flash cache page */
-        drv_flash_ErasePage(FLASH_CACHE_PAGE_BASE);
+        drv_flash_ErasePage(FLASH_CACHE_PAGE);
     }
 
     /* restore interrupt status */

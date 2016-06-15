@@ -20,9 +20,9 @@
 
 /******************************************************************************
  * FUNCTION NAME:
- *   DRV_CPU_Delay100ns
+ *   DRV_CPU_Delay125ns
  * DESCRIPTION:
- *   Delay 100 Nanoseconds.
+ *   Delay 125 Nanoseconds.
  * PARAMETERS:
  *   N/A
  * RETURN:

@@ -66,26 +66,23 @@ typedef UINT8   CFG_ROM_PAGE_T[CFG_ROM_PAGE_SIZE];
 #define CFG_RAM_GET8(addr)      PDATA_U8(addr)
 #define CFG_RAM_SET8(addr,v)    do { PDATA_U8(addr) = (UINT8)(v); } while (0)
 #define CFG_ROM_GET8(addr)      CODE_U8(addr)
+#define CFG_ROM_SET8(addr,v)    /* do nothing */
+#define CFG_ROM_SET16(addr,v)   /* do nothing */
+#define CFG_ROM_SET32(addr,v)   /* do nothing */
 #ifdef _CFG_DB_INTERNAL_
-void   CFG_ROM_SET8 (IN UINT16 vAddr, IN UINT8  vData)  { EEPROM_MEMCPY(vAddr, &vData, sizeof(vData)); }
 UINT16 CFG_RAM_GET16(IN UINT16 vAddr)                   { return PDATA_U16(vAddr); }
 UINT16 CFG_ROM_GET16(IN UINT16 vAddr)                   { return CODE_U16(vAddr); }
 void   CFG_RAM_SET16(IN UINT16 vAddr, IN UINT16 vData)  { PDATA_U16(vAddr) = vData; }
-void   CFG_ROM_SET16(IN UINT16 vAddr, IN UINT16 vData)  { EEPROM_MEMCPY(vAddr, &vData, sizeof(vData)); }
 UINT32 CFG_RAM_GET32(IN UINT16 vAddr)                   { return PDATA_U32(vAddr); }
 UINT32 CFG_ROM_GET32(IN UINT16 vAddr)                   { return CODE_U32(vAddr); }
 void   CFG_RAM_SET32(IN UINT16 vAddr, IN UINT32 vData)  { PDATA_U32(vAddr) = vData; }
-void   CFG_ROM_SET32(IN UINT16 vAddr, IN UINT32 vData)  { EEPROM_MEMCPY(vAddr, &vData, sizeof(vData)); }
 #else
-void   CFG_ROM_SET8 (IN UINT16 vAddr, IN UINT8  vData);
 UINT16 CFG_RAM_GET16(IN UINT16 vAddr);
 UINT16 CFG_ROM_GET16(IN UINT16 vAddr);
 void   CFG_RAM_SET16(IN UINT16 vAddr, IN UINT16 vData);
-void   CFG_ROM_SET16(IN UINT16 vAddr, IN UINT16 vData);
 UINT32 CFG_RAM_GET32(IN UINT16 vAddr);
 UINT32 CFG_ROM_GET32(IN UINT16 vAddr);
 void   CFG_RAM_SET32(IN UINT16 vAddr, IN UINT32 vData);
-void   CFG_ROM_SET32(IN UINT16 vAddr, IN UINT32 vData);
 #endif
 #endif
 

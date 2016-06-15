@@ -190,7 +190,7 @@ void CFG_DB_WriteFlush
 
     if (vPID == MEMPAGE_PID_DIRECT_FE_60)
     {
-        /* A2.40-7F page */
+        /* FE.60-7F page */
 
         UINT8   vLoop;
         for (vLoop=0; vLoop<vCount; vLoop++,vOffset++)
