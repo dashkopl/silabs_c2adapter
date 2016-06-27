@@ -36,20 +36,20 @@
 
 /******************************************************************************
  * FUNCTION NAME:
- *      DRV_MDIOM_FrameAddress
+ *   DRV_MDIOM_FrameAddress
  * DESCRIPTION:
- *      MDIO Master Low-Level API: Execute Frame - Address.
+ *   MDIO Master Low-Level API: Execute Frame - Address.
  * PARAMETERS:
- *      vPortAddr : MDIO Port Address;
- *      vDevAddr  : MDIO Device Address;
- *      vRegAddr  : MDIO Register Address;
+ *   vPortAddr : MDIO Port Address;
+ *   vDevAddr  : MDIO Device Address;
+ *   vRegAddr  : MDIO Register Address;
  * RETURN:
- *      TRUE  : MDIO Frame Executed Success;
- *      FALSE : MDIO Frame Executed Fail;
+ *   TRUE  : MDIO Frame Executed Success;
+ *   FALSE : MDIO Frame Executed Fail;
  * NOTES:
- *      N/A
+ *   N/A
  * HISTORY:
- *      2014.06.25        Panda.Xiong        Create/Update
+ *   2016.1.29        Panda.Xiong          Create
  *****************************************************************************/
 BOOL DRV_MDIOM_FrameAddress
 (
@@ -60,20 +60,20 @@ BOOL DRV_MDIOM_FrameAddress
 
 /******************************************************************************
  * FUNCTION NAME:
- *      DRV_MDIOM_FrameWrite
+ *   DRV_MDIOM_FrameWrite
  * DESCRIPTION:
- *      MDIO Master Low-Level API: Execute Frame - Write.
+ *   MDIO Master Low-Level API: Execute Frame - Write.
  * PARAMETERS:
- *      vPortAddr : MDIO Port Address;
- *      vDevAddr  : MDIO Device Address;
- *      vData     : MDIO Write Data;
+ *   vPortAddr : MDIO Port Address;
+ *   vDevAddr  : MDIO Device Address;
+ *   vData     : MDIO Write Data;
  * RETURN:
- *      TRUE  : MDIO Frame Executed Success;
- *      FALSE : MDIO Frame Executed Fail;
+ *   TRUE  : MDIO Frame Executed Success;
+ *   FALSE : MDIO Frame Executed Fail;
  * NOTES:
- *      N/A
+ *   N/A
  * HISTORY:
- *      2014.06.25        Panda.Xiong        Create/Update
+ *   2016.1.29        Panda.Xiong          Create
  *****************************************************************************/
 BOOL DRV_MDIOM_FrameWrite
 (
@@ -84,20 +84,20 @@ BOOL DRV_MDIOM_FrameWrite
 
 /******************************************************************************
  * FUNCTION NAME:
- *      DRV_MDIOM_FrameRead
+ *   DRV_MDIOM_FrameRead
  * DESCRIPTION:
- *      MDIO Master Low-Level API: Execute Frame - Read.
+ *   MDIO Master Low-Level API: Execute Frame - Read.
  * PARAMETERS:
- *      vPortAddr : MDIO Port Address;
- *      vDevAddr  : MDIO Device Address;
- *      pData     : MDIO Read Data;
+ *   vPortAddr : MDIO Port Address;
+ *   vDevAddr  : MDIO Device Address;
+ *   pData     : MDIO Read Data;
  * RETURN:
- *      TRUE  : MDIO Frame Executed Success;
- *      FALSE : MDIO Frame Executed Fail;
+ *   TRUE  : MDIO Frame Executed Success;
+ *   FALSE : MDIO Frame Executed Fail;
  * NOTES:
- *      N/A
+ *   N/A
  * HISTORY:
- *      2014.06.25        Panda.Xiong        Create/Update
+ *   2016.1.29        Panda.Xiong          Create
  *****************************************************************************/
 BOOL DRV_MDIOM_FrameRead
 (
@@ -108,20 +108,20 @@ BOOL DRV_MDIOM_FrameRead
 
 /******************************************************************************
  * FUNCTION NAME:
- *      DRV_MDIOM_FramePRIA
+ *   DRV_MDIOM_FramePRIA
  * DESCRIPTION:
- *      MDIO Master Low-Level API: Execute Frame - Post-Read-Inc-Address.
+ *   MDIO Master Low-Level API: Execute Frame - Post-Read-Inc-Address.
  * PARAMETERS:
- *      vPortAddr : MDIO Port Address;
- *      vDevAddr  : MDIO Device Address;
- *      pData     : MDIO Read Data;
+ *   vPortAddr : MDIO Port Address;
+ *   vDevAddr  : MDIO Device Address;
+ *   pData     : MDIO Read Data;
  * RETURN:
- *      TRUE  : MDIO Frame Executed Success;
- *      FALSE : MDIO Frame Executed Fail;
+ *   TRUE  : MDIO Frame Executed Success;
+ *   FALSE : MDIO Frame Executed Fail;
  * NOTES:
- *      N/A
+ *   N/A
  * HISTORY:
- *      2014.06.25        Panda.Xiong        Create/Update
+ *   2016.1.29        Panda.Xiong          Create
  *****************************************************************************/
 BOOL DRV_MDIOM_FramePRIA
 (
@@ -138,22 +138,22 @@ BOOL DRV_MDIOM_FramePRIA
 
 /******************************************************************************
  * FUNCTION NAME:
- *      DRV_MDIOM_ReadWords
+ *   DRV_MDIOM_ReadWords
  * DESCRIPTION:
- *      MDIO Master Read Words Data.
+ *   MDIO Master Read Words Data.
  * PARAMETERS:
- *      vPortAddr : MDIO Port Address;
- *      vDevAddr  : MDIO Device Address;
- *      vRegAddr  : MDIO Register Address;
- *      vDataLen  : MDIO Read Data Length;
- *      pDataBuf  : MDIO Read Register Buffer;
+ *   vPortAddr : MDIO Port Address;
+ *   vDevAddr  : MDIO Device Address;
+ *   vRegAddr  : MDIO Register Address;
+ *   vDataLen  : MDIO Read Data Length;
+ *   pDataBuf  : MDIO Read Register Buffer;
  * RETURN:
- *      TRUE  : MDIO Read Words Data Success;
- *      FALSE : MDIO Read Words Data Fail;
+ *   TRUE  : MDIO Read Words Data Success;
+ *   FALSE : MDIO Read Words Data Fail;
  * NOTES:
- *      N/A
+ *   N/A
  * HISTORY:
- *      2014.06.25        Panda.Xiong        Create/Update
+ *   2016.1.29        Panda.Xiong          Create
  *****************************************************************************/
 BOOL DRV_MDIOM_Read
 (
@@ -166,22 +166,22 @@ BOOL DRV_MDIOM_Read
 
 /******************************************************************************
  * FUNCTION NAME:
- *      DRV_MDIOM_WriteWords
+ *   DRV_MDIOM_WriteWords
  * DESCRIPTION:
- *      MDIO Master Write Words Data.
+ *   MDIO Master Write Words Data.
  * PARAMETERS:
- *      vPortAddr : MDIO Port Address;
- *      vDevAddr  : MDIO Device Address;
- *      vRegAddr  : MDIO Register Address;
- *      vDataLen  : MDIO Write Data Length;
- *      pDataBuf  : MDIO Write Register Buffer;
+ *   vPortAddr : MDIO Port Address;
+ *   vDevAddr  : MDIO Device Address;
+ *   vRegAddr  : MDIO Register Address;
+ *   vDataLen  : MDIO Write Data Length;
+ *   pDataBuf  : MDIO Write Register Buffer;
  * RETURN:
- *      TRUE  : MDIO Write Words Data Success;
- *      FALSE : MDIO Write Words Data Fail;
+ *   TRUE  : MDIO Write Words Data Success;
+ *   FALSE : MDIO Write Words Data Fail;
  * NOTES:
- *      N/A
+ *   N/A
  * HISTORY:
- *      2014.06.25        Panda.Xiong        Create/Update
+ *   2016.1.29        Panda.Xiong          Create
  *****************************************************************************/
 BOOL DRV_MDIOM_Write
 (
@@ -194,17 +194,17 @@ BOOL DRV_MDIOM_Write
 
 /******************************************************************************
  * FUNCTION NAME:
- *      DRV_MDIOM_Init
+ *   DRV_MDIOM_Init
  * DESCRIPTION:
- *      MDIO Master Driver Init.
+ *   MDIO Master Driver Init.
  * PARAMETERS:
- *      N/A
+ *   N/A
  * RETURN:
- *      N/A
+ *   N/A
  * NOTES:
- *      N/A
+ *   N/A
  * HISTORY:
- *      2014.06.25        Panda.Xiong        Create/Update
+ *   2016.1.29        Panda.Xiong          Create
  *****************************************************************************/
 void DRV_MDIOM_Init(void);
 

@@ -108,13 +108,13 @@ SBIT(bMdioData1,  vMdioData,  9);
 SBIT(bMdioData0,  vMdioData,  8);
 
 
-#define drv_mdiom_TxBit(_v)          do {                                           \
+#define drv_mdiom_TxBit(_v)         do {                                            \
                                         CY = (_v);                                  \
                                         MDC_SET(HIGH);                              \
                                         MDIO_SET(CY);                               \
                                         MDC_SET(LOW);                               \
                                     } while (0)
-#define drv_mdiom_RxBit(_v)          do {                                           \
+#define drv_mdiom_RxBit(_v)         do {                                            \
                                         MDC_SET(LOW);                               \
                                         CY = MDIO_GET();                            \
                                         MDC_SET(HIGH);                              \
@@ -123,7 +123,7 @@ SBIT(bMdioData0,  vMdioData,  8);
 
 
 /* 32-bit preamble */
-#define drv_mdiom_TxPreamble()       do {                                           \
+#define drv_mdiom_TxPreamble()      do {                                            \
                                         drv_mdiom_TxBit(bMdioPreamble);             \
                                         drv_mdiom_TxBit(bMdioPreamble);             \
                                         drv_mdiom_TxBit(bMdioPreamble);             \
@@ -159,27 +159,27 @@ SBIT(bMdioData0,  vMdioData,  8);
                                     } while (0)
 
 /* 2-bit start frame */
-#define drv_mdiom_TxStartFrame()     do {                                           \
+#define drv_mdiom_TxStartFrame()    do {                                            \
                                         drv_mdiom_TxBit(bMdioStartFrame1);          \
                                         drv_mdiom_TxBit(bMdioStartFrame0);          \
                                     } while (0)
-#define drv_mdiom_SetStartFrame(_v1, _v0)  do {                                     \
+#define drv_mdiom_SetStartFrame(_v1,_v0)  do {                                      \
                                         bMdioStartFrame1 = (_v1);                   \
                                         bMdioStartFrame0 = (_v0);                   \
                                     } while (0)
 
 /* 2-bit operation code */
-#define drv_mdiom_TxOperationCode()  do {                                           \
+#define drv_mdiom_TxOperationCode() do {                                            \
                                         drv_mdiom_TxBit(bMdioOperationCode1);       \
                                         drv_mdiom_TxBit(bMdioOperationCode0);       \
                                     } while (0)
-#define drv_mdiom_SetOperationCode(_v1, _v0) do {                                   \
+#define drv_mdiom_SetOperationCode(_v1,_v0) do {                                    \
                                         bMdioOperationCode1 = (_v1);                \
                                         bMdioOperationCode0 = (_v0);                \
                                     } while (0)
 
 /* 5-bit port address */
-#define drv_mdiom_TxPortAddress()    do {                                           \
+#define drv_mdiom_TxPortAddress()   do {                                            \
                                         drv_mdiom_TxBit(bMdioPortAddr4);            \
                                         drv_mdiom_TxBit(bMdioPortAddr3);            \
                                         drv_mdiom_TxBit(bMdioPortAddr2);            \
@@ -195,7 +195,7 @@ SBIT(bMdioData0,  vMdioData,  8);
                                     } while (0)
 
 /* 5-bit device address */
-#define drv_mdiom_TxDeviceAddress()  do {                                           \
+#define drv_mdiom_TxDeviceAddress() do {                                            \
                                         drv_mdiom_TxBit(bMdioDeviceAddr4);          \
                                         drv_mdiom_TxBit(bMdioDeviceAddr3);          \
                                         drv_mdiom_TxBit(bMdioDeviceAddr2);          \
@@ -211,11 +211,11 @@ SBIT(bMdioData0,  vMdioData,  8);
                                     } while (0)
 
 /* 2-bit turn around */
-#define drv_mdiom_TxTurnAround()     do {                                           \
+#define drv_mdiom_TxTurnAround()    do {                                            \
                                         drv_mdiom_TxBit(bMdioTurnAround1);          \
                                         drv_mdiom_TxBit(bMdioTurnAround0);          \
                                     } while (0)
-#define drv_mdiom_RxTurnAround()     do {                                           \
+#define drv_mdiom_RxTurnAround()    do {                                            \
                                         /* turn-around 1 */                         \
                                         NOP(); NOP();                               \
                                         MDC_SET(HIGH);                              \
@@ -228,14 +228,14 @@ SBIT(bMdioData0,  vMdioData,  8);
                                         /* turn-around 0 */                         \
                                         drv_mdiom_RxBit(bMdioTurnAround0);          \
                                     } while (0)
-#define drv_mdiom_SetTurnAround(_v1, _v0)  do {                                     \
+#define drv_mdiom_SetTurnAround(_v1, _v0) do {                                      \
                                         bMdioTurnAround1 = (_v1);                   \
                                         bMdioTurnAround0 = (_v0);                   \
                                     } while (0)
 #define drv_mdiom_IsReadSuccess()    (bMdioTurnAround0 == 0)
 
 /* 16-bit address/data */
-#define drv_mdiom_TxAddr()           do {                                           \
+#define drv_mdiom_TxAddr()          do {                                            \
                                         drv_mdiom_TxBit(bMdioAddr15);               \
                                         drv_mdiom_TxBit(bMdioAddr14);               \
                                         drv_mdiom_TxBit(bMdioAddr13);               \
@@ -254,7 +254,7 @@ SBIT(bMdioData0,  vMdioData,  8);
                                         drv_mdiom_TxBit(bMdioAddr0);                \
                                         NOP(); NOP();                               \
                                     } while (0)
-#define drv_mdiom_TxData()           do {                                           \
+#define drv_mdiom_TxData()          do {                                            \
                                         drv_mdiom_TxBit(bMdioData15);               \
                                         drv_mdiom_TxBit(bMdioData14);               \
                                         drv_mdiom_TxBit(bMdioData13);               \
@@ -273,7 +273,7 @@ SBIT(bMdioData0,  vMdioData,  8);
                                         drv_mdiom_TxBit(bMdioData0);                \
                                         NOP(); NOP();                               \
                                     } while (0)
-#define drv_mdiom_RxData()           do {                                           \
+#define drv_mdiom_RxData()          do {                                            \
                                         drv_mdiom_RxBit(bMdioData15);               \
                                         drv_mdiom_RxBit(bMdioData14);               \
                                         drv_mdiom_RxBit(bMdioData13);               \
@@ -291,17 +291,17 @@ SBIT(bMdioData0,  vMdioData,  8);
                                         drv_mdiom_RxBit(bMdioData1);                \
                                         drv_mdiom_RxBit(bMdioData0);                \
                                     } while (0)
-#define drv_mdiom_SetAddr(_v)        do { vMdioAddr = (UINT16)(_v); } while (0)
-#define drv_mdiom_SetData(_v)        do { vMdioData = (UINT16)(_v); } while (0)
+#define drv_mdiom_SetAddr(_v)       do { vMdioAddr = (UINT16)(_v); } while (0)
+#define drv_mdiom_SetData(_v)       do { vMdioData = (UINT16)(_v); } while (0)
 
-#define drv_mdiom_StartFrame()       do {                                           \
+#define drv_mdiom_StartFrame()      do {                                            \
                                         /* set both pin to push-pull mode,          \
                                          *  to stretch MDIO bus.                    \
                                          */                                         \
                                         MDC_PP();                                   \
                                         MDIO_PP();                                  \
                                     } while (0)
-#define drv_mdiom_StopFrame()        do {                                           \
+#define drv_mdiom_StopFrame()       do {                                            \
                                         /* set both pin to open-drain mode,         \
                                          *  to release MDIO bus.                    \
                                          */                                         \
@@ -423,20 +423,20 @@ static void drv_mdiom_CreatePRIAFrame
 
 /******************************************************************************
  * FUNCTION NAME:
- *      DRV_MDIOM_FrameAddress
+ *   DRV_MDIOM_FrameAddress
  * DESCRIPTION:
- *      MDIO Low-Level API: Execute Frame - Address.
+ *   MDIO Low-Level API: Execute Frame - Address.
  * PARAMETERS:
- *      vPortAddr : MDIO Port Address;
- *      vDevAddr  : MDIO Device Address;
- *      vRegAddr  : MDIO Register Address;
+ *   vPortAddr : MDIO Port Address;
+ *   vDevAddr  : MDIO Device Address;
+ *   vRegAddr  : MDIO Register Address;
  * RETURN:
- *      TRUE  : MDIO Frame Executed Success;
- *      FALSE : MDIO Frame Executed Fail;
+ *   TRUE  : MDIO Frame Executed Success;
+ *   FALSE : MDIO Frame Executed Fail;
  * NOTES:
- *      N/A
+ *   N/A
  * HISTORY:
- *      2014.06.25        Panda.Xiong        Create/Update
+ *   2016.1.29        Panda.Xiong          Create
  *****************************************************************************/
 BOOL DRV_MDIOM_FrameAddress
 (
@@ -466,20 +466,20 @@ BOOL DRV_MDIOM_FrameAddress
 
 /******************************************************************************
  * FUNCTION NAME:
- *      DRV_MDIOM_FrameWrite
+ *   DRV_MDIOM_FrameWrite
  * DESCRIPTION:
- *      MDIO Low-Level API: Execute Frame - Write.
+ *   MDIO Low-Level API: Execute Frame - Write.
  * PARAMETERS:
- *      vPortAddr : MDIO Port Address;
- *      vDevAddr  : MDIO Device Address;
- *      vData     : MDIO Write Data;
+ *   vPortAddr : MDIO Port Address;
+ *   vDevAddr  : MDIO Device Address;
+ *   vData     : MDIO Write Data;
  * RETURN:
- *      TRUE  : MDIO Frame Executed Success;
- *      FALSE : MDIO Frame Executed Fail;
+ *   TRUE  : MDIO Frame Executed Success;
+ *   FALSE : MDIO Frame Executed Fail;
  * NOTES:
- *      N/A
+ *   N/A
  * HISTORY:
- *      2014.06.25        Panda.Xiong        Create/Update
+ *   2016.1.29        Panda.Xiong          Create
  *****************************************************************************/
 BOOL DRV_MDIOM_FrameWrite
 (
@@ -509,20 +509,20 @@ BOOL DRV_MDIOM_FrameWrite
 
 /******************************************************************************
  * FUNCTION NAME:
- *      DRV_MDIOM_FrameRead
+ *   DRV_MDIOM_FrameRead
  * DESCRIPTION:
- *      MDIO Low-Level API: Execute Frame - Read.
+ *   MDIO Low-Level API: Execute Frame - Read.
  * PARAMETERS:
- *      vPortAddr : MDIO Port Address;
- *      vDevAddr  : MDIO Device Address;
- *      pData     : MDIO Read Data;
+ *   vPortAddr : MDIO Port Address;
+ *   vDevAddr  : MDIO Device Address;
+ *   pData     : MDIO Read Data;
  * RETURN:
- *      TRUE  : MDIO Frame Executed Success;
- *      FALSE : MDIO Frame Executed Fail;
+ *   TRUE  : MDIO Frame Executed Success;
+ *   FALSE : MDIO Frame Executed Fail;
  * NOTES:
- *      N/A
+ *   N/A
  * HISTORY:
- *      2014.06.25        Panda.Xiong        Create/Update
+ *   2016.1.29        Panda.Xiong          Create
  *****************************************************************************/
 BOOL DRV_MDIOM_FrameRead
 (
@@ -553,20 +553,20 @@ BOOL DRV_MDIOM_FrameRead
 
 /******************************************************************************
  * FUNCTION NAME:
- *      DRV_MDIOM_FramePRIA
+ *   DRV_MDIOM_FramePRIA
  * DESCRIPTION:
- *      MDIO Low-Level API: Execute Frame - Post-Read-Inc-Address.
+ *   MDIO Low-Level API: Execute Frame - Post-Read-Inc-Address.
  * PARAMETERS:
- *      vPortAddr : MDIO Port Address;
- *      vDevAddr  : MDIO Device Address;
- *      pData     : MDIO Read Data;
+ *   vPortAddr : MDIO Port Address;
+ *   vDevAddr  : MDIO Device Address;
+ *   pData     : MDIO Read Data;
  * RETURN:
- *      TRUE  : MDIO Frame Executed Success;
- *      FALSE : MDIO Frame Executed Fail;
+ *   TRUE  : MDIO Frame Executed Success;
+ *   FALSE : MDIO Frame Executed Fail;
  * NOTES:
- *      N/A
+ *   N/A
  * HISTORY:
- *      2014.06.25        Panda.Xiong        Create/Update
+ *   2016.1.29        Panda.Xiong          Create
  *****************************************************************************/
 BOOL DRV_MDIOM_FramePRIA
 (
@@ -602,22 +602,22 @@ BOOL DRV_MDIOM_FramePRIA
 
 /******************************************************************************
  * FUNCTION NAME:
- *      DRV_MDIOM_Read
+ *   DRV_MDIOM_Read
  * DESCRIPTION:
- *      MDIO Read Words Data.
+ *   MDIO Read Words Data.
  * PARAMETERS:
- *      vPortAddr : MDIO Port Address;
- *      vDevAddr  : MDIO Device Address;
- *      vRegAddr  : MDIO Register Address;
- *      vDataLen  : MDIO Read Data Length;
- *      pDataBuf  : MDIO Read Register Buffer;
+ *   vPortAddr : MDIO Port Address;
+ *   vDevAddr  : MDIO Device Address;
+ *   vRegAddr  : MDIO Register Address;
+ *   vDataLen  : MDIO Read Data Length;
+ *   pDataBuf  : MDIO Read Register Buffer;
  * RETURN:
- *      TRUE  : MDIO Read Words Data Success;
- *      FALSE : MDIO Read Words Data Fail;
+ *   TRUE  : MDIO Read Words Data Success;
+ *   FALSE : MDIO Read Words Data Fail;
  * NOTES:
- *      N/A
+ *   N/A
  * HISTORY:
- *      2014.06.25        Panda.Xiong        Create/Update
+ *   2016.1.29        Panda.Xiong          Create
  *****************************************************************************/
 BOOL DRV_MDIOM_Read
 (
@@ -666,22 +666,22 @@ BOOL DRV_MDIOM_Read
 
 /******************************************************************************
  * FUNCTION NAME:
- *      DRV_MDIOM_Write
+ *   DRV_MDIOM_Write
  * DESCRIPTION:
- *      MDIO Write Words Data.
+ *   MDIO Write Words Data.
  * PARAMETERS:
- *      vPortAddr : MDIO Port Address;
- *      vDevAddr  : MDIO Device Address;
- *      vRegAddr  : MDIO Register Address;
- *      vDataLen  : MDIO Write Data Length;
- *      pDataBuf  : MDIO Write Register Buffer;
+ *   vPortAddr : MDIO Port Address;
+ *   vDevAddr  : MDIO Device Address;
+ *   vRegAddr  : MDIO Register Address;
+ *   vDataLen  : MDIO Write Data Length;
+ *   pDataBuf  : MDIO Write Register Buffer;
  * RETURN:
- *      TRUE  : MDIO Write Words Data Success;
- *      FALSE : MDIO Write Words Data Fail;
+ *   TRUE  : MDIO Write Words Data Success;
+ *   FALSE : MDIO Write Words Data Fail;
  * NOTES:
- *      N/A
+ *   N/A
  * HISTORY:
- *      2014.06.25        Panda.Xiong        Create/Update
+ *   2016.1.29        Panda.Xiong          Create
  *****************************************************************************/
 BOOL DRV_MDIOM_Write
 (
@@ -724,17 +724,17 @@ BOOL DRV_MDIOM_Write
 
 /******************************************************************************
  * FUNCTION NAME:
- *      DRV_MDIOM_Init
+ *   DRV_MDIOM_Init
  * DESCRIPTION:
- *      MDIO Driver Init.
+ *   MDIO Driver Init.
  * PARAMETERS:
- *      N/A
+ *   N/A
  * RETURN:
- *      N/A
+ *   N/A
  * NOTES:
- *      N/A
+ *   N/A
  * HISTORY:
- *      2014.06.25        Panda.Xiong        Create/Update
+ *   2016.1.29        Panda.Xiong          Create
  *****************************************************************************/
 void DRV_MDIOM_Init(void)
 {
