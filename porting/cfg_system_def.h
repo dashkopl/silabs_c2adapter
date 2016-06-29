@@ -84,7 +84,6 @@
  #define PKT_I2CM_VS_SUPPORT        (1 && PKT_I2CM_SUPPORT) /* Virtual I2C Slave */
   #define PKT_I2CM_VS_ADDR          (0xFE)                  /* Virtual I2C Slave Address */
 #define PKT_MDIOM_SUPPORT           (1 && PKT_SUPPORT && DRV_MDIOM_SUPPORT) /* USB packet: MDIO Master */
- #define PKT_MDIOM_RATE             4   /* 1/2/4 MHz */
 #define PKT_C2M_SUPPORT             (1 && PKT_SUPPORT && DRV_C2M_SUPPORT)   /* USB packet: C2 Master */
 
 /* other function */
