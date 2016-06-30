@@ -43,11 +43,13 @@ __version__ = 'v1.0.0'
 __help__ = ('\n\rmemmap_converter  %s\n\r%s%s'
             % (__version__, __description__, __usage__))
 
-# add pylib directory into search path
-import sys
+# add needed python library directory into search path
 import os
-pylib_dir = os.environ.get('PYLIB_BASE')
-sys.path.append(pylib_dir)
+if os.environ.has_key('PYLIB_BASE'):
+    import sys
+    pylib_dir = os.environ.get('PYLIB_BASE')
+    if pylib_dir not in sys.path:
+        sys.path.append(pylib_dir)
 
 # #############################################################################
 #  Porting Part

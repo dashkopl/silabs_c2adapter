@@ -43,11 +43,13 @@ __version__ = 'v1.0.0'
 __help__ = ('\n\rhw_converter  %s\n\r%s%s'
             % (__version__, __description__, __usage__))
 
-# add pylib directory into search path
-import sys
+# add needed python library directory into search path
 import os
-pylib_dir = os.environ.get('PYLIB_BASE')
-sys.path.append(pylib_dir)
+if os.environ.has_key('PYLIB_BASE'):
+    import sys
+    pylib_dir = os.environ.get('PYLIB_BASE')
+    if pylib_dir not in sys.path:
+        sys.path.append(pylib_dir)
 
 # #############################################################################
 #  Porting Part
@@ -113,7 +115,6 @@ def _def_vdac(f_out, s_def):
     _def(f_out, name, 'VDAC_MODE', mode)
     _def(f_out, name, 'VDAC_INIT', init)
     _def(f_out, name, 'VDAC_DESC', desc)
-    f_out.write('\n')
 
 
 def _def_idac(f_out, s_def):
@@ -134,7 +135,6 @@ def _def_idac(f_out, s_def):
     _def(f_out, name, 'IDAC_MODE', mode)
     _def(f_out, name, 'IDAC_INIT', init)
     _def(f_out, name, 'IDAC_DESC', desc)
-    f_out.write('\n')
 
 
 def _def_pca(f_out, s_def):
@@ -159,7 +159,6 @@ def _def_pca(f_out, s_def):
     _def(f_out, name, 'PCA_PCA0CPM', 'PCA0CPM%s'%channel)
     _def(f_out, name, 'PCA_PCA0CPL', 'PCA0CPL%s'%channel)
     _def(f_out, name, 'PCA_PCA0CPH', 'PCA0CPH%s'%channel)
-    f_out.write('\n')
 
 
 def generate_hw(f_in, f_out):
@@ -226,7 +225,7 @@ def main():
     generate_hw(f_in, f_out)
 
     # add tail for output file
-    f_out.write('\n#endif /* %s */\n\n' % sFileName)
+    f_out.write('\n\n#endif /* %s */\n\n' % sFileName)
     f_out.flush()
     f_out.close()
 
