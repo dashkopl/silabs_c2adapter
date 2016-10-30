@@ -312,27 +312,6 @@ _exit:
 
 /******************************************************************************
  * FUNCTION NAME:
- *   DRV_I2CM_Probe
- * DESCRIPTION:
- *   I2C master probe chip.
- * PARAMETERS:
- *   vI2cAddr : I2C chip address.
- * RETURN:
- *   TRUE   : Probe successfully.
- *   FALSE  : Probe failed.
- * NOTES:
- *   N/A
- * HISTORY:
- *   2016.1.29        Panda.Xiong          Create
- *****************************************************************************/
-BOOL DRV_I2CM_Probe(IN UINT8 vI2cAddr)
-{
-    return DRV_I2CM_Stream(vI2cAddr, 0, NULL, 0, NULL);
-}
-
-
-/******************************************************************************
- * FUNCTION NAME:
  *   DRV_I2CM_ReadByte
  * DESCRIPTION:
  *   I2C master random read one byte.

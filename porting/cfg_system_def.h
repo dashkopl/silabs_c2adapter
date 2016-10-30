@@ -63,7 +63,6 @@
 #define DRV_I2CM_SUPPORT            0   /* I2C Master */
  #define DRV_I2CM_RATE              400 /* 80/100/200/400 KHz */
 #define DRV_MDIOM_SUPPORT           1   /* MDIO Master */
- #define DRV_MDIOM_RATE             3   /* 1/2/3/4 MHz */
 #define DRV_C2M_SUPPORT             1   /* C2 Master */
 
 /* off-chip device */
@@ -75,7 +74,6 @@
 /* frame related (currently, only support version 1) */
 #define PKT_SUPPORT                 1   /* USB packet global enable/disable */
 #define PKT_MAX_LEN                 1084   /* frame maximum length */
-#define PKT_MAGIC                   0x434C /* frame magic number */
 #define PKT_VERSION                 0x0001 /* frame content version */
 #define PKT_DEBUG_SUPPORT           (0 && PKT_SUPPORT)      /* packet debugging */
 #define PKT_SYSTEM_SUPPORT          (0 && PKT_SUPPORT)      /* USB packet: System */

@@ -39,8 +39,8 @@
 
 /* Config password level definition:
  *  -> NORMAL  : Default password level.
- *  -> USER_RO : For customer read-only  User EEPROM fields usage.
- *  -> USER_RW : For customer read/write User EEPROM fields usage.
+ *  -> UserRO  : For user read-only  User EEPROM fields usage.
+ *  -> UserRW  : For user read/write User EEPROM fields usage.
  *  -> OEM     : For OEM write vendor fields usage.
  *  -> FACTORY : For factory calibration/diagnostic usage.
  */

@@ -151,7 +151,7 @@ _DRV_TIMER_EXTERN_ volatile UINT64  vTickCount;
         TMR2CN = 0x00;      /* 16-bit auto-reload,                      \
                              * clock source: CORE_CLOCK,                \
                              * clear timer 2 overflow flag,             \
-                             * disable Timer 2.                         \
+                             * disable timer 2.                         \
                              */                                         \
         DRV_TIMER_Enable(); /* enable timer */                          \
         PT2 = 0;            /* force timer interrupt to low priority */ \

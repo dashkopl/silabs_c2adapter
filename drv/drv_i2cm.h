@@ -65,7 +65,7 @@ BOOL DRV_I2CM_Stream
  * DESCRIPTION:
  *   I2C master probe chip.
  * PARAMETERS:
- *   vI2cAddr : I2C chip address.
+ *   _vI2cAddr : I2C chip address.
  * RETURN:
  *   TRUE   : Probe successfully.
  *   FALSE  : Probe failed.
@@ -74,7 +74,7 @@ BOOL DRV_I2CM_Stream
  * HISTORY:
  *   2016.1.29        Panda.Xiong          Create
  *****************************************************************************/
-BOOL DRV_I2CM_Probe(IN UINT8 vI2cAddr);
+#define DRV_I2CM_Probe(_vI2cAddr)   DRV_I2CM_Stream((_vI2cAddr), 0, NULL, 0, NULL)
 
 /******************************************************************************
  * FUNCTION NAME:

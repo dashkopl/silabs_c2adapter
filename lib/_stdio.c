@@ -41,7 +41,7 @@
 
 
 /* stdio low-level part */
-#if 1
+#if DRV_UART_SUPPORT
 
 int _getchar(int timeout)
 {

@@ -147,7 +147,7 @@
  #define NO_PENDING  (0)
  #define PENDING     (-1)
 
- int  _getchar(int pending);
+ int _getchar(int pending);
 
  #define printf             printf      /* C51 library API */
  #define putchar(c)         putchar(c)  /* C51 library API */
