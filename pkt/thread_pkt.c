@@ -35,6 +35,8 @@
 
 #include "pkt_define.h"
 
+static UINT16   vMagicNo;
+
 static BOOL     bFlushFIFO;
 SEG_XDATA PKT_T vFrame;
 
@@ -155,7 +157,7 @@ static BOOL _thread_pkt_Receive(void)
         printf("flush FIFO!\n");
         return FALSE;
     }
-    if ((vBlockLen < PKT_HEADER_LEN) || (vFrame.vMagicNo != PKT_MAGIC))
+    if ((vBlockLen < PKT_HEADER_LEN) || (vFrame.vMagicNo != vMagicNo))
     {
         /* invalid frame, force flush FIFO, w/o responding */
         printf("invalid frame! (blockLen=%.2bX, magicNo=%.4hX)\n", vBlockLen, vFrame.vMagicNo);
@@ -358,6 +360,8 @@ void thread_PKT_Init(void)
 {
     PT_INIT(&vTCB_Pkt);
     PT_SEM_INIT(&vSCB_RxPkt, 0);
+
+    vMagicNo = CFG_GET(Vendor_PKT_MagicNo);
 }
 
 #endif
