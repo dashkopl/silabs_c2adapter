@@ -45,9 +45,9 @@
  *  -> FACTORY : For factory calibration/diagnostic usage.
  */
 #define CFG_PWD_DEFAULT         0x00000000UL /* default power-on password */
-#define CFG_PWD_OEM             0xFC54D402UL /* OEM password              */
-#define CFG_PWD_FACTORY         0xFDE7554FUL /* factory password          */
-#define CFG_PWD_REBOOT          0xF62652A7UL /* reboot password           */
+#define CFG_PWD_OEM             0xDA17B67CUL /* OEM password              */
+#define CFG_PWD_FACTORY         0xD1E95B93UL /* factory password          */
+#define CFG_PWD_REBOOT          0xE37A97A1UL /* reboot password           */
 
 #define CFG_PWD_LEVEL_NORMAL    0x00        /* normal level          */
 #define CFG_PWD_LEVEL_UserRO    0x01        /* user read-only level  */

@@ -32,7 +32,7 @@ set PROJECT_DIR=%1
 set PROJECT_NAME=%2
 
 :: set command search path
-path %COMPILER_BASE%\bin
+path %COMPILER_BASE%\bin;%COMPILER_BASE%\python
 
 set OBJ_DIR=%PROJECT_DIR%\build\obj
 set IMG_DIR=%PROJECT_DIR%\build\image
@@ -70,12 +70,15 @@ echo Done.
 
 :: create *.bin file
 set /p="Creating %PROJECT_NAME%.bin   ... " <nul
-hex2bin %IMG_DIR%\%PROJECT_NAME%.hex %IMG_DIR%\%PROJECT_NAME%.bin
+python %PYLIB_BASE%\scripts\hex2bin.py                                      ^
+     --input=%IMG_DIR%\%PROJECT_NAME%.hex                                   ^
+     --output=%IMG_DIR%\%PROJECT_NAME%.bin
 echo Done.
 
 :: create *.sig file
 set /p="Creating %PROJECT_NAME%.sig   ... " <nul
-sign --mcu=c8051fxxx                                                        ^
+python %PYLIB_BASE%\scripts\sign.py                                         ^
+     --file=c8051fxxx                                                       ^
      --input=%IMG_DIR%\%PROJECT_NAME%.bin                                   ^
      --output=%IMG_DIR%\%PROJECT_NAME%.sig
 echo Done.
@@ -87,11 +90,13 @@ echo Done.
 
 :: create *.flash file
 set /p="Creating %PROJECT_NAME%.flash ... " <nul
-binmerge --input1=%IMG_DIR%\%PROJECT_NAME%.fw                               ^
-         --input2=%IMG_DIR%\%PROJECT_NAME%.cfg                              ^
-         --output=%IMG_DIR%\%PROJECT_NAME%.flash                            ^
-         --pad1-to=%CFG_BASE%                                               ^
-         --pad-val=0xFF
+python %PYLIB_BASE%\scripts\binpad.py                                       ^
+     --input=%IMG_DIR%\%PROJECT_NAME%.fw                                    ^
+     --output=%IMG_DIR%\%PROJECT_NAME%.fw_pad                               ^
+     --pad-to=%CFG_BASE%
+cat %IMG_DIR%\%PROJECT_NAME%.fw_pad %IMG_DIR%\%PROJECT_NAME%.cfg            ^
+     > %IMG_DIR%\%PROJECT_NAME%.flash
+rm -f %IMG_DIR%\%PROJECT_NAME%.fw_pad
 echo Done.
 
 echo **************************************************************************

@@ -44,12 +44,12 @@
  *               -> ff   : bug-fixing revision
  *****************************************************************************/
 #define FW_VERSION                                                          \
-        0x05, 0x10,     /* firmware type          */                        \
+        0x01, 0x10,     /* firmware type          */                        \
         0xFF, 0xFF,     /* product id             */                        \
         0x00,           /* product branch id      */                        \
         0x00,           /* configuration revision */                        \
         0x01,           /* function revision      */                        \
-        0x02            /* bug-fixing revision    */
+        0x00            /* bug-fixing revision    */
 
 #else
 

@@ -48,6 +48,10 @@ UINT16 PKT_MDIOM_Inspect(void);
 UINT16 PKT_MDIOM_Probe(void);
 UINT16 PKT_MDIOM_Read(void);
 UINT16 PKT_MDIOM_Write(void);
+UINT16 PKT_MDIOM_FrameAddr(void);
+UINT16 PKT_MDIOM_FrameWrite(void);
+UINT16 PKT_MDIOM_FrameRead(void);
+UINT16 PKT_MDIOM_FramePRIA(void);
 
 /* MDIO related commands */
 #define PKT_MDIOM_CMD_LIST                                                  \
@@ -55,6 +59,10 @@ UINT16 PKT_MDIOM_Write(void);
     { 0x1110, PKT_MDIOM_Probe,      },                                      \
     { 0x1111, PKT_MDIOM_Read,       },                                      \
     { 0x1112, PKT_MDIOM_Write,      },                                      \
+    { 0x1120, PKT_MDIOM_FrameAddr,  },                                      \
+    { 0x1121, PKT_MDIOM_FrameWrite, },                                      \
+    { 0x1122, PKT_MDIOM_FrameRead,  },                                      \
+    { 0x1123, PKT_MDIOM_FramePRIA,  },                                      \
 
 #else
 

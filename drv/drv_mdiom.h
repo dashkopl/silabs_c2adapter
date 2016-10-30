@@ -36,7 +36,7 @@
 
 /******************************************************************************
  * FUNCTION NAME:
- *   DRV_MDIOM_FrameAddress
+ *   DRV_MDIOM_FrameAddr
  * DESCRIPTION:
  *   MDIO Master Low-Level API: Execute Frame - Address.
  * PARAMETERS:
@@ -51,7 +51,7 @@
  * HISTORY:
  *   2016.1.29        Panda.Xiong          Create
  *****************************************************************************/
-BOOL DRV_MDIOM_FrameAddress
+BOOL DRV_MDIOM_FrameAddr
 (
     IN  UINT8           vPortAddr,
     IN  UINT8           vDevAddr,

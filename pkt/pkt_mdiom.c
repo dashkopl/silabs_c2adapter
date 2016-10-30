@@ -88,5 +88,61 @@ UINT16 PKT_MDIOM_Write(void)
     return PKT_REPLY_Done_ExecNoError;
 }
 
+UINT16 PKT_MDIOM_FrameAddr(void)
+{
+    PKT_MDIOM_T SEG_XDATA *pPayload = (PKT_MDIOM_T SEG_XDATA *)PKT_GetPayload();
+
+    if (!DRV_MDIOM_FrameAddr(pPayload->vPortAddr,
+                             pPayload->vDevAddr,
+                             pPayload->vOffset))
+    {
+        return PKT_REPLY_Fail_MdioNoAck;
+    }
+
+    return PKT_REPLY_Done_ExecNoError;
+}
+
+UINT16 PKT_MDIOM_FrameWrite(void)
+{
+    PKT_MDIOM_T SEG_XDATA *pPayload = (PKT_MDIOM_T SEG_XDATA *)PKT_GetPayload();
+
+    if (!DRV_MDIOM_FrameWrite(pPayload->vPortAddr,
+                              pPayload->vDevAddr,
+                              pPayload->aData[0]))
+    {
+        return PKT_REPLY_Fail_MdioNoAck;
+    }
+
+    return PKT_REPLY_Done_ExecNoError;
+}
+
+UINT16 PKT_MDIOM_FrameRead(void)
+{
+    PKT_MDIOM_T SEG_XDATA *pPayload = (PKT_MDIOM_T SEG_XDATA *)PKT_GetPayload();
+
+    if (!DRV_MDIOM_FrameRead(pPayload->vPortAddr,
+                             pPayload->vDevAddr,
+                             pPayload->aData))
+    {
+        return PKT_REPLY_Fail_MdioNoAck;
+    }
+
+    return PKT_REPLY_Done_ExecNoError;
+}
+
+UINT16 PKT_MDIOM_FramePRIA(void)
+{
+    PKT_MDIOM_T SEG_XDATA *pPayload = (PKT_MDIOM_T SEG_XDATA *)PKT_GetPayload();
+
+    if (!DRV_MDIOM_FramePRIA(pPayload->vPortAddr,
+                             pPayload->vDevAddr,
+                             pPayload->aData))
+    {
+        return PKT_REPLY_Fail_MdioNoAck;
+    }
+
+    return PKT_REPLY_Done_ExecNoError;
+}
+
 #endif
 
