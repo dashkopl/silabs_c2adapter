@@ -19,7 +19,7 @@
  *   MA 02111-1307 USA
  *
  * DESCRIPTION:
- *   Simulated MDIO Master driver related.
+ *   Simulated MDIO Master driver related. (IEEE802.3 Clause 45)
  * HISTORY:
  *   2016.1.29        Panda.Xiong          Create
  *
@@ -135,6 +135,25 @@ BOOL DRV_MDIOM_FramePRIA
 
 /* MDIO High-Level API */
 #if 1
+
+/******************************************************************************
+ * FUNCTION NAME:
+ *   DRV_MDIOM_Probe
+ * DESCRIPTION:
+ *   MDIO master probe chip.
+ * PARAMETERS:
+ *   vPortAddr : MDIO Port Address;
+ *   vDevAddr  : MDIO Device Address;
+ * RETURN:
+ *   TRUE   : Probe successfully.
+ *   FALSE  : Probe failed.
+ * NOTES:
+ *   N/A
+ * HISTORY:
+ *   2016.1.29        Panda.Xiong          Create
+ *****************************************************************************/
+#define DRV_MDIOM_Probe(_vPortAddr, _vDevAddr)                              \
+                    DRV_MDIOM_FrameRead((_vPortAddr),(_vDevAddr),NULL)
 
 /******************************************************************************
  * FUNCTION NAME:

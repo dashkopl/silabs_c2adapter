@@ -19,7 +19,8 @@
  *   MA 02111-1307 USA
  *
  * DESCRIPTION:
- *   Simulated MDIO Master driver related.
+ *   Simulated MDIO Master driver related. (IEEE802.3 Clause 45)
+ *    Support 3MHz MDC rate for C8051F32x @24MHz core clock.
  * HISTORY:
  *   2016.1.29        Panda.Xiong          Create
  *
@@ -33,8 +34,6 @@
 
 /* porting part */
 #if 1
-
-/* can support 3MHz MDC rate; (tested on C8051F321 @ 24MHz) */
 
 #define MDC_PP()        DRV_IO_Write(IO(IO_DUT_MDIOM_SCL_OEn), LOW)
 #define MDC_OD()        DRV_IO_Write(IO(IO_DUT_MDIOM_SCL_OEn), HIGH)
@@ -53,7 +52,7 @@
 
 static const BOOL bMdioPreamble = 1;
 
-static SEG_BDATA UINT16 vMdioCtrl  = 0x0000;
+static SEG_BDATA UINT16 vMdioCtrl = 0x0000;
 SBIT(bMdioStartFrame1,    vMdioCtrl, 15);
 SBIT(bMdioStartFrame0,    vMdioCtrl, 14);
 SBIT(bMdioOperationCode1, vMdioCtrl, 13);
@@ -158,27 +157,14 @@ SBIT(bMdioData0,  vMdioData,  8);
                                         drv_mdiom_TxBit(bMdioPreamble);             \
                                     } while (0)
 
-/* 2-bit start frame */
 #define drv_mdiom_TxStartFrame()    do {                                            \
                                         drv_mdiom_TxBit(bMdioStartFrame1);          \
                                         drv_mdiom_TxBit(bMdioStartFrame0);          \
                                     } while (0)
-#define drv_mdiom_SetStartFrame(_v1,_v0)  do {                                      \
-                                        bMdioStartFrame1 = (_v1);                   \
-                                        bMdioStartFrame0 = (_v0);                   \
-                                    } while (0)
-
-/* 2-bit operation code */
 #define drv_mdiom_TxOperationCode() do {                                            \
                                         drv_mdiom_TxBit(bMdioOperationCode1);       \
                                         drv_mdiom_TxBit(bMdioOperationCode0);       \
                                     } while (0)
-#define drv_mdiom_SetOperationCode(_v1,_v0) do {                                    \
-                                        bMdioOperationCode1 = (_v1);                \
-                                        bMdioOperationCode0 = (_v0);                \
-                                    } while (0)
-
-/* 5-bit port address */
 #define drv_mdiom_TxPortAddress()   do {                                            \
                                         drv_mdiom_TxBit(bMdioPortAddr4);            \
                                         drv_mdiom_TxBit(bMdioPortAddr3);            \
@@ -186,15 +172,6 @@ SBIT(bMdioData0,  vMdioData,  8);
                                         drv_mdiom_TxBit(bMdioPortAddr1);            \
                                         drv_mdiom_TxBit(bMdioPortAddr0);            \
                                     } while (0)
-#define drv_mdiom_SetPortAddress(_v) do {                                           \
-                                        bMdioPortAddr4 = ((UINT8)(_v) >> 4) & 1;    \
-                                        bMdioPortAddr3 = ((UINT8)(_v) >> 3) & 1;    \
-                                        bMdioPortAddr2 = ((UINT8)(_v) >> 2) & 1;    \
-                                        bMdioPortAddr1 = ((UINT8)(_v) >> 1) & 1;    \
-                                        bMdioPortAddr0 = ((UINT8)(_v) >> 0) & 1;    \
-                                    } while (0)
-
-/* 5-bit device address */
 #define drv_mdiom_TxDeviceAddress() do {                                            \
                                         drv_mdiom_TxBit(bMdioDeviceAddr4);          \
                                         drv_mdiom_TxBit(bMdioDeviceAddr3);          \
@@ -202,15 +179,6 @@ SBIT(bMdioData0,  vMdioData,  8);
                                         drv_mdiom_TxBit(bMdioDeviceAddr1);          \
                                         drv_mdiom_TxBit(bMdioDeviceAddr0);          \
                                     } while (0)
-#define drv_mdiom_SetDeviceAddress(_v) do {                                         \
-                                        bMdioDeviceAddr4 = ((UINT8)(_v) >> 4) & 1;  \
-                                        bMdioDeviceAddr3 = ((UINT8)(_v) >> 3) & 1;  \
-                                        bMdioDeviceAddr2 = ((UINT8)(_v) >> 2) & 1;  \
-                                        bMdioDeviceAddr1 = ((UINT8)(_v) >> 1) & 1;  \
-                                        bMdioDeviceAddr0 = ((UINT8)(_v) >> 0) & 1;  \
-                                    } while (0)
-
-/* 2-bit turn around */
 #define drv_mdiom_TxTurnAround()    do {                                            \
                                         drv_mdiom_TxBit(bMdioTurnAround1);          \
                                         drv_mdiom_TxBit(bMdioTurnAround0);          \
@@ -228,13 +196,8 @@ SBIT(bMdioData0,  vMdioData,  8);
                                         /* turn-around 0 */                         \
                                         drv_mdiom_RxBit(bMdioTurnAround0);          \
                                     } while (0)
-#define drv_mdiom_SetTurnAround(_v1, _v0) do {                                      \
-                                        bMdioTurnAround1 = (_v1);                   \
-                                        bMdioTurnAround0 = (_v0);                   \
-                                    } while (0)
 #define drv_mdiom_IsReadSuccess()    (bMdioTurnAround0 == 0)
 
-/* 16-bit address/data */
 #define drv_mdiom_TxAddr()          do {                                            \
                                         drv_mdiom_TxBit(bMdioAddr15);               \
                                         drv_mdiom_TxBit(bMdioAddr14);               \
@@ -291,6 +254,12 @@ SBIT(bMdioData0,  vMdioData,  8);
                                         drv_mdiom_RxBit(bMdioData1);                \
                                         drv_mdiom_RxBit(bMdioData0);                \
                                     } while (0)
+
+#define drv_mdiom_SetFrameType(_v)  do {                                            \
+                                        bMdioOperationCode1 = READ_BIT((_v), 1);    \
+                                        bMdioOperationCode0 = READ_BIT((_v), 0);    \
+                                    } while (0)
+#define drv_mdiom_SetCtrl(_v)       do { vMdioCtrl = (UINT16)(_v); } while (0)
 #define drv_mdiom_SetAddr(_v)       do { vMdioAddr = (UINT16)(_v); } while (0)
 #define drv_mdiom_SetData(_v)       do { vMdioData = (UINT16)(_v); } while (0)
 
@@ -310,9 +279,26 @@ SBIT(bMdioData0,  vMdioData,  8);
                                         MDC_OD();                                   \
                                         MDIO_OD();                                  \
                                     } while (0)
+
 #endif
 
 #if 1
+
+#define FRAME_TYPE_ADDR     0x0
+#define FRAME_TYPE_WRITE    0x1
+#define FRAME_TYPE_READ     0x3
+#define FRAME_TYPE_PRIA     0x2
+#define FRAME_ADDR          (FRAME_TYPE_ADDR  | 0x0002)
+#define FRAME_WRITE         (FRAME_TYPE_WRITE | 0x0002)
+#define FRAME_READ          (FRAME_TYPE_READ  | 0x0003)
+#define FRAME_PRIA          (FRAME_TYPE_PRIA  | 0x0003)
+#define drv_mdiom_CreateFrame(_frameType, _portAddr, _devAddr, _regAddr)            \
+                                    do {                                            \
+                                        drv_mdiom_SetCtrl((UINT16)(_frameType)    | \
+                                                          ((UINT8)(_portAddr)<<7) | \
+                                                          ((UINT8)(_devAddr)<<2));  \
+                                        drv_mdiom_SetAddr(_regAddr);                \
+                                    } while (0)
 
 static void drv_mdiom_TxAddrFrame(void)
 {
@@ -353,68 +339,6 @@ static void drv_mdiom_RxDataFrame(void)
     drv_mdiom_StopFrame();
 }
 
-/* create MDIO frame: Address */
-static void drv_mdiom_CreateAddrFrame
-(
-    IN UINT8    vPortAddr,
-    IN UINT8    vDevAddr,
-    IN UINT16   vRegAddr
-)
-{
-    drv_mdiom_SetStartFrame(0, 0);
-    drv_mdiom_SetOperationCode(0, 0);
-    drv_mdiom_SetPortAddress(vPortAddr);
-    drv_mdiom_SetDeviceAddress(vDevAddr);
-    drv_mdiom_SetTurnAround(1, 0);
-    drv_mdiom_SetAddr(vRegAddr);
-}
-
-/* create MDIO frame: Write */
-static void drv_mdiom_CreateWriteFrame
-(
-    IN UINT8    vPortAddr,
-    IN UINT8    vDevAddr,
-    IN UINT16   vRegData
-)
-{
-    drv_mdiom_SetStartFrame(0, 0);
-    drv_mdiom_SetOperationCode(0, 1);
-    drv_mdiom_SetPortAddress(vPortAddr);
-    drv_mdiom_SetDeviceAddress(vDevAddr);
-    drv_mdiom_SetTurnAround(1, 0);
-    drv_mdiom_SetData(vRegData);
-}
-
-/* create MDIO frame: Read */
-static void drv_mdiom_CreateReadFrame
-(
-    IN UINT8    vPortAddr,
-    IN UINT8    vDevAddr
-)
-{
-    drv_mdiom_SetStartFrame(0, 0);
-    drv_mdiom_SetOperationCode(1, 1);
-    drv_mdiom_SetPortAddress(vPortAddr);
-    drv_mdiom_SetDeviceAddress(vDevAddr);
-    drv_mdiom_SetTurnAround(1, 1);
-    drv_mdiom_SetData(0xFFFF);
-}
-
-/* create MDIO frame: Post-Read-Inc-Addr */
-static void drv_mdiom_CreatePRIAFrame
-(
-    IN UINT8    vPortAddr,
-    IN UINT8    vDevAddr
-)
-{
-    drv_mdiom_SetStartFrame(0, 0);
-    drv_mdiom_SetOperationCode(1, 0);
-    drv_mdiom_SetPortAddress(vPortAddr);
-    drv_mdiom_SetDeviceAddress(vDevAddr);
-    drv_mdiom_SetTurnAround(1, 1);
-    drv_mdiom_SetData(0xFFFF);
-}
-
 #endif
 
 
@@ -447,13 +371,13 @@ BOOL DRV_MDIOM_FrameAddr
 {
     BOOL    bIntState;
 
-    /* create MDIO frame: Address */
-    drv_mdiom_CreateAddrFrame(vPortAddr, vDevAddr, vRegAddr);
-
     /* lock globally interrupt */
     bIntState = DRV_INT_LockGlobalInterrupt();
 
-    /* transmit frame: Address */
+    /* create frame: ADDR */
+    drv_mdiom_CreateFrame(FRAME_TYPE_ADDR, vPortAddr, vDevAddr, vRegAddr);
+
+    /* transmit frame: ADDR */
     drv_mdiom_TxAddrFrame();
 
     /* unlock globally interrupt */
@@ -490,13 +414,13 @@ BOOL DRV_MDIOM_FrameWrite
 {
     BOOL    bIntState;
 
-    /* create MDIO frame: Write */
-    drv_mdiom_CreateWriteFrame(vPortAddr, vDevAddr, vData);
-
     /* lock globally interrupt */
     bIntState = DRV_INT_LockGlobalInterrupt();
 
-    /* transmit frame: Write */
+    /* create frame: WRITE */
+    drv_mdiom_CreateFrame(FRAME_TYPE_WRITE, vPortAddr, vDevAddr, vData);
+
+    /* transmit frame: WRITE */
     drv_mdiom_TxDataFrame();
 
     /* unlock globally interrupt */
@@ -533,20 +457,23 @@ BOOL DRV_MDIOM_FrameRead
 {
     BOOL    bIntState;
 
-    /* create MDIO frame: Read */
-    drv_mdiom_CreateReadFrame(vPortAddr, vDevAddr);
-
     /* lock globally interrupt */
     bIntState = DRV_INT_LockGlobalInterrupt();
 
-    /* transmit frame: Read */
+    /* create frame: READ */
+    drv_mdiom_CreateFrame(FRAME_TYPE_READ, vPortAddr, vDevAddr, 0xFFFF);
+
+    /* transmit frame: READ */
     drv_mdiom_RxDataFrame();
 
     /* unlock globally interrupt */
     DRV_INT_UnlockGlobalInterrupt(bIntState);
 
     /* check read status */
-    *pData = vMdioData;
+    if (pData != NULL)
+    {
+        *pData = vMdioData;
+    }
     return drv_mdiom_IsReadSuccess();
 }
 
@@ -577,20 +504,23 @@ BOOL DRV_MDIOM_FramePRIA
 {
     BOOL    bIntState;
 
-    /* create MDIO frame: Post-Read-Inc-Address */
-    drv_mdiom_CreatePRIAFrame(vPortAddr, vDevAddr);
-
     /* lock globally interrupt */
     bIntState = DRV_INT_LockGlobalInterrupt();
 
-    /* transmit frame: Read */
+    /* create frame: PRIA */
+    drv_mdiom_CreateFrame(FRAME_TYPE_PRIA, vPortAddr, vDevAddr, 0xFFFF);
+
+    /* transmit frame: PRIA */
     drv_mdiom_RxDataFrame();
 
     /* unlock globally interrupt */
     DRV_INT_UnlockGlobalInterrupt(bIntState);
 
     /* check read status */
-    *pData = vMdioData;
+    if (pData != NULL)
+    {
+        *pData = vMdioData;
+    }
     return drv_mdiom_IsReadSuccess();
 }
 
@@ -631,22 +561,25 @@ BOOL DRV_MDIOM_Read
     BOOL    bResult = TRUE;
     BOOL    bIntState;
 
-    /* create MDIO frame: Address */
-    drv_mdiom_CreateAddrFrame(vPortAddr, vDevAddr, vRegAddr);
-
-    /* lock globally interrupt */
-    bIntState = DRV_INT_LockGlobalInterrupt();
-
-    /* transmit frame: Address */
-    drv_mdiom_TxAddrFrame();
-
-    /* create MDIO frame: Post-Read-Increment-Address */
-    drv_mdiom_SetOperationCode(1, 0);
-
-    /* transmit frame: Post-Read-Increment-Address */
-    while (vDataLen-- != 0)
+    for (; vDataLen-- != 0; vRegAddr++, pDataBuf++)
     {
+        /* lock globally interrupt */
+        bIntState = DRV_INT_LockGlobalInterrupt();
+
+        /* create frame: ADDR */
+        drv_mdiom_CreateFrame(FRAME_TYPE_ADDR, vPortAddr, vDevAddr, vRegAddr);
+
+        /* transmit frame: ADDR */
+        drv_mdiom_TxAddrFrame();
+
+        /* set frame type: READ */
+        drv_mdiom_SetFrameType(FRAME_TYPE_READ);
+
+        /* transmit frame: READ */
         drv_mdiom_RxDataFrame();
+
+        /* unlock globally interrupt */
+        DRV_INT_UnlockGlobalInterrupt(bIntState);
 
         /* check read status */
         *pDataBuf++ = vMdioData;
@@ -656,9 +589,6 @@ BOOL DRV_MDIOM_Read
             break;
         }
     }
-
-    /* unlock globally interrupt */
-    DRV_INT_UnlockGlobalInterrupt(bIntState);
 
     return bResult;
 }
@@ -696,22 +626,22 @@ BOOL DRV_MDIOM_Write
 
     for (; vDataLen-- != 0; vRegAddr++, pDataBuf++)
     {
-        /* prepare MDIO data */
+        /* prepare data */
         drv_mdiom_SetData(*pDataBuf);
-
-        /* create MDIO frame: Address */
-        drv_mdiom_CreateAddrFrame(vPortAddr, vDevAddr, vRegAddr);
 
         /* lock globally interrupt */
         bIntState = DRV_INT_LockGlobalInterrupt();
 
-        /* transmit frame: Address */
+        /* create frame: ADDR */
+        drv_mdiom_CreateFrame(FRAME_TYPE_ADDR, vPortAddr, vDevAddr, vRegAddr);
+
+        /* transmit frame: ADDR */
         drv_mdiom_TxAddrFrame();
 
-        /* create MDIO frame: Write */
-        drv_mdiom_SetOperationCode(0, 1);
+        /* set frame type: WRITE */
+        drv_mdiom_SetFrameType(FRAME_TYPE_WRITE);
 
-        /* transmit frame: Write */
+        /* transmit frame: WRITE */
         drv_mdiom_TxDataFrame();
 
         /* unlock globally interrupt */
